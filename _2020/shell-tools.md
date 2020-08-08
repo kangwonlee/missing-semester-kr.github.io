@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Shell Tools and Scripting"
+title: "셸 툴과 스크립팅"
 date: 2019-01-14
 ready: true
 video:
@@ -8,26 +8,17 @@ video:
   id: kgII-YWo3Zw
 ---
 
-In this lecture, we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
+이번 강의에선, 배시(bash)를 스크립팅 언어로 사용하는 기본 사항들과 여러분들이 앞으로 명령줄에서 가장 보편적인 작업을 할 때 사용되는 몇개의 셸 도구들에 대해서 소개할 것입니다.
 
-# Shell Scripting
+# 셸(Shell) 스크립팅
 
-So far we have seen how to execute commands in the shell and pipe them together.
-However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
+지난 시간에 셸에서 명령들을 추출하고 파이프로 연결시키는 방법에 대해서 배웠습니다. 그러나 많은 상황에선 일련의 명령을 수행하고 조건문이나 반복문과 같은 제어 흐름 표현식을 사용해야 하는 경우가 있습니다.
 
-Shell scripts are the next step in complexity.
-Most shells have their own scripting language with variables, control flow and its own syntax.
-What makes shell scripting different from other scripting programming language is that it is optimized for performing shell-related tasks.
-Thus, creating command pipelines, saving results into files, and reading from standard input are primitives in shell scripting, which makes it easier to use than general purpose scripting languages.
-For this section we will focus on bash scripting since it is the most common.
+쉘 스크립트은 살짝 복잡합니다. 대부분의 셸에는 변수, 제어 흐름(control flow) 및 자체 구문(syntax)을 가진 자체 스크립팅 언어가 있습니다. 쉘 스크립트와 다른 프로그래밍 언어와의 차이점은 쉘 관련 작업을 수행하기 위해 최적화되어 있다는 것입니다. 따라서 명령 파이프 라인을 만들고 파일을 저장하고 표준 입력을 받는 것은 쉘 스크립팅이 원시적이며 범용 스크립팅 언어보다 사용하기 쉽습니다. 이 섹션에서는 그 중 가장 일반적인 배시(bash) 스크립팅에 중점을 둘 것입니다.
 
-To assign variables in bash, use the syntax `foo=bar` and access the value of the variable with `$foo`.
-Note that `foo = bar` will not work since it is interpreted as calling the `foo` program with arguments `=` and `bar`.
-In general, in shell scripts the space character will perform argument splitting. This behavior can be confusing to use at first, so always check for that.
+배시에서 변수에 값을 할당할 때는 `foo=bar`와 같이  입력합니다. 변수의 값에 접근할 때는 `$foo`로 액세스합니다. `foo = bar`와 같이 띄어쓰기를 사용하면 `=` 와 `bar`를 사용하여 `foo` 프로그램을 호출하는 것으로 해석되므로 작동하지 않습니다. 일반적으로 셸 스크립트에서 공간 문자는 인수 분할을 수행합니다. 이런 규칙은 일반적인 프로그래밍 언어와 다르기 때문에 헷갈릴 수가 있으니 항상 유의하세요.
 
-Strings in bash can be defined with `'` and `"` delimiters, but they are not equivalent.
-Strings delimited with `'` are literal strings and will not substitute variable values whereas `"` delimited strings will.
-
+배시에서 문자열은 `'`나 `"` 기호로 선언 될 수 있지만 다른 의미를 가지게 됩니다. `'`로 둘러싸인 문자열은 문자열 자체를 뜻하지만  `"`로 둘러싸인 문자열은 변수값을 반환합니다.
 ```bash
 foo=bar
 echo "$foo"
@@ -36,10 +27,7 @@ echo '$foo'
 # prints $foo
 ```
 
-As with most programming languages, bash supports control flow techniques including `if`, `case`, `while` and `for`.
-Similarly, `bash` has functions that take arguments and can operate with them. Here is an example of a function that creates a directory and `cd`s into it.
-
-
+대부분의 프로그래밍 언어와 마찬가지로, 배시는 `if`, `case`, `while` 및 `for`를 포함한 제어 흐름 기술을 지원합니다. 마찬가지로, 배시는 인자를 만들고 사용하고 작동하는 기능들이 있습니다. 다음은 디렉토리를 만들고 `cd`를 수행하는 함수의 예시입니다.
 ```bash
 mcd () {
     mkdir -p "$1"
@@ -47,16 +35,16 @@ mcd () {
 }
 ```
 
-Here `$1` is the first argument to the script/function.
-Unlike other scripting languages, bash uses a variety of special variables to refer to arguments, error codes, and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://www.tldp.org/LDP/abs/html/special-chars.html).
-- `$0` - Name of the script
-- `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
-- `$@` - All the arguments
-- `$#` - Number of arguments
-- `$?` - Return code of the previous command
-- `$$` - Process identification number (PID) for the current script
-- `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions; you can quickly re-execute the command with sudo by doing `sudo !!`
-- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.`
+`$1`은 script/function의 첫 번째 인자입니다. 다른 스크립팅 언어와 달리, bash는 인수, 오류 코드 및 기타 관련 변수를 참조하기 위해 다양한 특수 변수를 사용합니다. 아래에 그 중 일부를 적어놨습니다. 더 포괄적인 목록은 [여기](https://www.tldp.org/LDP/abs/html/special-chars.html)서 찾을 수 있습니다.
+
+- `$0` - 스크립트 이름
+- `$1` ~ `$9` - 스크립트의 인자들. `$1`부터 첫번쨰 인자입니다.
+- `$@` - 모든 인자들
+- `$#` - 인자의 수
+- `$?` - 이전 명령을 반환하는 코드
+- `$$` - 현재 스크립트에 대한 프로세스 식별 번호 (PID)
+- `!!` - 인수를 포함하여 마지막 명령 전체를 포함합니다. 일반적으로는 사용 권한이 누락되어 실패할 때 사용합니다. `sudo`를 함께 써서 실패한 명령을 신속하게 다시 실행할 수 있습니다.
+- `$_` - 마지막 명령에서 나온 마지막 인수입니다. 대화형 셸에 있는 경우 `Esc`를 입력한 후 `.`을 입력해 이 값을 신속하게 얻을 수 있습니다.
 
 Commands will often return output using `STDOUT`, errors through `STDERR`, and a Return Code to report errors in a more script-friendly manner.
 The return code or exit status is the way scripts/commands have to communicate how execution went.
