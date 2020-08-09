@@ -15,33 +15,23 @@ video:
 이러한 것들은 학생으로서의 여러분의 일상에서 마치 별로 중요하지 않은 것처럼 보일 지도 모르지만, 여러분이 인턴십을 통해서 더 큰 코드베이스([code base](https://en.wikipedia.org/wiki/Codebase))와 상호작용하거나 일단 "실제 세계"에 발을 들이게 되면, 이를 어디서든 보게 될 것입니다.  
 이 강의의 목적을 위해 우리가 사용하고 있는 정의는 아니지만, 우리는 "메타프로그래밍"이 "[프로그램들을 대상으로 작동하는 프로그램들](https://en.wikipedia.org/wiki/Metaprogramming)" 또한 의미할 수 있음에 유의해야 합니다.
 
-# Build systems
+# [빌드 시스템(Build systems)](http://developinghappiness.com/?p=26)
 
-If you write a paper in LaTeX, what are the commands you need to run to
-produce your paper? What about the ones used to run your benchmarks,
-plot them, and then insert that plot into your paper? Or to compile the
-code provided in the class you're taking and then running the tests?
+문서를 [Latex(레이텍 또는 라텍)](https://namu.wiki/w/LaTeX)으로 작성할 때, 문서를 작성하기 위해 실행해야 하는 명령어는 무엇입니까?  
+[벤치마크](https://namu.wiki/w/%EB%B2%A4%EC%B9%98%EB%A7%88%ED%81%AC)를 실행하고, 그 결과를 그래프로 그리고, 그 그래프를 문서에 삽입할 때는요?  
+또는 사용하고 있는 클래스 안에 제공되어 있는 코드를 컴파일하고 테스트를 실행할 때는 어떤 명령어를 사용합니까?
 
-For most projects, whether they contain code or not, there is a "build
-process". Some sequence of operations you need to do to go from your
-inputs to your outputs. Often, that process might have many steps, and
-many branches. Run this to generate this plot, that to generate those
-results, and something else to produce the final paper. As with so many
-of the things we have seen in this class, you are not the first to
-encounter this annoyance, and luckily there exist many tools to help
-you!
+대부분의 프로젝트들에는, 그것들이 코드를 포함하든 포함하지 않든, "**빌드 프로세스**"라고 하는 것이 있습니다. 이는 인풋(Input)에서 아웃풋(Output)으로 가기 위해서 수행할 필요가 있는 몇몇 순차적인 작업들을 뜻합니다.  
+종종, 그 프로세스에는 많은 단계들과 많은 [브랜치(branch)](https://backlog.com/git-tutorial/kr/stepup/stepup1_1.html)들이 있을 수도 있습니다.  
+이 도표를 생성하기 위해서 이걸 하고, 저 결과들을 생성하기 위해 저걸 하고, 최종 문서를 만들어 내기 위해서 또 뭔가 다른 걸 해야하는 것처럼 말이죠.  
+우리가 이 강의에서 보아온 아주 많은 것들과 마찬가지로, 여러분은 제일 처음으로 이러한 골칫거리에 마주한 사람들이 아니고, 운 좋게도 여러분들을 도와줄 많은 도구들이 존재합니다!
 
-These are usually called "build systems", and there are _many_ of them.
-Which one you use depends on the task at hand, your language of
-preference, and the size of the project. At their core, they are all
-very similar though. You define a number of _dependencies_, a number of
-_targets_, and _rules_ for going from one to the other. You tell the
-build system that you want a particular target, and its job is to find
-all the transitive dependencies of that target, and then apply the rules
-to produce intermediate targets all the way until the final target has
-been produced. Ideally, the build system does this without unnecessarily
-executing rules for targets whose dependencies haven't changed and where
-the result is available from a previous build.
+이것들은 보통 "**빌드 시스템(build systems)**"이라고 불리고, _많은_ 것들이 있습니다.  
+여러분이 무엇을 사용하는지는 당면한 과제, 선호하는 프로그래밍 언어, 그리고 프로젝트의 규모에 달려 있습니다.  
+그렇지만 핵심적인 면에서는 모두 아주 비슷합니다.
+여러분은 어떤 것으로부터 다른 것을 만들어 내기 위한 많은 _의존성(dependencies)_, _타겟_, 그리고 _규칙_ 들을 정의하게 됩니다.  
+여러분이 빌드 시스템에게 여러분이 특정 타겟을 원한다는 것을 전하면, 빌드 시스템이 하는 일은 그 타겟의 [이행성을 띠는(transitive)](https://terms.naver.com/entry.nhn?docId=856345&cid=50376&categoryId=50376) 모든 의존성들을 찾아내고서는, 최종 타겟이 만들어지는 때까지 계속해서 중간의 타겟들을 만들어내는 규칙들을 적용하는 것입니다.
+이상적으로는, 빌드 시스템은 의존성이 바뀌지 않은 타겟들과, 이전의 빌드에 의한 결과가 이미 사용가능한 경우에 대해서는, 불필요하게 규칙들을 실행하지 않는 방식으로 이를 수행합니다.
 
 `make` is one of the most common build systems out there, and you will
 usually find it installed on pretty much any UNIX-based computer. It has
@@ -156,6 +146,8 @@ Notice that `make` did _not_ re-run `plot.py` because that was not
 necessary; none of `plot-data.png`'s dependencies changed!
 
 # Dependency management
+
+<!-- 14분부터 -->
 
 At a more macro level, your software projects are likely to have
 dependencies that are themselves projects. You might depend on installed
