@@ -5,22 +5,15 @@ details: build systems, dependency management, testing, CI
 date: 2019-01-27
 ready: true
 video:
-  aspect: 56.25
-  id: _Ms1Z4xfqv4
+    aspect: 56.25
+    id: _Ms1Z4xfqv4
 ---
 
-What do we mean by "metaprogramming"? Well, it was the best collective
-term we could come up with for the set of things that are more about
-_process_ than they are about writing code or working more efficiently.
-In this lecture, we will look at systems for building and testing your
-code, and for managing dependencies. These may seem like they are of
-limited importance in your day-to-day as a student, but the moment you
-interact with a larger code base through an internship or once you enter
-the "real world", you will see this everywhere. We should note that
-"metaprogramming" can also mean "[programs that operate on
-programs](https://en.wikipedia.org/wiki/Metaprogramming)", whereas that
-is not quite the definition we are using for the purposes of this
-lecture.
+우리가 메타프로그래밍(metaprogramming)이라고 할 때, 이 용어는 무얼 뜻하는 것일까요?  
+이는 코드를 작성하거나 더 효율적으로 작업하는 것보다는, _"과정"_ 에 더 관련된 것들을 두루 일컫는 총칭이라고 할 수 있습니다.  
+이 강의에서, 우리는 코드를 빌드하고 테스트하며, 의존성([dependency](https://en.wikipedia.org/wiki/Dependency_injection#Constructor_injection))들을 관리하기 위한 체계들을 살펴볼 것입니다.  
+이러한 것들은 학생으로서의 여러분의 일상에서 마치 별로 중요하지 않은 것처럼 보일 지도 모르지만, 여러분이 인턴십을 통해서 더 큰 코드베이스([code base](https://en.wikipedia.org/wiki/Codebase))와 상호작용하거나 일단 "실제 세계"에 발을 들이게 되면, 이를 어디서든 보게 될 것입니다.  
+이 강의의 목적을 위해 우리가 사용하고 있는 정의는 아니지만, 우리는 "메타프로그래밍"이 "[프로그램들을 대상으로 작동하는 프로그램들](https://en.wikipedia.org/wiki/Metaprogramming)" 또한 의미할 수 있음에 유의해야 합니다.
 
 # Build systems
 
@@ -203,11 +196,11 @@ relatively common standard is [_semantic
 versioning_](https://semver.org/). With semantic versioning, every
 version number is of the form: major.minor.patch. The rules are:
 
- - If a new release does not change the API, increase the patch version.
- - If you _add_ to your API in a backwards-compatible way, increase the
-   minor version.
- - If you change the API in a non-backwards-compatible way, increase the
-   major version.
+-   If a new release does not change the API, increase the patch version.
+-   If you _add_ to your API in a backwards-compatible way, increase the
+    minor version.
+-   If you change the API in a non-backwards-compatible way, increase the
+    major version.
 
 This already provides some major advantages. Now, if my project depends
 on your project, it _should_ be safe to use the latest release with the
@@ -275,50 +268,49 @@ be familiar with the general concept of testing, but we thought we'd
 quickly mention some approaches to testing and testing terminology that
 you may encounter in the wild:
 
- - Test suite: a collective term for all the tests
- - Unit test: a "micro-test" that tests a specific feature in isolation
- - Integration test: a "macro-test" that runs a larger part of the
-   system to check that different feature or components work _together_.
- - Regression test: a test that implements a particular pattern that
-   _previously_ caused a bug to ensure that the bug does not resurface.
- - Mocking: the replace a function, module, or type with a fake
-   implementation to avoid testing unrelated functionality. For example,
-   you might "mock the network" or "mock the disk".
+-   Test suite: a collective term for all the tests
+-   Unit test: a "micro-test" that tests a specific feature in isolation
+-   Integration test: a "macro-test" that runs a larger part of the
+    system to check that different feature or components work _together_.
+-   Regression test: a test that implements a particular pattern that
+    _previously_ caused a bug to ensure that the bug does not resurface.
+-   Mocking: the replace a function, module, or type with a fake
+    implementation to avoid testing unrelated functionality. For example,
+    you might "mock the network" or "mock the disk".
 
 # Exercises
 
- 1. Most makefiles provide a target called `clean`. This isn't intended
+1.  Most makefiles provide a target called `clean`. This isn't intended
     to produce a file called `clean`, but instead to clean up any files
     that can be re-built by make. Think of it as a way to "undo" all of
     the build steps. Implement a `clean` target for the `paper.pdf`
     `Makefile` above. You will have to make the target
     [phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html).
-    You may find the [`git
-    ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
+    You may find the [`git ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
     A number of other very common make targets are listed
     [here](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets).
- 2. Take a look at the various ways to specify version requirements for
+2.  Take a look at the various ways to specify version requirements for
     dependencies in [Rust's build
     system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
     Most package repositories support similar syntax. For each one
     (caret, tilde, wildcard, comparison, and multiple), try to come up
     with a use-case in which that particular kind of requirement makes
     sense.
- 3. Git can act as a simple CI system all by itself. In `.git/hooks`
+3.  Git can act as a simple CI system all by itself. In `.git/hooks`
     inside any git repository, you will find (currently inactive) files
     that are run as scripts when a particular action happens. Write a
     [`pre-commit`](https://git-scm.com/docs/githooks#_pre_commit) hook
     that runs `make paper.pdf` and refuses the commit if the `make`
     command fails. This should prevent any commit from having an
     unbuildable version of the paper.
- 4. Set up a simple auto-published page using [GitHub
+4.  Set up a simple auto-published page using [GitHub
     Pages](https://help.github.com/en/actions/automating-your-workflow-with-github-actions).
     Add a [GitHub Action](https://github.com/features/actions) to the
     repository to run `shellcheck` on any shell files in that
     repository (here is [one way to do
     it](https://github.com/marketplace/actions/shellcheck)). Check that
     it works!
- 5. [Build your
+5.  [Build your
     own](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)
     GitHub action to run [`proselint`](http://proselint.com/) or
     [`write-good`](https://github.com/btford/write-good) on all the
