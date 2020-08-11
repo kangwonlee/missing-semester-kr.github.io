@@ -33,12 +33,9 @@ video:
 여러분이 빌드 시스템에게 여러분이 특정 타겟을 원한다는 것을 전하면, 빌드 시스템이 하는 일은 그 타겟의 [이행성을 띠는(transitive)](https://terms.naver.com/entry.nhn?docId=856345&cid=50376&categoryId=50376) 모든 의존성들을 찾아내고서는, 최종 타겟이 만들어지는 때까지 계속해서 중간의 타겟들을 만들어내는 규칙들을 적용하는 것입니다.
 이상적으로는, 빌드 시스템은 의존성이 바뀌지 않은 타겟들과, 이전의 빌드에 의한 결과가 이미 사용가능한 경우에 대해서는, 불필요하게 규칙들을 실행하지 않는 방식으로 이를 수행합니다.
 
-`make` is one of the most common build systems out there, and you will
-usually find it installed on pretty much any UNIX-based computer. It has
-its warts, but works quite well for simple-to-moderate projects. When
-you run `make`, it consults a file called `Makefile` in the current
-directory. All the targets, their dependencies, and the rules are
-defined in that file. Let's take a look at one:
+`make`는 가장 흔한 빌드 시스템 중 하나이고, 거의 모든 [UNIX](https://namu.wiki/w/%EC%9C%A0%EB%8B%89%EC%8A%A4)-기반 컴퓨터에 설치되어 있습니다. `make`는 결점이 있기는 하지만, 간단한 ~ 중간 정도의 복잡성을 지닌 프로젝트들에는 꽤 잘 작동합니다.  
+여러분이 `make`를 실행하면 이것은 현재 디렉토리에 있는 `Makefile`이라고 하는 파일을 참조합니다.  
+모든 타겟들과 의존성들, 그리고 규칙들은 그 파일 안에 정의되어 있습니다. 함께 하나 살펴보죠:
 
 ```make
 paper.pdf: paper.tex plot-data.png
@@ -48,20 +45,15 @@ plot-%.png: %.dat plot.py
 	./plot.py -i $*.dat -o $@
 ```
 
-Each directive in this file is a rule for how to produce the left-hand
-side using the right-hand side. Or, phrased differently, the things
-named on the right-hand side are dependencies, and the left-hand side is
-the target. The indented block is a sequence of programs to produce the
-target from those dependencies. In `make`, the first directive also
-defines the default goal. If you run `make` with no arguments, this is
-the target it will build. Alternatively, you can run something like
-`make plot-data.png`, and it will build that target instead.
+이 파일 안의 각각의 명령(directive)은 우변을 이용하여 좌변을 만들어 내는 방법에 대한 규칙입니다.
+다르게 말하면, 우변에 이름지어진 것들은 의존성들이고, 좌변은 타겟입니다.  
+들여쓰기된 블럭은 의존성들로부터 타겟을 만들어 내기 위한 프로그램들의 순서입니다.  
+`make`에서는, 첫번째 명령(directive)은 최종 타겟의 초기값(default) 또한 정의합니다. 만약 여러분이 어떠한 인자도 없이 `make`를 실행한다면, 이 초기값이 바로 `make`가 만들어낼 최종 타겟이 되는 것입니다.  
+대신에 여러분이 `make plot-data.png`와 같은 무언가를 실행시킨다면 `make`는 그 타겟을 빌드할 것입니다.
 
-The `%` in a rule is a "pattern", and will match the same string on the
-left and on the right. For example, if the target `plot-foo.png` is
-requested, `make` will look for the dependencies `foo.dat` and
-`plot.py`. Now let's look at what happens if we run `make` with an empty
-source directory.
+우변의 규칙(rule)에 있는 `%`는 하나의 "패턴"이고, 이것은 좌변과 우변에 있는 같은 문자열을 매치시킬 것입니다.  
+예를 들면, 만약 타겟 `plot-foo.png`가 요청되면 `make`는 `foo.dat`과 `plot.py` 의존성들이 있는지 찾을 것입니다.  
+자 이제 만약 우리가 `make`를 빈 소스 디렉토리에서 실행하면 무슨 일이 일어나는지 살펴봅시다.
 
 ```console
 $ make
