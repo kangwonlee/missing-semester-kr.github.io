@@ -204,82 +204,128 @@ combined with KDFs, so you can encrypt a file with a passphrase. Generate `key =
 - 신뢰할 수 없는 클라우드 서비스에 파일을 저장할 때 파일을 암호화. 이는 KDF와 결합되어 암호로 파일을 암호화 할 수 있습니다. `key = KDF(passphrase)`로 키를 생성하고, `encrypt(file, key)`로 암호화 한 파일을 저장합니다.
 
 # Asymmetric cryptography
+# 비대칭 암호화
 
 The term "asymmetric" refers to there being two keys, with two different roles.
+"비대칭"이라는 용어는 두개의 키와 두개의 다른 역할이 있는 키를 의미합니다.
+
 A private key, as its name implies, is meant to be kept private, while the
 public key can be publicly shared and it won't affect security (unlike sharing
-the key in a symmetric cryptosystem). Asymmetric cryptosystems provide the
+the key in a symmetric cryptosystem).
+이름에서 알 수 있듯이 개인 키는 비공개로 유지되는 반면 공개 키는 공개적으로 공유될 수 있으며 보안에 영향을 미치지 않습니다(대칭 암호 시스템에서 키를 공유하는 것과 다르다).
+ Asymmetric cryptosystems provide the
 following set of functionality, to encrypt/decrypt and to sign/verify:
+ 비대칭 암호화 시스템은 암호화/암호화 및 서명/확인을 위한 다음과 같은 기능 집합을 제공합니다.
 
 ```
 keygen() -> (public key, private key)  (this function is randomized)
+keygen() -> (공개 키, 개인 키) (이 기능은 임의로 지정됨)
 
 encrypt(plaintext: array<byte>, public key) -> array<byte>  (the ciphertext)
+encrypt(일반텍스트:배열<byte>,공개 키) -> 배열<byte> (암호문)
 decrypt(ciphertext: array<byte>, private key) -> array<byte>  (the plaintext)
+decrypt(암호문:배열<byte>, 개인 키) -> 배열<byte> (일반텍스트)
+
 
 sign(message: array<byte>, private key) -> array<byte>  (the signature)
+서명(message: 배열<byte>, 개인 키) -> 배열<byte> (서명)
 verify(message: array<byte>, signature: array<byte>, public key) -> bool  (whether or not the signature is valid)
+검증(message: 배열<byte>, 서명: 배열<byte>, 공개 키) -> bool (서명이 유효한지 여부)
 ```
 
 The encrypt/decrypt functions have properties similar to their analogs from
-symmetric cryptosystems. A message can be encrypted using the _public_ key.
+symmetric cryptosystems.
+encrypt/decrypt 함수에는 대칭형 암호 시스템의 분석과 유사한 속성이 있습니다.
+ A message can be encrypted using the _public_ key.
+ 메시지는 _공용_ 키를 사용하여 암호화할 수 있습니다.
 Given the output (ciphertext), it's hard to determine the input (plaintext)
-without the _private_ key. The decrypt function has the obvious correctness
+without the _private_ key.
+(출력)을 고려하면, _개인_ 키 없이 입력(일반 텍스트)을 결정하기는 어렵습니다.
+ The decrypt function has the obvious correctness
 property, that `decrypt(encrypt(m, public key), private key) = m`.
+해독 기능은 명백한 정확성 속성을 갖고 있습니다. 'decrypt(encrypt(m, 공개 키), 개인 키) = m',
 
-Symmetric and asymmetric encryption can be compared to physical locks. A
-symmetric cryptosystem is like a door lock: anyone with the key can lock and
-unlock it. Asymmetric encryption is like a padlock with a key. You could give
+Symmetric and asymmetric encryption can be compared to physical locks.
+대칭과 비대칭 암호화를 물리적 잠금과 비교할 수 있습니다.
+ A symmetric cryptosystem is like a door lock: anyone with the key can lock and
+unlock it. 
+ 대칭 암호 시스템은 도어 잠금 장치와 같다: 키가 있는 사람은 누구나 잠그고 해제할 수 있습니다.
+Asymmetric encryption is like a padlock with a key. 
+ 비대칭 암호화는 열쇠가 달린 자물쇠와 같다.
+You could give
 the unlocked lock to someone (the public key), they could put a message in a
 box and then put the lock on, and after that, only you could open the lock
 because you kept the key (the private key).
+ 잠금 해제된 잠금을 누군가(공용 키)에게 줄 수 있고, 메시지를 상자에 넣어 다음 잠금을 설정할 수 있다. 그리고 나서, 잠금 키(개인 키)를 보관하였기 때문에 잠금을 열 수 있습니다.
 
 The sign/verify functions have the same properties that you would hope physical
-signatures would have, in that it's hard to forge a signature. No matter the
+signatures would have, in that it's hard to forge a signature. 
+서명/확인 기능은 서명을 위조하기 어렵다는 것에서 물리적 서명이 갖고 있기를 바라는 것과 같은 속성을 가지고 있습니다.
+No matter the
 message, without the _private_ key, it's hard to produce a signature such that
 `verify(message, signature, public key)` returns true. And of course, the
 verify function has the obvious correctness property that `verify(message,
 sign(message, private key), public key) = true`.
+메시지든, _개인_ 열쇠 없이, 그런 서명을 하기는 어렵습니다. 'verify(message, signature, public key)사실로 돌아오다. 그리고 물론, 그 검증 기능은 다음과 같은 명백한 정확성을 갖고있습니다. 'verify(message, sign(message, 개인 키), 공용 키) = 사실'.
 
 ## Applications
+## 응용프로그램
 
 - [PGP email encryption](https://en.wikipedia.org/wiki/Pretty_Good_Privacy).
 People can have their public keys posted online (e.g. in a PGP keyserver, or on
 [Keybase](https://keybase.io/)). Anyone can send them encrypted email.
+- [PGP email 암호화](https://en.wikipedia.org/wiki/Pretty_Good_Privacy). 사람들은 자신의 공개키를 온라인상에 올릴 수 있습니다. (PGP Keyserver나 [Keybase](https://keybase.io/) 등에). 그러면 누구나 그 사람에게 암호화된 메일을 보낼 수 있습니다.
 - Private messaging. Apps like [Signal](https://signal.org/) and
 [Keybase](https://keybase.io/) use asymmetric keys to establish private
 communication channels.
+- 개인 메시지. [Signal](https://signal.org/)그리고[Keybase](https://keybase.io/)같은 앱은 비대칭 키를 사용해 개인통신 채널을 설정합니다.
 - Signing software. Git can have GPG-signed commits and tags. With a posted
 public key, anyone can verify the authenticity of downloaded software.
+- Signing software. Git에는 GPG-signed의 commits과 tags가 있을 수 있습니다. 게시된 공용 키를 사용하면, 누구나 다운로드된 소프트웨어의 신뢰성을 확인할 수 있습니다. 
 
 ## Key distribution
+## 키 분포
 
 Asymmetric-key cryptography is wonderful, but it has a big challenge of
 distributing public keys / mapping public keys to real-world identities. There
-are many solutions to this problem. Signal has one simple solution: trust on
+are many solutions to this problem.
+비대칭 키 암호화는 훌륭하지만, 공용 키를 배포하고 실제 ID에 공개키를 mapping하는 데는 큰 어려움이 있습니다. 이 문제에 대한 많은 해결책이 있습니다.
+ Signal has one simple solution: trust on
 first use, and support out-of-band public key exchange (you verify your
-friends' "safety numbers" in person). PGP has a different solution, which is
-[web of trust](https://en.wikipedia.org/wiki/Web_of_trust). Keybase has yet
+friends' "safety numbers" in person). 
+ 신호에는 한가지 간단한 해결책이 있습니다: 처음 사용할 때 신뢰할 수 있고, out-of-band공용 키 교환을 지지합니다.(당신의 당신의 "안전 번호"를 직접 확인)
+PGP has a different solution, which is
+[web of trust](https://en.wikipedia.org/wiki/Web_of_trust). 
+PGP에는 신뢰할 수 있는 다른 해결방법이 있습니다. [web of trust](https://en.wikipedia.org/wiki/Web_of_trust)
+Keybase has yet
 another solution of [social
 proof](https://keybase.io/blog/chat-apps-softer-than-tofu) (along with other
 neat ideas). Each model has its merits; we (the instructors) like Keybase's
 model.
+Keybase는 다른 해결책을 갖고 있습니다.[사회적증거](https://keybase.io/blog/chat-apps-softer-than-tofu) (다른 생각들과 함께). 각 모델에는 장점이 있다; 우리(강사들)은 Keybase 모델들을 좋아합니다.
 
 # Case studies
+# 사례 연구
 
 ## Password managers
+## 암호 관리자
 
 This is an essential tool that everyone should try to use (e.g.
-[KeePassXC](https://keepassxc.org/)). Password managers let you use unique,
+[KeePassXC](https://keepassxc.org/)).
+이 도구는 모든 사용자가 사용해야하는 필수적인 도구입니다.(예:[KeePassXC](https://keepassxc.org/)).
+ Password managers let you use unique,
 randomly generated high-entropy passwords for all your websites, and they save
 all your passwords in one place, encrypted with a symmetric cipher with a key
 produced from a passphrase using a KDF.
+암호 관리자를 사용하게 되면 임의로 만든 고유한 high-entropy 암호를 모든 웹 사이트에 사용할 수 있고, KDF를 사용해 생성된 키인 대칭 암호로 암호화된 모든 암호들을 한 곳에 저장할 수 있습니다.
 
 Using a password manager lets you avoid password reuse (so you're less impacted
 when websites get compromised), use high-entropy passwords (so you're less likely to
 get compromised), and only need to remember a single high-entropy password.
+암호 관리자를 사용하면 암호 재사용을 피할 수 있어 (그래서 당신은 웹사이트가 손상될 때 덜 영향을 받을 수 있으므로), 높은 엔트로피 암호를 사용할 수 있고 (따라서 손상될 가능성이 낮다), 높은 수준의 암호 하나만 기억하면 됩니다. 
 
 ## Two-factor authentication
+## 2단계 인증
 
 [Two-factor
 authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
@@ -287,104 +333,166 @@ authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
 authenticator (like a [YubiKey](https://www.yubico.com/), "something you have")
 in order to protect against stolen passwords and
 [phishing](https://en.wikipedia.org/wiki/Phishing) attacks.
+[2단계 인증](https://en.wikipedia.org/wiki/Multi-factor_authentication)(2FA)에서는 도난된 암호와 [phishing](https://en.wikipedia.org/wiki/Phishing)공격으로부터 보호하기위해 2FA 인증자([YuviKey](https://www.yubico.com/), "보유한 것"등)와 함께 암호("알고있는 것")를 사용해야 합니다.
 
 ## Full disk encryption
+## 전체 디스크 암호화
 
 Keeping your laptop's entire disk encrypted is an easy way to protect your data
-in the case that your laptop is stolen. You can use [cryptsetup +
+in the case that your laptop is stolen. 
+랩톱의 전체 디스크를 암호화된 상태로 유지하면 랩톱을 도난당한 경우 데이터를 쉽게 보관할 수 있습니다. 
+You can use [cryptsetup +
 LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system)
 on Linux,
 [BitLocker](https://fossbytes.com/enable-full-disk-encryption-windows-10/) on
 Windows, or [FileVault](https://support.apple.com/en-us/HT204837) on macOS.
+Linux에서 [암호설정 + LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system)을 사용하거나 Windows에서 [BitLocker](https://fossbytes.com/enable-full-disk-encryption-windows-10/)을 사용하거나 masOS에서 [FileVault](https://support.apple.com/en-us/HT204837)를 사용할 수 있습니다.
 This encrypts the entire disk with a symmetric cipher, with a key protected by
 a passphrase.
+암호로 보호되는 키를 사용하여, 전체 디스크가 대칭 암호화가 됩니다.
 
 ## Private messaging
+## 개인 메시지
 
-Use [Signal](https://signal.org/) or [Keybase](https://keybase.io/). End-to-end
-security is bootstrapped from asymmetric-key encryption. Obtaining your
-contacts' public keys is the critical step here. If you want good security, you
+Use [Signal](https://signal.org/) or [Keybase](https://keybase.io/). 
+[신호](https://signal.org/) 또는 [Keybase](https://keybase.io/)를 사용합니다.
+End-to-end
+security is bootstrapped from asymmetric-key encryption. 
+End-to-end의 보안은 비대칭 키 암호화에서 차단됩니다.
+Obtaining your
+contacts' public keys is the critical step here.
+연락처의 공용 키를 얻는 것이 중요한 단계입니다.
+ If you want good security, you
 need to authenticate public keys out-of-band (with Signal or Keybase), or trust
 social proofs (with Keybase).
+안전한 보안을 원한다면 Out-of-band(신호 또는 keybase사용)로 공개 키를 인증하거나, 사회적 증명(keybase 사용)을 신뢰해야 합니다. 
 
 ## SSH
+## 시큐어 셸
 
 We've covered the use of SSH and SSH keys in an [earlier
-lecture](/2020/command-line/#remote-machines). Let's look at the cryptography
+lecture](/2020/command-line/#remote-machines). 
+전 강의에서 SSH와 SSH키 사용에 대해 다루었습니다. [earlier lecture](/2020/command-line/#remote-machines)
+Let's look at the cryptography
 aspects of this.
+이것의 암호적 측면을 살펴봅시다.
 
 When you run `ssh-keygen`, it generates an asymmetric keypair, `public_key,
 private_key`. This is generated randomly, using entropy provided by the
-operating system (collected from hardware events, etc.). The public key is
+operating system (collected from hardware events, etc.).
+당신이 달릴떄 'shh-keygen'비대칭 키패드를 생성하고, 'public_key,private_key'. 이것은 운영체제에 의해 제공된 엔트로피를 이용해 무작위로 생성됩니다(하드웨어 이벤트 등에서 수집).
+ The public key is
 stored as-is (it's public, so keeping it a secret is not important), but at
-rest, the private key should be encrypted on disk. The `ssh-keygen` program
+rest, the private key should be encrypted on disk. 
+공용 키는 그대로 저장되며(공용 키 이므로 비밀 유지하는 것은 중요하지 않다), 개인 키는 디스크에 암호화되어야 합니다.
+The `ssh-keygen` program
 prompts the user for a passphrase, and this is fed through a key derivation
 function to produce a key, which is then used to encrypt the private key with a
 symmetric cipher.
+'ssh-keygen'프로그램은 사용자에게 암호를 묻는 표시를 하고, 키 파생 기능으로 키를 생성하며, 이 기능은 개인키를 대칭 암호로 암호화하는 데 사용됩니다. 
 
 In use, once the server knows the client's public key (stored in the
 `.ssh/authorized_keys` file), a connecting client can prove its identity using
-asymmetric signatures. This is done through
+asymmetric signatures. 
+사용중인 경우, 서버가 클라이언트의 공용 키(`.ssh/authorized_keys`에 저장된 파일)를 알게 되면, 연결 클라이언트는 비대칭 서명을 사용해 신원을 증명할 수 있습니다.
+This is done through
 [challenge-response](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication).
 At a high level, the server picks a random number and sends it to the client.
+이것은 [도전-반응](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication)을 통해 이루어집니다.
 The client then signs this message and sends the signature back to the server,
-which checks the signature against the public key on record. This effectively
+which checks the signature against the public key on record. 
+그런 다음 고객이 이 메시지에 서명하고 서명을 서버로 다시 보내면, 서명을 공용 키와 비교해 기록합니다.
+This effectively
 proves that the client is in possession of the private key corresponding to the
 public key that's in the server's `.ssh/authorized_keys` file, so the server
 can allow the client to log in.
+이는 고객이 서버의 공용 키에 해당하는 개인 키를 소유하고 있음을 효과적으로 입증하며 `.ssh/authorized_keys`파일이 고객의 로그인을 허용할 수 있도록 합니다. 
 
 {% comment %}
 extra topics, if there's time
-
+{% comment %}
+시간이 있다면 추가의 주제
+;
 security concepts, tips
 - biometrics
 - HTTPS
 {% endcomment %}
+보안 개념, tips
+-생체 인식 정보
+-HTTPS
+{% endcomment %}
 
 # Resources
+# 자원
 
 - [Last year's notes](/2019/security/): from when this lecture was more focused on security and privacy as a computer user
+- [작년참고사항](/2019/security/): 이 강의가 컴퓨터 사용자로써 보안과 사생활에 더 초점이 맞춰졌을 때부터
 - [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): answers "what crypto should I use for X?" for many common X.
+- [암호화권한답변](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): "x에 사용해야 하는 암호?"에 대한 답은 많은 일반적인 X이다.
 
 # Exercises
+# 운동들
 
 1. **Entropy.**
+1. **엔트로피.**
     1. Suppose a password is chosen as a concatenation of five lower-case
        dictionary words, where each word is selected uniformly at random from a
-       dictionary of size 100,000. An example of such a password is
+       dictionary of size 100,000.
+       암호가 5개의 소문자 사전 단어를 합한 것으로 선택되었다고 가정해보고, 각 단어는 100,000개의 크기 사전에서 무작위로 고른다.
+        An example of such a password is
        `correcthorsebatterystaple`. How many bits of entropy does this have?
+       이러한 암호 예는 다음과 같다.`correcthorsebatterystaple`이 엔트로피는 몇 비트인가요?
     1. Consider an alternative scheme where a password is chosen as a sequence
        of 8 random alphanumeric characters (including both lower-case and
        upper-case letters). An example is `rg8Ql34g`. How many bits of entropy
        does this have?
+       암호가 8개의 임의 영숫자(소문자, 대문자 모두 포함)로 선택되는 대체 체계를 고려해보자. 예를들면 `rg8Ql34g`엔트로피는 몇 비트인가요?
     1. Which is the stronger password?
+    어느쪽이 더 강한 암호인가요?
     1. Suppose an attacker can try guessing 10,000 passwords per second. On
        average, how long will it take to break each of the passwords?
+       공격하는 자가 초당 10,000개의 암호를 추측할 수 있다고 가정합니다. 각 암호들을 해독하는데 평균적으로 얼마나 걸립니까?
 1. **Cryptographic hash functions.** Download a Debian image from a
    [mirror](https://www.debian.org/CD/http-ftp/) (e.g. [from this Argentinean
    mirror](http://debian.xfree.com.ar/debian-cd/current/amd64/iso-cd/).
+   **암호화 해시 기능.** Debian이미지를 다운로드합니다. [거울](https://www.debian.org/CD/http-ftp/) (예: [이 아르헨티나의 거울에서](http://debian.xfree.com.ar/debian-cd/current/amd64/iso-cd/). 
    Cross-check the hash (e.g. using the `sha256sum` command) with the hash
    retrieved from the official Debian site (e.g. [this
    file](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS)
    hosted at `debian.org`, if you've downloaded the linked file from the
    Argentinean mirror).
-1. **Symmetric cryptography.** Encrypt a file with AES encryption, using
+   해시를 교차 확인합니다. (예:`sha256sum`명령)사용하여 공식 Debian사이트(예[이 파일](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS)은 `debian.org` 아르헨티나 미러에서 링크된 파일을 다운로드 한 경우 ) 클릭하세요.
+1. **Symmetric cryptography.** 
+1. **대칭 암호** 
+Encrypt a file with AES encryption, using
    [OpenSSL](https://www.openssl.org/): `openssl aes-256-cbc -salt -in {input
-   filename} -out {output filename}`. Look at the contents using `cat` or
+   filename} -out {output filename}`.
+   [OpenSSL](https://www.openssl.org/)를 사용하여 AES암호화로 파일 암호화: openssl aes-256-cbc -salt - in {입력 파일명}-out {출력 파일명}
+    Look at the contents using `cat` or
    `hexdump`. Decrypt it with `openssl aes-256-cbc -d -in {input filename} -out
    {output filename}` and confirm that the contents match the original using
    `cmp`.
+   `cat` 또는 `hexdump`를 사용해 내용을 보십시오. 암호를 해독{입력 파일명} -out{출력 파일명} 내용이 원본과 일치하는지 확인 `cmp`
 1. **Asymmetric cryptography.**
+1. **비대칭 암호**
     1. Set up [SSH
        keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
        on a computer you have access to (not Athena, because Kerberos interacts
-       weirdly with SSH keys). Rather than using RSA keys as in the linked
+       weirdly with SSH keys).
+       [SSH키](https://www.digitalocean.com/community/tutorials how-to-set-up-ssh-keys--2) (Athena가 아닌, Kerberos가 SSH키와 이상한 상호작용을 하기 때문에) 컴퓨터에 엑세스 할 수 있는 시스템에 설정합니다.
+        Rather than using RSA keys as in the linked
        tutorial, use more secure [ED25519
-       keys](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519). Make sure
+       keys](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519).
+        링크된 튜토디얼처럼 RSA키를 사용하는 것이 아닌 더 안전한 [ED25519키](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519)를 사용.
+        Make sure
        your private key is encrypted with a passphrase, so it is protected at
        rest.
+       개인 키가 비밀번호로 암호화 되었는지 확인하여 저장시 보호되도록 합니다.
     1. [Set up GPG](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)
+    [GPG설정](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)
     1. Send Anish an encrypted email ([public key](https://keybase.io/anish)).
+    Anish에게 암호화된 전자 메일([공개 키](https://keybase.io/anish))을 보냅니다.
     1. Sign a Git commit with `git commit -S` or create a signed Git tag with
        `git tag -s`. Verify the signature on the commit with `git show
        --show-signature` or on the tag with `git tag -v`.
+       Git과 서명. `git commit -S`또는 서명된 Git 태그를 만들기 위해 `git tag -S`. 다음을 사용하여 커밋의 서명을 확인합니다. `git show--show-signature`또는  `git tag-V`와 함꼐 태그에 표시할 수 있습니다. 
