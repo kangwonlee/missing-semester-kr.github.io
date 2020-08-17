@@ -233,21 +233,16 @@ alias ll
 별칭을 영구적으로 만들려면 다음 절에서 소개할 `.bashrc`나 `.zshrc`와 같은 shell 시작 파일에 포함시켜야 합니다.
 
 
-# Dotfiles
+# 도트 파일
 
-Many programs are configured using plain-text files known as _dotfiles_
-(because the file names begin with a `.`, e.g. `~/.vimrc`, so that they are
-hidden in the directory listing `ls` by default).
+많은 프로그램은 _dotfiles_ 로 알려진 일반 텍스트 파일을 사용하여 구성됩니다.
+(파일 이름이 `.`, `~/.vimrc` 예들로 시작하므로 기본적으로 디렉토리 목록에 숨겨져 있기 때문입니다.)
 
-Shells are one example of programs configured with such files. On startup, your shell will read many files to load its configuration.
-Depending on the shell, whether you are starting a login and/or interactive the entire process can be quite complex.
-[Here](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) is an excellent resource on the topic.
+쉘은 이러한 파일로 구성된 프로그램의 한 예입니다. 시작시 쉘은 구성을 로드하기 위해 많은 파일을 읽습니다. 쉘에 따라 로그인을 시작하든 쌍방향의 작업을 시작하든 둘 중 어떤 것을 시작하든 전체 프로세스는 상당히 복잡할 수 있습니다. 주제에 대한 자료는 [`여기`](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)에 있습니다. 
 
-For `bash`, editing your `.bashrc` or `.bash_profile` will work in most systems.
-Here you can include commands that you want to run on startup, like the alias we just described or modifications to your `PATH` environment variable.
-In fact, many programs will ask you to include a line like `export PATH="$PATH:/path/to/program/bin"` in your shell configuration file so their binaries can be found.
+`bash` 의 경우, `.bashrc` 혹은 `.bash_profile`의 편집은 대부분의 시스템에서 작동합니다. 여기에 방금 설명한 별칭이나 'PATH' 환경 변수 수정과 같이 시작 시 실행할 명령을 포함할 수 있습니다. 실제로 많은 프로그램에서는 binaries를 찾을 수 있도록 쉘 구성 파일에 `export PATH="$PATH:/path/to/program/bin"`과 같은 행을 포함하도록 요청할 것입니다.
 
-Some other examples of tools that can be configured through dotfiles are:
+도트 파일을 통해 구성할 수 있는 도구의 다른 예는 다음과 같습니다 :
 
 - `bash` - `~/.bashrc`, `~/.bash_profile`
 - `git` - `~/.gitconfig`
@@ -255,69 +250,45 @@ Some other examples of tools that can be configured through dotfiles are:
 - `ssh` - `~/.ssh/config`
 - `tmux` - `~/.tmux.conf`
 
-How should you organize your dotfiles? They should be in their own folder,
-under version control, and **symlinked** into place using a script. This has
-the benefits of:
+dotfiles를 어떻게 체계적으로 구성할 수 있을까요? 버전 관리 하에 자체 폴더에 있어야하며, 스크립트를 사용하여 **symlinked**를 배치해야합니다. 이것은 다음과 같은 이점이 있습니다.
 
-- **Easy installation**: if you log in to a new machine, applying your
-customizations will only take a minute.
-- **Portability**: your tools will work the same way everywhere.
-- **Synchronization**: you can update your dotfiles anywhere and keep them all
-in sync.
-- **Change tracking**: you're probably going to be maintaining your dotfiles
-for your entire programming career, and version history is nice to have for
-long-lived projects.
+- **쉬운 설치**: 새 컴퓨터에 로그인한 경우, 여러분의 customizations(사용자 정의)을 적용하는데 몇 분 밖에 걸리지 않습니다.
+- **이식성**: 여러분의 도구는 어디서나 동일한 방식으로 작동할 것입니다.
+- **동기화**: 어디서든 dotfile을 업데이트하고 모두 동기화 상태로 유지할 수 있습니다.
+- **변경 내용 추적**: 여러분은 아마 프로그래머로서 일을 할 동안 dotfiles을 유지 관리할 것이고, 버전 기록은 오래 지속되는 프로젝트에 유용할 것입니다.
 
-What should you put in your dotfiles?
-You can learn about your tool's settings by reading online documentation or
-[man pages](https://en.wikipedia.org/wiki/Man_page). Another great way is to
-search the internet for blog posts about specific programs, where authors will
-tell you about their preferred customizations. Yet another way to learn about
-customizations is to look through other people's dotfiles: you can find tons of
-[dotfiles
-repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)
-on Github --- see the most popular one
-[here](https://github.com/mathiasbynens/dotfiles) (we advise you not to blindly
-copy configurations though).
-[Here](https://dotfiles.github.io/) is another good resource on the topic.
+dotfiles에 무엇을 넣어야할까요?
+온라인상의 자료 또는 [`메인 페이지`](https://en.wikipedia.org/wiki/Man_page)를 읽으며 여러 가지 도구에 대한 설정울 배울 수 있습니다. 또 다른 좋은 방법은 인터넷에서 특정 프로그램에 대한 블로그 게시물을 검색하는 것입니다. 여기에서 블로거는 그들이 선호하는 customizations(사용자 정의)에 대해 이야기할 것입니다. customizations(사용자 정의)에 대해 배우는 또 다른 방법은 다른 사람들의 dotfile을 살펴 보는 것 입니다. Github에서 수많은 [`dotfiles 저장소`](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)를 찾을 수 있습니다. 가장 인기있는 저장소는 [`여기`](https://github.com/mathiasbynens/dotfiles)입니다.(하지만 configurations을 무턱대고 복사하는 것은 올바른 방법이 아님을 알려드립니다.) [`이것`](https://dotfiles.github.io/)은 이 주제에 대한 또 다른 좋은 자료입니다.
 
-All of the class instructors have their dotfiles publicly accessible on GitHub: [Anish](https://github.com/anishathalye/dotfiles),
-[Jon](https://github.com/jonhoo/configs),
-[Jose](https://github.com/jjgo/dotfiles).
+모든 강사들은 GitHub에서 공적으로 액세스할 수 있는 dotfiles을 가지고 있습니다 : [Anish](https://github.com/anishathalye/dotfiles), [Jon](https://github.com/jonhoo/configs), [Jose](https://github.com/jjgo/dotfiles).
 
 
-## Portability
+## 이식성
 
-A common pain with dotfiles is that the configurations might not work when working with several machines, e.g. if they have different operating systems or shells. Sometimes you also want some configuration to be applied only in a given machine.
+dotfile의 일반적인 문제점은 예를 들어 운영 체제나 쉘이 서로 다른 경우와 같이 여러 장치로 작업할 때 configurations이 작동하지 않을 수 있다는 것입니다. 때로는 특정 시스템에만 일부 configuration을 적용하기를 원할 수도 있습니다.
 
-There are some tricks for making this easier.
-If the configuration file supports it, use the equivalent of if-statements to
-apply machine specific customizations. For example, your shell could have something
-like:
+이것을 쉽게 만드는 몇 가지 요령들이 있습니다. 구성 파일이 지원하는 경우, if문의 비교연산을 사용하여 특정한 사용자 설정을 적용할 수 있습니다. 예를 들어 쉘은 다음과 같은 것들을 활용할 수 있습니다.
 
 ```bash
 if [[ "$(uname)" == "Linux" ]]; then {do_something}; fi
 
-# Check before using shell-specific features
+# 쉘별 기능을 사용하기 전에 확인하기
 if [[ "$SHELL" == "zsh" ]]; then {do_something}; fi
 
-# You can also make it machine-specific
+# 특정 장치별로 만들기 
 if [[ "$(hostname)" == "myServer" ]]; then {do_something}; fi
 ```
 
-If the configuration file supports it, make use of includes. For example,
-a `~/.gitconfig` can have a setting:
+구성 파일이 이를 지원하는 경우, includes를 활용할 수 있습니다. 예를 들어 `~/.gitconfig`는 다음과 같은 설정을 가질 수 있습니다.  
 
 ```
 [include]
     path = ~/.gitconfig_local
 ```
 
-And then on each machine, `~/.gitconfig_local` can contain machine-specific
-settings. You could even track these in a separate repository for
-machine-specific settings.
+그리고 각 장치에서 `~/.gitconfig_local`은 장치별 설정들을 포함할 수 있습니다. 분리된 저장소(리포지토리)에서 시스템별 설정을 추적할 수도 있습니다.
 
-This idea is also useful if you want different programs to share some configurations. For instance, if you want both `bash` and `zsh` to share the same set of aliases you can write them under `.aliases` and have the following block in both:
+이것은 또한 다른 프로그램들이 일부 구성을 공유하기를 원하는 경우에도 유용합니다. 예를 들어, 여러분이 `bash`와 `zsh` 두 가지 모두 동일한 별칭으로 공유하고 싶은 경우 `.aliases` 아래에 표기하고 다음 블록을 포함시킬 수 있습니다.
 
 ```bash
 # Test if ~/.aliases exists and source it
@@ -326,9 +297,9 @@ if [ -f ~/.aliases ]; then
 fi
 ```
 
-# Remote Machines
+# 원격 장치
 
-It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
+프로그래머들이 일상 업무에 원격 서버를 이용하는 것은 점점 더 보편화되었습니다. 백엔드 소프트웨어를 배치하기 위해 원격 서버를 사용해야 하거나 더 높은 계산 능력을 가진 서버가 필요한 경우, 여러분은 결국 SSH(Secure Shell)를 사용하게 될 것입니다. 대부분의 툴과 마찬가지로 SSH는 구성성이 뛰어나므로 이에 대해 학습할 가치가 있습니다.
 
 To `ssh` into a server you execute a command as follows
 
