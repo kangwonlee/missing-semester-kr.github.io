@@ -233,7 +233,7 @@ alias ll
 별칭을 영구적으로 만들려면 다음 절에서 소개할 `.bashrc`나 `.zshrc`와 같은 shell 시작 파일에 포함시켜야 합니다.
 
 
-# 도트 파일
+# 도트 파일(Dotfiles)
 
 많은 프로그램은 _dotfiles_ 로 알려진 일반 텍스트 파일을 사용하여 구성됩니다.
 (파일 이름이 `.`, `~/.vimrc` 예들로 시작하므로 기본적으로 디렉토리 목록에 숨겨져 있기 때문입니다.)
@@ -263,7 +263,7 @@ dotfiles에 무엇을 넣어야할까요?
 모든 강사들은 GitHub에서 공적으로 액세스할 수 있는 dotfiles을 가지고 있습니다 : [Anish](https://github.com/anishathalye/dotfiles), [Jon](https://github.com/jonhoo/configs), [Jose](https://github.com/jjgo/dotfiles).
 
 
-## 이식성
+## 이식성(Portability)
 
 dotfile의 일반적인 문제점은 예를 들어 운영 체제나 쉘이 서로 다른 경우와 같이 여러 장치로 작업할 때 configurations이 작동하지 않을 수 있다는 것입니다. 때로는 특정 시스템에만 일부 configuration을 적용하기를 원할 수도 있습니다.
 
@@ -297,27 +297,28 @@ if [ -f ~/.aliases ]; then
 fi
 ```
 
-# 원격 장치
+# 원격 장치(Remote Machines)
 
 프로그래머들이 일상 업무에 원격 서버를 이용하는 것은 점점 더 보편화되었습니다. 백엔드 소프트웨어를 배치하기 위해 원격 서버를 사용해야 하거나 더 높은 계산 능력을 가진 서버가 필요한 경우, 여러분은 결국 SSH(Secure Shell)를 사용하게 될 것입니다. 대부분의 툴과 마찬가지로 SSH는 구성성이 뛰어나므로 이에 대해 학습할 가치가 있습니다.
 
-To `ssh` into a server you execute a command as follows
+서버에서 `ssh`를 사용하려면 다음과 같은 명령을 실행합니다.
 
 ```bash
 ssh foo@bar.mit.edu
 ```
 
-Here we are trying to ssh as user `foo` in server `bar.mit.edu`.
-The server can be specified with a URL (like `bar.mit.edu`) or an IP (something like `foobar@192.168.1.42`). Later we will see that if we modify ssh config file you can access just using something like `ssh bar`.
-
-## Executing commands
-
-An often overlooked feature of `ssh` is the ability to run commands directly.
-`ssh foobar@server ls` will execute `ls` in the home folder of foobar.
-It works with pipes, so `ssh foobar@server ls | grep PATTERN` will grep locally the remote output of `ls` and `ls | ssh foobar@server grep PATTERN` will grep remotely the local output of `ls`.
+여러분은 서버 `bar.mit.edu`에서 사용자`foo`로 ssh를 사용하게 됩니다.
+서버는 URL ( 예) `bar.mit.edu` ) 또는 IP ( 예) `foobar @ 192.168.1.42` )로 지정할 수 있습니다. 나중에 ssh 구성 파일을 수정하면 `ssh bar`와 같은 것을 사용하여 액세스 할 수 있음을 알 수 있습니다.
 
 
-## SSH Keys
+## 명령실행(Executing commands)
+
+놓치기 쉬운 `ssh`의 특징은 명령을 직접 실행할 수 있다는 점입니다.
+`ssh foobar @ server ls`는 foobar의 홈 폴더에서`ls`를 실행합니다.
+파이프와 함께 작동하므로 `ssh foobar @ server ls | grep PATTERN`은 `ls`의 근처의 원격 출력을 grep하고, `ls | ssh foobar@server grep PATTERN`은 먼 로컬 출력을 grep합니다.
+
+
+## SSH키 (SSH Keys)
 
 Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless, the private key (often `~/.ssh/id_rsa` and more recently `~/.ssh/id_ed25519`) is effectively your password, so treat it like so.
 
