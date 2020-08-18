@@ -16,14 +16,23 @@ each snapshot encapsulates the entire state of files/folders within a top-level
 directory. VCSs also maintain metadata like who created each snapshot, messages
 associated with each snapshot, and so on.
 
+버전 컨트롤 시스템(VCSs)은 소스코드(또는 기타 파일이나 폴더들의 모음)의 변화를 추적하기 위해 사용되는 도구입니다.
+이름에서 알수 있듯이 이 도구는 변경내역을 유지시켜주며, 나아가 협업을 용이하게 합니다.
+VCSs는 일련의 냅샷에서 폴더와 폴더안의 내용물들의 변화를 추적합니다. 각각의 스냅샷은 최상위 폴더 내의 파일 / 폴더의 모든 상태를 캡슐화 합니다.
+VCSs는 누군가가 만들었던 각가의 스냅샷들과 스냅샷에 연결된 메시지 등등의 메타데이터를 유지합니다.
+
 Why is version control useful? Even when you're working by yourself, it can let
 you look at old snapshots of a project, keep a log of why certain changes were
 made, work on parallel branches of development, and much more. When working
 with others, it's an invaluable tool for seeing what other people have changed,
 as well as resolving conflicts in concurrent development.
 
+왜 버전 관리는 유용할까요? 혼자 작업을 하더라도 프로젝트의 지난 스냡샷을 보며 왜 변경 하할이 변경사항 생겼는지를 기록하고, 병렬 개발 분기에서 작업을 하는 등 그밖의 많은 것들을 할수 있게 해줍니다. 다른 사람들과 일을 할때 버전관리는 다른 사람들의 변화를 볼수있는 귀중한 도구입니다. 게다가 동시 개발에서의 갈등을 해결해 줍니다.
+
+
 Modern VCSs also let you easily (and often automatically) answer questions
 like:
+현대 VCSs 는 아래와 같은 질문에 대한 답변을 쉽게 할수 있게 해줍니다. 
 
 - Who wrote this module?
 - When was this particular line of this particular file edited? By whom? Why
@@ -31,8 +40,15 @@ like:
 - Over the last 1000 revisions, when/why did a particular unit test stop
 working?
 
+- 누가 이 모듈을 작정하였는가
+- 언제 특정파일의 특정행이 수정되었는가. 누구에 의한 것인가? 왜 수정 되었는가?
+- 지난 1000번이 넘는 수정들 중 언제 / 왜 특정 단위 태스트가 중지 되었었는가.
+
 While other VCSs exist, **Git** is the de facto standard for version control.
 This [XKCD comic](https://xkcd.com/1597/) captures Git's reputation:
+
+다른 VCSs가 존재하지만, **Git**은 사실상 버전관리 도구의 표준 입니다.
+이 [XKCD comic](https://xkcd.com/1597/) 은 깃의 명성을 보여줍니다.
 
 ![xkcd 1597](https://imgs.xkcd.com/comics/git.png)
 
@@ -41,6 +57,8 @@ with its interface / command-line interface) can lead to a lot of confusion.
 It's possible to memorize a handful of commands and think of them as magic
 incantations, and follow the approach in the comic above whenever anything goes
 wrong.
+깃 인터페이스의 허술한 추상화로 인하여 하향식으로 방식으로 Git을 배우는것은(Git의 인터페이스/ 명령어 인터페이스 부터 시작하는것) 많은 혼란을 줄수 있있습니다.
+하향식 학습은 몇가지 명령어를 외우고, 그것들을 마법주문처럼 생각하며, 문제가가 생길때마다 위의 만화에서의 접근방법을 따르게 할수 있습니다.
 
 While Git admittedly has an ugly interface, its underlying design and ideas are
 beautiful. While an ugly interface has to be _memorized_, a beautiful design
@@ -48,6 +66,11 @@ can be _understood_. For this reason, we give a bottom-up explanation of Git,
 starting with its data model and later covering the command-line interface.
 Once the data model is understood, the commands can be better understood, in
 terms of how they manipulate the underlying data model.
+깃은 분명 투박한 인터페이스를 가지고 있지만, 그 아래의 디자인과 아이디어들은 아름답습니다.
+나쁜 인터페이스는 암기 되어져야 하지만, 아름다운 디가인은 이해되어 집니다.
+이러한 이유로 우리는 깃에 대한 데이터 모델부터 이후 명령어 인터페이스를 포함하는 상향식 설명을 제공합니다.
+한번 데이터 모델을 이해하면 아래에 있는 데이터 모델을 잘 다루는 방법의 측면에서 명령어들을 더 잘 이해할수 있습니다.
+
 
 # Git's data model
 
