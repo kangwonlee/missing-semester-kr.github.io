@@ -43,12 +43,7 @@ VCSs는 누군가가 만들었던 각가의 스냅샷과 스냅샷에 연결된 
 갓은 기록 유지, 분기를 지원, 협업 기능 과 같이 버전과관리에 대한 모든 우수한 기능을 사용할수 있는 매우 정교한 모델을 가지고있습니다. 
 
 ## 스냅샷
-Git models the history of a collection of files and folders within some
-top-level directory as a series of snapshots. In Git terminology, a file is
-called a "blob", and it's just a bunch of bytes. A directory is called a
-"tree", and it maps names to blobs or trees (so directories can contain other
-directories). A snapshot is the top-level tree that is being tracked. For
-example, we might have a tree as follows:
+
 깃은 최상위 디렉토리 내의 폴더와 파일 목록에대한 기록을 일련의 스냅샷으로 모델링 합니다.
 깃에서는 파일은 "blob" 이라고 하며 그것은 단지 바이트 묶음임입니다
 디렉토리는 "tree" 라고 하며 이름을 blob 또는 tree 에 매핑합니다(디렉토리는 다른 디렉토리들을 포함할수 있습니다.).
@@ -65,8 +60,6 @@ example, we might have a tree as follows:
 +- baz.txt (blob, contents = "git is wonderful")
 ```
 
-The top-level tree contains two elements, a tree "foo" (that itself contains
-one element, a blob "bar.txt"), and a blob "baz.txt".
 최상위 트리에는 "foo" 트리("bar.txt" blob을 하나의 요로소로 포함한 자신)와 "baz.txt" blob 두 요소가 있습니다. 
 
 ## Modeling history: relating snapshots
