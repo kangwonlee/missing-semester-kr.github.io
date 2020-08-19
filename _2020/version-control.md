@@ -48,7 +48,7 @@ VCSs는 누군가가 만들었던 각가의 스냅샷과 스냅샷에 연결된 
 깃에서는 파일은 "blob" 이라고 하며 그것은 단지 바이트 묶음임입니다
 디렉토리는 "tree" 라고 하며 이름을 blob 또는 tree 에 매핑합니다(디렉토리는 다른 디렉토리들을 포함할수 있습니다.).
 스냅샷은 추적중인 최상위 트리입니다. 
-예를 들면 아래와 같은 트리를 가질수 있습니다.
+예를 들면 아래와 같은 트리를 가질수 있습니다. :
 
 ```
 <root> (tree)
@@ -63,20 +63,18 @@ VCSs는 누군가가 만들었던 각가의 스냅샷과 스냅샷에 연결된 
 최상위 트리에는 "foo" 트리("bar.txt" blob을 하나의 요로소로 포함한 자신)와 "baz.txt" blob 두 요소가 있습니다. 
 
 ## Modeling history: relating snapshots
+어떻게 버전 제어 시스템을 스냅샵과 연관시켜야할까요? 간단한 모델 하나는 선형 히스토리를 갖는 것입니다. 
+히스토리는 시간순으로 정렬된 스냅 샷의 목록입니다. 
+여러 이유로 Git은 이와 같은 간단한 모델을 사용하지 않습니다.
 
-How should a version control system relate snapshots? One simple model would be
-to have a linear history. A history would be a list of snapshots in time-order.
-For many reasons, Git doesn't use a simple model like this.
+Git에서 히스토리는 스냅 샷의 유향 비순환 그래프 (DAG)입니다. 
+멋진 수학 용어처럼 들릴지 모르지만 겁 먹지 마세요. 
+이 모든 것은 선행하는 "부모" 집합을 참조하는 Git의 각각의 스냅 샷을 뜻합니다.
+두 개의 병렬 개발 분기를 결합 (merge)하는것처럼 하나의 스냅샹은 여러 부모로부터 내려올것이기 때문에
+히스토리는 단일 부모 보다 부모 집합을 가집니다(선형 기록의 경우).
 
-In Git, a history is a directed acyclic graph (DAG) of snapshots. That may
-sound like a fancy math word, but don't be intimidated. All this means is that
-each snapshot in Git refers to a set of "parents", the snapshots that preceded
-it. It's a set of parents rather than a single parent (as would be the case in
-a linear history) because a snapshot might descend from multiple parents, for
-example due to combining (merging) two parallel branches of development.
-
-Git calls these snapshots "commit"s. Visualizing a commit history might look
-something like this:
+Git은 이러한 스냅 샷을 "커밋"이라고 부릅니다. 
+커밋 기록을 시각화 해본다면 다음과 같습니다. :
 
 ```
 o <-- o <-- o <-- o
@@ -85,14 +83,13 @@ o <-- o <-- o <-- o
               --- o <-- o
 ```
 
-In the ASCII art above, the `o`s correspond to individual commits (snapshots).
-The arrows point to the parent of each commit (it's a "comes before" relation,
-not "comes after"). After the third commit, the history branches into two
-separate branches. This might correspond to, for example, two separate features
-being developed in parallel, independently from each other. In the future,
-these branches may be merged to create a new snapshot that incorporates both of
-the features, producing a new history that looks like this, with the newly
-created merge commit shown in bold:
+위의 ASCII문자로 만든 그림에서 `o`는 개별 커밋 (스냅 샷)에 해당합니다. 
+화살표는 각 커밋의 부모를 가리 킵니다 ("이후"가 아니라 "이전" 관계). 
+세 번째 커밋 후 히스토리는 두 개의 개별 분기로 분기됩니다. 
+예를 들어, 서로 독립되어 병렬로 개발고있는 두 개의 개별 기능에 해당 될 수 있습니다. 
+앞으로 이러한 분기를 병합하여 두 기능을 모두 통합하는 새 스냅 샷을 생성 할 수 있으며, 
+만든어진 새로은 히스토리는 아래와 같습니다. 
+새로 생성 된 merge 커밋은 굵게 굵은 글자로 보여집니다.:
 
 <pre>
 o <-- o <-- o <-- o <---- <strong>o</strong>
@@ -101,10 +98,9 @@ o <-- o <-- o <-- o <---- <strong>o</strong>
               --- o <-- o
 </pre>
 
-Commits in Git are immutable. This doesn't mean that mistakes can't be
-corrected, however; it's just that "edits" to the commit history are actually
-creating entirely new commits, and references (see below) are updated to point
-to the new ones.
+Git의 커밋은 변경할 수 없습니다. 그렇다고 실수를 고칠 수 없다는 의미는 아닙니다. 
+커밋 히스토리에 대한 "편집"은 실제로 완전히 새로운 커밋을 생성하고, 참조들(아래쪽을 보세요)이 
+새 커밋을 가리 키도록 업데이트됩니다.
 
 ## Data model, as pseudocode
 
