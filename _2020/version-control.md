@@ -31,26 +31,29 @@ VCSs는 누군가가 만들었던 각가의 스냅샷과 스냅샷에 연결된 
 깃 인터페이스의 허술한 추상화로 인하여 하향식으로 방식으로 Git을 배우는것은(Git의 인터페이스/ 명령어 인터페이스 부터 시작하는것) 많은 혼란을 줄수 있있습니다.
 하향식 학습은 몇가지 명령어를 외우고, 그것들을 마법주문처럼 생각하며, 문제가가 생길때마다 위의 만화에서의 접근방법을 따르게 할수 있습니다.
 
-깃은 분명 투박한 인터페이스를 가지고 있지만, 그 아래의 디자인과 아이디어들은 아름답습니다.
+깃은 분명 투박한 인터페이스를 가지고 있지만, 그 이면의 디자인과 아이디어들은 아름답습니다.
 나쁜 인터페이스는 암기 되어져야 하지만, 아름다운 디가인은 이해되어 집니다.
 이러한 이유로 우리는 깃에 대한 데이터 모델부터 이후 명령어 인터페이스를 포함하는 상향식 설명을 제공합니다.
 한번 데이터 모델을 이해하면 아래에 있는 데이터 모델을 잘 다루는 방법의 측면에서 명령어들을 더 잘 이해할수 있습니다.
 
 
-# Git's data model
+# 깃의 데이터 모델
 
-There are many ad-hoc approaches you could take to version control. Git has a
-well thought-out model that enables all the nice features of version control,
-like maintaining history, supporting branches, and enabling collaboration.
+버전 관리를 위한 많은 필수적 접근법이 있습니다. 
+갓은 기록 유지, 분기를 지원, 협업 기능 과 같이 버전과관리에 대한 모든 우수한 기능을 사용할수 있는 매우 정교한 모델을 가지고있습니다. 
 
-## Snapshots
-
+## 스냅샷
 Git models the history of a collection of files and folders within some
 top-level directory as a series of snapshots. In Git terminology, a file is
 called a "blob", and it's just a bunch of bytes. A directory is called a
 "tree", and it maps names to blobs or trees (so directories can contain other
 directories). A snapshot is the top-level tree that is being tracked. For
 example, we might have a tree as follows:
+깃은 최상위 디렉토리 내의 폴더와 파일 목록에대한 기록을 일련의 스냅샷으로 모델링 합니다.
+깃에서는 파일은 "blob" 이라고 하며 그것은 단지 바이트 묶음임입니다
+디렉토리는 "tree" 라고 하며 이름을 blob 또는 tree 에 매핑합니다(디렉토리는 다른 디렉토리들을 포함할수 있습니다.).
+스냅샷은 추적중인 최상위 트리입니다. 
+예를 들면 아래와 같은 트리를 가질수 있습니다.
 
 ```
 <root> (tree)
@@ -64,6 +67,7 @@ example, we might have a tree as follows:
 
 The top-level tree contains two elements, a tree "foo" (that itself contains
 one element, a blob "bar.txt"), and a blob "baz.txt".
+최상위 트리에는 "foo" 트리("bar.txt" blob을 하나의 요로소로 포함한 자신)와 "baz.txt" blob 두 요소가 있습니다. 
 
 ## Modeling history: relating snapshots
 
