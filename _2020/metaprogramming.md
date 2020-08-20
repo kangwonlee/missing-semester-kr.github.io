@@ -60,9 +60,8 @@ $ make
 make: *** No rule to make target 'paper.tex', needed by 'paper.pdf'.  Stop.
 ```
 
-`make` is helpfully telling us that in order to build `paper.pdf`, it
-needs `paper.tex`, and it has no rule telling it how to make that file.
-Let's try making it!
+`make`는 유용하게도, `paper.pdf`를 빌드하기 위해서는 `paper.tex`가 필요하며, 그 파일을 만들기 위한 방법을 알려주는 규칙을 가지고 있지 않다는 사실을 말해주고 있습니다.  
+한 번 만들어 봅시다!
 
 ```console
 $ touch paper.tex
@@ -70,10 +69,9 @@ $ make
 make: *** No rule to make target 'plot-data.png', needed by 'paper.pdf'.  Stop.
 ```
 
-Hmm, interesting, there _is_ a rule to make `plot-data.png`, but it is a
-pattern rule. Since the source files do not exist (`foo.dat`), `make`
-simply states that it cannot make that file. Let's try creating all the
-files:
+흠, 흥미롭네요, `plot-data.png`를 만드는 규칙은 *존재*합니다. 하지만 그 규칙은 패턴 규칙(pattern rule)입니다.(구체적으로 어떻게 타겟 파일을 만들어내야 하는지 명시되어 있지 않음)  
+소스 파일([foo](https://en.dict.naver.com/#/entry/enko/63f44f50ac9e4936a815f4be75f93d60).dat)이 존재하지 않기 때문에, `make`는 단지 파일을 만들 수 없다고만 이야기하고 있습니다.  
+한 번 모든 파일을 다 만들어 보죠:
 
 ```console
 $ cat paper.tex
@@ -105,7 +103,7 @@ $ cat data.dat
 5 8
 ```
 
-Now what happens if we run `make`?
+이제 `make`를 실행해보면 어떻게 될까요?
 
 ```console
 $ make
@@ -114,18 +112,16 @@ pdflatex paper.tex
 ... lots of output ...
 ```
 
-And look, it made a PDF for us!
-What if we run `make` again?
+이제 보면, `make`가 PDF 파일을 하나 만들어 주었습니다. `make`를 다시 한 번 더 실행시키면 어떻게 될까요?
 
 ```console
 $ make
 make: 'paper.pdf' is up to date.
 ```
 
-It didn't do anything! Why not? Well, because it didn't need to. It
-checked that all of the previously-built targets were still up to date
-with respect to their listed dependencies. We can test this by modifying
-`paper.tex` and then re-running `make`:
+`make`가 아무 일도 하지 않았습니다. 왜냐고요? 왜냐면 그럴 필요가 없었기 때문이죠.
+`make`는 모든 이전에 빌드된 타겟들이 나열된 의존성들에 대해서 최신의 상태라는 것을 체크했습니다.  
+우리는 `paper.tex`를 수정하고 `make`를 재실행함을써 이를 테스트해볼 수 있습니다:
 
 ```console
 $ vim paper.tex
@@ -134,8 +130,7 @@ pdflatex paper.tex
 ...
 ```
 
-Notice that `make` did _not_ re-run `plot.py` because that was not
-necessary; none of `plot-data.png`'s dependencies changed!
+`make`가 `plot.py`는 다시 실행하지 _않았다는_ 사실에 주목하세요, 그럴 필요가 없었으니까요 ( `plot-data.png`의 의존성들 중 어느 것도 바뀌지 않았기 때문이죠.)
 
 # Dependency management
 
