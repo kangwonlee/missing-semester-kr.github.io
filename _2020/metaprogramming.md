@@ -144,23 +144,15 @@ pdflatex paper.tex
 -   파이썬(Python) 라이브러리들을 위한 [파이파이(Pypi)](https://pypi.org)
 -   [아치 리눅스](https://www.archlinux.org) 사용자-기여 패키지들을(Arch Linux user-contributed packges) 위한 [아치 사용자 레포지토리(Arch User Repository)](https://aur.archlinux.org)
 
-Since the exact mechanisms for interacting with these repositories vary
-a lot from repository to repository and from tool to tool, we won't go
-too much into the details of any specific one in this lecture. What we
-_will_ cover is some of the common terminology they all use. The first
-among these is _versioning_. Most projects that other projects depend on
-issue a _version number_ with every release. Usually something like
-8.1.3 or 64.1.20192004. They are often, but not always, numerical.
-Version numbers serve many purposes, and one of the most important of
-them is to ensure that software keeps working. Imagine, for example,
-that I release a new version of my library where I have renamed a
-particular function. If someone tried to build some software that
-depends on my library after I release that update, the build might fail
-because it calls a function that no longer exists! Versioning attempts
-to solve this problem by letting a project say that it depends on a
-particular version, or range of versions, of some other project. That
-way, even if the underlying library changes, dependent software
-continues building by using an older version of my library.
+이러한 레포지토리들과 상호작용하는 정확한 방법은 레포지토리마다 다르고 툴마다 다르기 때문에, 우리는 이 강의에서 특정 레포지토리의 너무 세부적인 사항까지는 들어가지 않을 것입니다.  
+우리가 _다룰_ 것은 레포지토리들이 모두 사용하는 몇몇 공통적인 용어입니다.  
+그 중 첫 번째는 _버저닝(versioning)_ 입니다.  
+다른 프로젝트들이 의존하는 대부분의 프로젝트들은 모든 배포(release)와 함께 _버젼 넘버(version number)_ 를 발행합니다. 보통 8.1.3 또는 64.1.20192004 와 같은 것입니다. 항상 그런 것은 아니지만, 보통 그것들은 숫자입니다.
+버전 넘버는 많은 목적에 기여하는데, 그 중 가장 중요한 것 중 하나는 소프트웨어가 계속 작동할 것이라는 것을 보장하는 것입니다.
+예를들면 제가 특정한 함수의 이름을 바꾼 라이브러리의 새 버전을 배포한다고 한 번 상상해 보세요.  
+제가 그 업데이트를 배포한 이후에 누군가가 제 라이브러리에 의존하는 소프트웨어를 빌드하려고 시도한다면, 그 빌드는 실패할 지도 모릅니다, 왜냐하면 그 빌드는 더 이상 존재하지 않는 함수를 호출할 수도 있기 때문이죠!  
+버저닝(versioning)은 프로젝트가 다른 프로젝트의 어떤 특정한 버전, 또는 버전들의 범위에 의존하는지를 나타내도록 함으로써 이러한 문제를 해결하려 시도합니다.  
+그런 식으로, 비록 기저가 되는 라이브러리에 변화가 생길 지라도, 그 라이브러리에 의존하는 소프트웨어는 그 라이브러리의 더 예전 버전을 사용함으로써 계속 빌드할 수 있게 됩니다.
 
 That also isn't ideal though! What if I issue a security update which
 does _not_ change the public interface of my library (its "API"), and
