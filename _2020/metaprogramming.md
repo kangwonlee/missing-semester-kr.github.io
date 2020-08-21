@@ -132,21 +132,17 @@ pdflatex paper.tex
 
 `make`가 `plot.py`는 다시 실행하지 _않았다는_ 사실에 주목하세요, 그럴 필요가 없었으니까요 ( `plot-data.png`의 의존성들 중 어느 것도 바뀌지 않았기 때문이죠.)
 
-# Dependency management
+# 의존성 관리(Dependency management)
 
-<!-- 14분부터 -->
+더 거시적인 수준에서는, 여러분의 소프트웨어 프로젝트들은 또 다른 프로젝트들에 의존하고 있을 수 있습니다.  
+여러분은 설치된 프로그램(예: `파이썬(python)`), 시스템 패키지(예: `openssl`), 또는 여러분이 사용하는 프로그래밍 언어 안에 있는 라이브러리(예: `matplotlib`)에 의존하고 있을지도 모릅니다.  
+요즘에는, 대부분의 의존성들이 _레포지토리(repository)_ 를 통해서 가능할 텐데, 레포지토리는 단일한 공간에서 수많은 의존성들을 관리하고, 그것들을 설치할 수 있는 편리한 방법을 제공합니다.  
+레포지토리 예시:
 
-At a more macro level, your software projects are likely to have
-dependencies that are themselves projects. You might depend on installed
-programs (like `python`), system packages (like `openssl`), or libraries
-within your programming language (like `matplotlib`). These days, most
-dependencies will be available through a _repository_ that hosts a
-large number of such dependencies in a single place, and provides a
-convenient mechanism for installing them. Some examples include the
-Ubuntu package repositories for Ubuntu system packages, which you access
-through the `apt` tool, RubyGems for Ruby libraries, PyPi for Python
-libraries, or the Arch User Repository for Arch Linux user-contributed
-packages.
+-   우분투 시스템 패키지(Ubuntu system packages)를 위한 [우분투 패키지 레포지토리(the Ubuntu package repository)](https://packages.ubuntu.com) - `apt` [툴(tool)](http://taewan.kim/tip/apt-apt-get/)을 통해 접근할 수 있음
+-   프로그래밍 언어 루비(Ruby) 라이브러리들을 위한 [루비젬(RubyGem)](https://rubygems.org)
+-   파이썬(Python) 라이브러리들을 위한 [파이파이(Pypi)](https://pypi.org)
+-   [아치 리눅스](https://www.archlinux.org) 사용자-기여 패키지들을(Arch Linux user-contributed packges) 위한 [아치 사용자 레포지토리(Arch User Repository)](https://aur.archlinux.org)
 
 Since the exact mechanisms for interacting with these repositories vary
 a lot from repository to repository and from tool to tool, we won't go
@@ -209,6 +205,8 @@ have to explicitly pull in any updates from the upstream maintainers
 over time.
 
 # Continuous integration systems
+
+<!-- 28분20초 -->
 
 As you work on larger and larger projects, you'll find that there are
 often additional tasks you have to do whenever you make a change to it.
