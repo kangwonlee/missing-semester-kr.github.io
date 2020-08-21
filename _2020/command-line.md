@@ -318,37 +318,39 @@ ssh foo@bar.mit.edu
 파이프와 함께 작동하므로 `ssh foobar @ server ls | grep PATTERN`은 `ls`의 근처의 원격 출력을 grep하고, `ls | ssh foobar@server grep PATTERN`은 먼 로컬 출력을 grep합니다.
 
 
-## SSH키 (SSH Keys)
+## SSH키(SSH Keys)
 
-Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless, the private key (often `~/.ssh/id_rsa` and more recently `~/.ssh/id_ed25519`) is effectively your password, so treat it like so.
+키 기반 인증은 공개키 암호화를 이용하여 클라이언트가 키를 노출하지 않고 비밀 개인 키(private key)를 소유하고 있음을 서버에 증명합니다. 이렇게하면 매번 암호를 다시 입력 할 필요가 없습니다. 그럼에도 불구하고 개인 키 (종종`~ / .ssh / id_rsa` 그리고 최근에는`~ / .ssh / id_ed25519`)가 사실상 암호이이므로 암호처럼 취급하면 됩니다.
 
-### Key generation
 
-To generate a pair you can run [`ssh-keygen`](https://www.man7.org/linux/man-pages/man1/ssh-keygen.1.html).
+### 키 생성(Key generation)
+
+쌍을 생성하려면 [`ssh-keygen`](https://www.man7.org/linux/man-pages/man1/ssh-keygen.1.html)을 실행합니다.
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 ```
-You should choose a passphrase, to avoid someone who gets hold of your private key to access authorized servers. Use [`ssh-agent`](https://www.man7.org/linux/man-pages/man1/ssh-agent.1.html) or [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) so you do not have to type your passphrase every time.
+인증된 서버에 액세스할 수 있는 여러분의 개인 키(private key)를 보유한 사람을 피하려면 암호(passphrase)선택해야합니다. [`ssh-agent`](https://www.man7.org/linux/man-pages/man1/ssh-agent.1.html) 또는 [`gpg-agent`](https://linux.die.net/man/1/gpg-agent)를 사용하면 매번 암호를 입력할 필요없습니다.
 
-If you have ever configured pushing to GitHub using SSH keys, then you have probably done the steps outlined [here](https://help.github.com/articles/connecting-to-github-with-ssh/) and have a valid key pair already. To check if you have a passphrase and validate it you can run `ssh-keygen -y -f /path/to/key`.
+SSH 키를 사용하여 GitHub로 푸시를 구성한 적이 있다면, [here](https://help.github.com/articles/connecting-to-github-with-ssh/))에 설명된 단계를 수행한 후 유효한 키 쌍을 이미 가지고 있을 것입니다. 암호가 있는지 확인하고 유효성을 검사하려면 `ssh-keygen -y -f /path/to/key`를 실행할 수 있습니다.
 
-### Key based authentication
 
-`ssh` will look into `.ssh/authorized_keys` to determine which clients it should let in. To copy a public key over you can use:
+### 키 기반 인증(Key based authentication)
+
+`ssh`는 `ssh / authorized_keys`를 조사하여 허용해야하는 클라이언트를 결정합니다. 공용 키를 복사하려면 다음을 사용할 수 있습니다.
 
 ```bash
 cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
-A simpler solution can be achieved with `ssh-copy-id` where available:
+`ssh-copy-id`를 사용하여 더 간단게 사용할 수 있습니다.
 
 ```bash
 ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 ```
 
-## Copying files over SSH
+## SSH를 통해 파일 복사(Copying files over SSH)
 
-There are many ways to copy files over ssh:
+ssh를 통해 파일을 복사하는 방법에는 여러 가지가 있습니다.
 
 - `ssh+tee`, the simplest is to use `ssh` command execution and STDIN input by doing `cat localfile | ssh remote_server tee serverfile`. Recall that [`tee`](https://www.man7.org/linux/man-pages/man1/tee.1.html) writes the output from STDIN into a file.
 - [`scp`](https://www.man7.org/linux/man-pages/man1/scp.1.html) when copying large amounts of files/directories, the secure copy `scp` command is more convenient since it can easily recurse over paths. The syntax is `scp path/to/local_file remote_host:path/to/remote_file`
