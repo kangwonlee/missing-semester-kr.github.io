@@ -104,7 +104,7 @@ Git의 커밋은 변경할 수 없습니다. 그렇다고 실수를 고칠 수 �
 
 ## Data model, as pseudocode
 
-It may be instructive to see Git's data model written down in pseudocode:
+의사 코드로 작성된 Git의 데이터 모델을 보는 것은 유용할수 될 수 있습니다.
 
 ```
 // a file is a bunch of bytes
@@ -122,18 +122,17 @@ type commit = struct {
 }
 ```
 
-It's a clean, simple model of history.
+깔끔하고 간결한 히스토리 모델입니다.
 
 ## Objects and content-addressing
 
-An "object" is a blob, tree, or commit:
+object는 blob, tree, commit 입니다.
 
 ```
 type object = blob | tree | commit
 ```
+Git 데이터 저장소에서 모든 객체는 [SHA-1 해시](https://en.wikipedia.org/wiki/SHA-1)로 콘텐츠 주소가 지정됩니다.
 
-In Git data store, all objects are content-addressed by their [SHA-1
-hash](https://en.wikipedia.org/wiki/SHA-1).
 
 ```
 objects = map<string, object>
@@ -146,23 +145,18 @@ def load(id):
     return objects[id]
 ```
 
-Blobs, trees, and commits are unified in this way: they are all objects. When
-they reference other objects, they don't actually _contain_ them in their
-on-disk representation, but have a reference to them by their hash.
+Blob, 트리 및 커밋은 모두 객체이며 이와 같은 방식으로 통합됩니다. 
+다른 객체를 참조 할 때 디스크상의 표현에는 _포함_ 되지 않지만 해시에 의해 참조됩니다.
 
-For example, the tree for the example directory structure [above](#snapshots)
-(visualized using `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d`),
-looks like this:
+예를 들어 [위의](#snapshots) 디렉토리 구조의 트리는 다음과 같습니다. (`git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d`를 사용하여 시각화)
 
 ```
 100644 blob 4448adbf7ecd394f42ae135bbeed9676e894af85    baz.txt
 040000 tree c68d233a33c5c06e0340e4c224f0afca87c8ce87    foo
 ```
 
-The tree itself contains pointers to its contents, `baz.txt` (a blob) and `foo`
-(a tree). If we look at the contents addressed by the hash corresponding to
-baz.txt with `git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85`, we get
-the following:
+트리 자체에는 baz.txt(blob) 과 foo (트리)에 대한 포인터가 포함되어 있습니다 . 
+해시에 의해 `git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85` 주소가 지정된 baz.txt 를 보면 다음과 같은 결과가 나타납니다.
 
 ```
 git is wonderful
