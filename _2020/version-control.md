@@ -104,7 +104,7 @@ Git의 커밋은 변경할 수 없습니다. 그렇다고 실수를 고칠 수 �
 
 ## Data model, as pseudocode
 
-의사 코드로 작성된 Git의 데이터 모델을 보는 것은 유용할수 될 수 있습니다.
+의사 코드로 작성된 Git의 데이터 모델을 보는 것은 유용할수 있습니다.
 
 ```
 // a file is a bunch of bytes
