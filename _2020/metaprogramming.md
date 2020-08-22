@@ -168,19 +168,10 @@ pdflatex paper.tex
 달리 말하면, 만약 제가 여러분의 라이브러리 버전 `1.3.7`에 의존하고 있다면, `1.3.8`, `1.6.1`, 심지어는 `1.3.0`을 이용해서 빌드하는 것 또한 _안전해야_ 합니다. 버전 `2.2.4`는 아마 괜찮지 않을 겁니다, 왜냐면 **major** 버전이 증가되었기 때문이죠.  
 우리는 파이썬의 버전 넘버에서 시맨틱 버저닝의 예시를 확인할 수 있습니다. 여러분 중 다수는 아마 파이썬 2와 파이썬 3의 코드가 함께 잘 어울릴 수 없다는 것을 알고 있을 겁니다, **major** 버전 증가의 이유죠. 마찬가지로, 파이썬 3.5를 위해 쓰인 코드는 파이썬 3.7 버전에서는 실행되지만 아마 3.4에서는 실행되지 않을지도 모릅니다.
 
-When working with dependency management systems, you may also come
-across the notion of _lock files_. A lock file is simply a file that
-lists the exact version you are _currently_ depending on of each
-dependency. Usually, you need to explicitly run an update program to
-upgrade to newer versions of your dependencies. There are many reasons
-for this, such as avoiding unnecessary recompiles, having reproducible
-builds, or not automatically updating to the latest version (which may
-be broken). An extreme version of this kind of dependency locking is
-_vendoring_, which is where you copy all the code of your dependencies
-into your own project. That gives you total control over any changes to
-it, and lets you introduce your own changes to it, but also means you
-have to explicitly pull in any updates from the upstream maintainers
-over time.
+의존성 관리 시스템(dependency management systems)을 이용해 작업하면, 여러분은 _잠금 파일(lock files)_ 의 개념 또한 접할 수도 있습니다.
+잠금 파일(lock file)이란, 그아먈로 여러분이 각각의 의존성에 _현재_ 의존하고 있는 정확한 버전을 나열하는 파일입니다. 보통, 여러분은 의존성들의 더 새로운 버전으로 업그레이드 하기 위해서는 명시적으로 업데이트 프로그램을 실행시킬 필요가 있습니다.
+여기에는 많은 이유가 있는데, 쓸데없는 리컴파일(recompile)을 피하고, 재현가능한(reproducible) 빌드를 하고, (고장났을 수도 있는) 최신 버전으로 자동 업데이트를 하지 않기 위함이죠.  
+이러한 종류의 의존성 잠금(dependency locking) 중 극단적인 경우가 _벤더링(vendoring)_ 인데, 여러분의 모든 의존성들의 모든 코드를 여러분의 프로젝트 안에 복사하는 겁니다. 이렇게 하면 여러분은 프로젝트에 대한 어떤 변화에 대해서도 통제력을 가지게 되고 프로젝트에 자기 나름의 변화들을 도입할 수 있지만, 시간이 지나면서 생기는 어떤 업데이트도 업스트림 관리자(upstream maintainer)로부터 명시적으로 풀(pull)해줘야 한다는 것을 의미하기도 합니다.
 
 # Continuous integration systems
 
