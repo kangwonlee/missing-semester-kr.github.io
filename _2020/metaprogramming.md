@@ -155,7 +155,7 @@ pdflatex paper.tex
 그렇긴 하지만 완벽하진 않죠!  
 만약 제가 보안 업데이트를 하는데, 그 새로운 버전이 제 라이브러리의 퍼블릭 인터페이스(public interface, "[API](https://ko.wikipedia.org/wiki/API)")를 바꾸지 _않고_, 오래된 버전에 의존했던 어떤 프로젝트도 즉시 사용할 수 있는 것이라면 어떨까요?
 여기서 서로 다른 숫자들을 가진 버전이 나오는 것입니다.
-각각의 정확한 의미는 프로젝트들마다 다르지만, 상대적으로 공통적인 기준은 [시멘틱 버저닝](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여)입니다.  
+각각의 정확한 의미는 프로젝트들마다 다르지만, 상대적으로 공통적인 기준은 [시멘틱 버저닝(Semantic Versioning)](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여)입니다.  
 시맨틱 버저닝에서 모든 버전 넘버는 다음의 형식을 따릅니다: **major.minor.patch**  
 규칙은 다음과 같습니다:
 
@@ -163,18 +163,10 @@ pdflatex paper.tex
 -   만약 이전의 버전들과 호환성을 유지하면서 API에 _추가_ 되는 것이 있다면, **minor** 버전을 증가시킨다.
 -   만약 이전의 버전들과 호환이 되지 않는 방식으로 API를 바꾸게 된다면, **major** 버전을 증가시킨다.
 
-This already provides some major advantages. Now, if my project depends
-on your project, it _should_ be safe to use the latest release with the
-same major version as the one I built against when I developed it, as
-long as its minor version is at least what it was back then. In other
-words, if I depend on your library at version `1.3.7`, then it _should_
-be fine to build it with `1.3.8`, `1.6.1`, or even `1.3.0`. Version
-`2.2.4` would probably not be okay, because the major version was
-increased. We can see an example of semantic versioning in Python's
-version numbers. Many of you are probably aware that Python 2 and Python
-3 code do not mix very well, which is why that was a _major_ version
-bump. Similarly, code written for Python 3.5 might run fine on Python
-3.7, but possibly not on 3.4.
+이 방식은 이미 몇몇 이점을 제공합니다.
+자, 만약 저의 프로젝트가 여러분의 프로젝트에 의존하고 있다면, 제가 그 프로젝트를 빌드할 때 이용했던 것과 같은 **major** 버전의 최신 배포 버전을 사용하는 것이 _안전해야_ 합니다, 제 프로젝트에서 사용하고 있는 **minor** 버전이 적어도 빌드할 그 당시의 것 이상인 한 말이죠.  
+달리 말하면, 만약 제가 여러분의 라이브러리 버전 `1.3.7`에 의존하고 있다면, `1.3.8`, `1.6.1`, 심지어는 `1.3.0`을 이용해서 빌드하는 것 또한 _안전해야_ 합니다. 버전 `2.2.4`는 아마 괜찮지 않을 겁니다, 왜냐면 **major** 버전이 증가되었기 때문이죠.  
+우리는 파이썬의 버전 넘버에서 시맨틱 버저닝의 예시를 확인할 수 있습니다. 여러분 중 다수는 아마 파이썬 2와 파이썬 3의 코드가 함께 잘 어울릴 수 없다는 것을 알고 있을 겁니다, **major** 버전 증가의 이유죠. 마찬가지로, 파이썬 3.5를 위해 쓰인 코드는 파이썬 3.7 버전에서는 실행되지만 아마 3.4에서는 실행되지 않을지도 모릅니다.
 
 When working with dependency management systems, you may also come
 across the notion of _lock files_. A lock file is simply a file that
