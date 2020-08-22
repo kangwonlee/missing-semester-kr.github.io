@@ -152,20 +152,16 @@ pdflatex paper.tex
 버저닝(versioning)은 프로젝트가 다른 프로젝트의 어떤 특정한 버전, 또는 버전들의 범위에 의존하는지를 나타내도록 함으로써 이러한 문제를 해결하려 시도합니다.  
 그런 식으로, 비록 라이브러리에 변화가 생길 지라도, 그 라이브러리에 의존하는 소프트웨어는 그 라이브러리의 더 예전 버전을 사용함으로써 계속 빌드할 수 있게 됩니다.
 
-That also isn't ideal though! What if I issue a security update which
-does _not_ change the public interface of my library (its "API"), and
-which any project that depended on the old version should immediately
-start using? This is where the different groups of numbers in a version
-come in. The exact meaning of each one varies between projects, but one
-relatively common standard is [_semantic
-versioning_](https://semver.org/). With semantic versioning, every
-version number is of the form: major.minor.patch. The rules are:
+그렇긴 하지만 완벽하진 않죠!  
+만약 제가 보안 업데이트를 하는데, 그 새로운 버전이 제 라이브러리의 퍼블릭 인터페이스(public interface, "[API](https://ko.wikipedia.org/wiki/API)")를 바꾸지 _않고_, 오래된 버전에 의존했던 어떤 프로젝트도 즉시 사용할 수 있는 것이라면 어떨까요?
+여기서 서로 다른 숫자들을 가진 버전이 나오는 것입니다.
+각각의 정확한 의미는 프로젝트들마다 다르지만, 상대적으로 공통적인 기준은 [시멘틱 버저닝](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여)입니다.  
+시맨틱 버저닝에서 모든 버전 넘버는 다음의 형식을 따릅니다: **major.minor.patch**  
+규칙은 다음과 같습니다:
 
--   If a new release does not change the API, increase the patch version.
--   If you _add_ to your API in a backwards-compatible way, increase the
-    minor version.
--   If you change the API in a non-backwards-compatible way, increase the
-    major version.
+-   만약 새로운 버전 배포가 API를 바꾸지 않는다면, **patch** 버전을 증가시킨다.
+-   만약 이전의 버전들과 호환성을 유지하면서 API에 _추가_ 되는 것이 있다면, **minor** 버전을 증가시킨다.
+-   만약 이전의 버전들과 호환이 되지 않는 방식으로 API를 바꾸게 된다면, **major** 버전을 증가시킨다.
 
 This already provides some major advantages. Now, if my project depends
 on your project, it _should_ be safe to use the latest release with the
