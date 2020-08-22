@@ -361,7 +361,7 @@ ssh를 통해 파일을 복사하는 방법에는 여러 가지가 있습니다.
 
 많은 시나리오에서 여러분은 장치의 특정 포트를 수신하는 소프트웨어를 만나게 될 것입니다. 로컬 시스템에서 발생하게 된다면 `localhost : PORT` 또는 `127.0.0.1 : PORT`를 입력 할 수 있습니다. 그러나, 네트워크/인터넷을 통해 직접 사용할 수 있는 포트가 없는 원격 서버가 있다면 어떻게 해야할까요?  
 
-이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내요은 사진을 참조해주십시오. 저작권은 [이 StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
+이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내요은 사진을 참조해주십시오. 저작권은 [StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
 
 **로컬 포트 포워딩(Local Port Forwarding)**
 ![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png  "Local Port Forwarding")
