@@ -164,14 +164,11 @@ git is wonderful
 
 ## References
 
-Now, all snapshots can be identified by their SHA-1 hash. That's inconvenient,
-because humans aren't good at remembering strings of 40 hexadecimal characters.
+이제 모든 스냅 샷은 SHA-1 해시로 식별 할 수 있습니다. 인간에게는 40 개의 16 진수 문자열을 잘 기억하지 못하기떄문에 불편합니다.
 
-Git's solution to this problem is human-readable names for SHA-1 hashes, called
-"references". References are pointers to commits. Unlike objects, which are
-immutable, references are mutable (can be updated to point to a new commit).
-For example, the `master` reference usually points to the latest commit in the
-main branch of development.
+Git은 이문제를 해결하기 휘하여 SHA-1 해시에 "references" 라는 인간이 읽을수있는 이름을 사용합니다. 
+References는 커밋에 대한 포인터입니다. 변경이 불가능한 객체와는 다르게 references는 변경 가능합니다 (새 커밋을 가리 키도록 업데이트 할 수 있음). 
+예를 들어 'master' references는 일반적으로 주요 개발 분기의 최신 커밋을 가리 킵니다.
 
 ```
 references = map<string, string>
@@ -189,29 +186,22 @@ def load_reference(name_or_id):
         return load(name_or_id)
 ```
 
-With this, Git can use human-readable names like "master" to refer to a
-particular snapshot in the history, instead of a long hexadecimal string.
+이를 통해 Git은 긴 16 진수 문자열 대신 "master"와 같이 사람이 읽을 수있는 이름을 사용하여 히스토리의 특정 스냅 샷을 참조 할 수 있습니다.
 
-One detail is that we often want a notion of "where we currently are" in the
-history, so that when we take a new snapshot, we know what it is relative to
-(how we set the `parents` field of the commit). In Git, that "where we
-currently are" is a special reference called "HEAD".
-
+추가로 종종 히스토리 에서 "현재 위치"라는 개념을 웝합니다. 그래서 무엇과 연관 되었는지(우리가 어떻게 `parents` 커밋 필드들 설정하였는지) 알기 위하여 
+새 스냅 샷을 남깁니다. 이떄 Git에서는 "현재 위치"는 "HEAD" 라는 특수 references를 사용합니다.
 ## Repositories
 
-Finally, we can define what (roughly) is a Git _repository_: it is the data
-`objects` and `references`.
+마침내, 우리는 Git 저장소가 `객체` 와 `references` 테이터 라는것을 (대략)정의 할 수 있습니다.
 
-On disk, all Git stores are objects and references: that's all there is to Git's
-data model. All `git` commands map to some manipulation of the commit DAG by
-adding objects and adding/updating references.
+디스크에서 모든 Git 저장소는 객체와 references이며 이것은 Git의 데이터 모델의 전부입니다. 
+모든 git명령은 객체를 추가하고 참조를 추가 / 수정 하는 커밋 DAG의 조작에 의해 매핑됩니다.
 
-Whenever you're typing in any command, think about what manipulation the
-command is making to the underlying graph data structure. Conversely, if you're
-trying to make a particular kind of change to the commit DAG, e.g. "discard
-uncommitted changes and make the 'master' ref point to commit `5d83f9e`", there's
-probably a command to do it (e.g. in this case, `git checkout master; git reset
---hard 5d83f9e`).
+명령을 입력 할 때마다 명령어가 만들어내는 기본그래프 자료구조의 조작에 대해 생각해보세요.
+반대로 커밋 DAG에 특정 종류의 변경을 시도하는 경우, 
+예를 들어 "커밋되지 않은 변경 사항을 무시하고 'master' reference가 커밋`d83f9e`을 가르키도록 만들어 보세요"
+이를 수행하는 명령은 있을 수 있습니다 (예 : git checkout master; git reset --hard 5d83f9e).
+
 
 # Staging area
 
