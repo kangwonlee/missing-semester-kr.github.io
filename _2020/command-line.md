@@ -354,32 +354,33 @@ ssh를 통해 파일을 복사하는 방법에는 여러 가지가 있습니다.
 
 - `ssh+tee`, 가장 간단한 방법은 `cat localfile | ssh remote_server tee serverfile`을 실행하여 `ssh`명령 실행(command execution) 그리고 STDIN 입력(input)을 사용하는 것입니다. [`tee`](https://www.man7.org/linux/man-pages/man1/tee.1.html)에서 STDIN의 출력을 파일로 작성합니다.
 - [`scp`](https://www.man7.org/linux/man-pages/man1/scp.1.html) 많은 양의 파일/디렉토리를 복사 할 때, 보안 복사 `scp` 명령은 경로를 쉽게 반복 할 수 있으므로 더 편리합니다. 구문은 `scp path/to/local_file remote_host:path/to/remote_file`입니다. 
-- [`rsync`](https://www.man7.org/linux/man-pages/man1/rsync.1.html) improves upon `scp` by detecting identical files in local and remote, and preventing copying them again. It also provides more fine grained control over symlinks, permissions and has extra features like the `--partial` flag that can resume from a previously interrupted copy. `rsync` has a similar syntax to `scp`.
+- [`rsync`](https://www.man7.org/linux/man-pages/man1/rsync.1.html)는 로컬과 원격에서 동일한 파일을 탐지해 다시 복사하지 못하게 함으로써 `scp`를 향상시킵니다. 또한 심볼릭 링크(symlinks), 권한(permissions)에 대해 보다 세밀한 제어를 제공하며 이전에 중단 된 복사본에서 다시 시작할 수있는`--partial` 플래그(flag)와 같은 추가 기능이 있습니다. `rsync`는 `scp`와 유사한 구문을 가지고 있습니다. 
 
-## Port Forwarding
 
-In many scenarios you will run into software that listens to specific ports in the machine. When this happens in your local machine you can type `localhost:PORT` or `127.0.0.1:PORT`, but what do you do with a remote server that does not have its ports directly available through the network/internet?.
+## 포트 포워딩(Port Forwarding)
 
-This is called _port forwarding_ and it
-comes in two flavors: Local Port Forwarding and Remote Port Forwarding (see the pictures for more details, credit of the pictures from [this StackOverflow post](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)).
+많은 시나리오에서 여러분은 장치의 특정 포트를 수신하는 소프트웨어를 만나게 될 것입니다. 로컬 시스템에서 발생하게 된다면 `localhost : PORT` 또는 `127.0.0.1 : PORT`를 입력 할 수 있습니다. 그러나, 네트워크/인터넷을 통해 직접 사용할 수 있는 포트가 없는 원격 서버가 있다면 어떻게 해야할까요?  
 
-**Local Port Forwarding**
+이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내요은 사진을 참조해주십시오. 저작권은 [이 StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
+
+**로컬 포트 포워딩(Local Port Forwarding)**
 ![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png  "Local Port Forwarding")
 
-**Remote Port Forwarding**
+**원격 포트 포워딩(Remote Port Forwarding)**
 ![Remote Port Forwarding](https://i.stack.imgur.com/4iK3b.png  "Remote Port Forwarding")
 
-The most common scenario is local port forwarding, where a service in the remote machine listens in a port and you want to link a port in your local machine to forward to the remote port. For example, if we execute  `jupyter notebook` in the remote server that listens to the port `8888`. Thus, to forward that to the local port `9999`, we would do `ssh -L 9999:localhost:8888 foobar@remote_server` and then navigate to `locahost:9999` in our local machine.
+가장 일반적인 시나리오는 로컬 포트 포워딩(local port forwarding)으로, 원격 장치의 서비스가 포트에서 수신 대기하고 로컬 장치의 포트를 원격 포트로 연결하는 경우입니다.
+예를 들어 '8888' 포트를 수신하는 원격 서버에서 주피터 노트북을 실행하면, 이를 로컬 포트 `9999`로 전달하기 위해 `ssh -L 9999:localhost:8888 foobar@remote_server`를 수행한 다음 로컬 장치에서 `locahost : 9999`로 이동합니다.
 
 
-## SSH Configuration
+## SSH 구성(SSH Configuration)
 
-We have covered many many arguments that we can pass. A tempting alternative is to create shell aliases that look like
+우리는 전달할 수 있는 많은 논쟁을 다루었습니다. 가장 매력적은 대안은 다음과 같이 쉘 별칭을 만드는 것입니다.
 ```bash
 alias my_server="ssh -i ~/.id_ed25519 --port 2222 -L 9999:localhost:8888 foobar@remote_server
 ```
 
-However, there is a better alternative using `~/.ssh/config`.
+그러나 `~/.ssh/config`를 사용하면 더 좋은 대안을 만들 수 있습니다. 
 
 ```bash
 Host vm
