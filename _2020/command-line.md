@@ -395,56 +395,54 @@ Host *.mit.edu
     User foobaz
 ```
 
-An additional advantage of using the `~/.ssh/config` file over aliases  is that other programs like `scp`, `rsync`, `mosh`, &c are able to read it as well and convert the settings into the corresponding flags.
+별칭(alias)보다 `~/.ssh/config` 파일을 사용하는 것의 또 다른 장점은 `scp`, `rsync`, `mosh`, `&c` 등의 프로그램도 읽을 수 있다는 것과 설정을 해당 플래그로 변환할 수 있다는 것입니다.
+
+`~/.ssh/config` 파일은 도트 파일(dotfile)로 간주될 수 있으며, 일반적으로 이것이 나머지 도트 파일과 같이 있어도 괜찮다는 점을 기억하세요. 그러나, 만약 여러분이 이것을 공개한다면, 여러분은 인터넷상의 낯선 사람들에게 잠재적으로 이런 정보를 제공할 수도 있습니다: 여러분의 서버 주소, 사용자, 개방된 포트, 등등. 이렇게 하면 일부 유형의 공격이 쉬워질 수 있으므로 SSH 구성을 공유하는 데 유의하십시오.
+
+서버측 구성은 보통 `/etc/ssh/sshd_config`에 지정됩니다. 여러분은 여기서 암호 인증 사용 안 함, ssh 포트 변경, X11 포워딩 사용 등의 변경 작업을 수행할 수 있습니다. 구성 설정을 각 사용자별로 지정할 수 있습니다.
+
+## 이외에 알아두면 좋은 사항
+
+원격 서버에 연결할 때 나타나는 흔한 문제들 중 하나는 컴퓨터를 종료/절전하거나, 네트워크를 변경할 때 연결이 끊어지는 것입니다. 게다가 만약 여러분이 연결에서 심한 지연(lag)을 경험하게 된다면 ssh를 사용하기가 꺼려질 수도 있습니다. 모바일 쉘 [Mosh](https://mosh.org/)는 로밍 연결(roaming connections), 간헐적 연결(internittent connectivity), 지능형 로컬 에코(intelligent local echo)가 가능하므로 ssh보다 더 낫습니다.
+
+때로는 원격 폴더를 마운트 하는것이 편리합니다. [sshfs](https://github.com/libfuse/sshfs)는 로컬로 원격 서버에 폴더를 마운트 하여 로컬 에디터를 사용할 수 있게 합니다.
 
 
-Note that the `~/.ssh/config` file can be considered a dotfile, and in general it is fine for it to be included with the rest of your dotfiles. However, if you make it public, think about the information that you are potentially providing strangers on the internet: addresses of your servers, users, open ports, &c. This may facilitate some types of attacks so be thoughtful about sharing your SSH configuration.
+# 셸 & 프레임워크
 
-Server side configuration is usually specified in `/etc/ssh/sshd_config`. Here you can make changes like disabling password authentication, changing ssh ports, enabling X11 forwarding, &c. You can specify config settings on a per user basis.
+셸 툴과 스크립팅에서 우리는 `bash` 셸을 다루었는데요. 그것은 `bash`셸이 단연코 가장 보편적이며, 대부분의 시스템이 그것을 기본 옵션으로 가지고 있기 때문입니다. 하지만 이것이 유일한 선택지는 아닙니다. 
 
-## Miscellaneous
+예를 들어, `bash`의 수퍼셋(superset)인 `zsh` 셸은 다음과 같이 별도의 설치나 구성이 필요없이 사용 가능한 많은 편리한 기능을 제공한다.
 
-A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
+- 더 깔끔한 글로빙(globbing), `**`
+- 인라인 글로빙/와일드카드 확장
+- 스펠링 수정
+- 더 나은 탭 완성/선택
+- 경로 확장 (예를 들어, `cd /u/lo/b` 은 `/usr/local/bin`로 확장됩니다.)
 
-Sometimes it is convenient to mount a remote folder. [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server
-locally, and then you can use a local editor.
+**프레임워크** 또한 여러분의 셸을 개션해 줍니다. 유명한 광범위 프레임워크 몇개를 소개하자면 [prezto](https://github.com/sorin-ionescu/prezto) 아니면 [oh-my-zsh](https://ohmyz.sh/)가 있고, 특정 기능에 초점을 맞춘 규모가 작은 것들에는[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 아니면 [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)가 있습니다. [fish](https://fishshell.com/)같은 셸들은 많은 사용자 친화적 기능들을 기본 탑재하고 있습니다. 이러한 기능들 중에는 아래와 같은 것들이 포함되어 있습니다:
 
+- 우측 프롬프트
+- 명령어 하이라이팅
+- 히스토리 서브스트링 검색
+- 맨 페이지(manual page) 기반의 플래그 완성 기능
+- 더 나은 자동 완성
+- 프롬프트 테마들
 
-# Shells & Frameworks
+이러한 프레임워크를 사용할 때 유의해야 할 점이 있습니다. 그것은 바로 실행하는 코드가 적절하게 최적화되지 않았거나 코드의 양이 너무 많을 때 프레임워크 사용이 셸 속도를 느리게 할 수 있다는 것입니다. 여러분은 이것에 대해 프로파일을 작성하고 자주 사용하지 않는 기능이나 속도 향상보다 더 중요하지 않은 기능들을 막아둘 수 있습니다. 
 
-During shell tool and scripting we covered the `bash` shell because it is by far the most ubiquitous shell and most systems have it as the default option. Nevertheless, it is not the only option.
+# 터미널 에뮬레이터
 
-For example, the `zsh` shell is a superset of `bash` and provides many convenient features out of the box such as:
+여러분의 터미널을 커스터마이징 하는것과 함께, 당신에게 딱 맞는 **터미널 에뮬레이터**와 그 설정을 찾아보는데 시간을 들이는 것도 가치가 있는 일입니다. 이 세상에는 정말 많은 터미널 에뮬레이터들이 있습니다. (여기 [비교]가 있습니다. (https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
 
-- Smarter globbing, `**`
-- Inline globbing/wildcard expansion
-- Spelling correction
-- Better tab completion/selection
-- Path expansion (`cd /u/lo/b` will expand as `/usr/local/bin`)
+여러분은 아마도 여러분의 터미널에서 수백 수천 시간을 보낼 것이기 때문에, 그 설정을 자세히 살펴보는게 확실히 도움이 됩니다. 여러분이 여러분의 터미널에서 수정하고 싶어할만한 것들은 다음과 같습니다. 
 
-**Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://ohmyz.sh/), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
-
-- Right prompt
-- Command syntax highlighting
-- History substring search
-- manpage based flag completions
-- Smarter autocompletion
-- Prompt themes
-
-One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
-
-# Terminal Emulators
-
-Along with customizing your shell, it is worth spending some time figuring out your choice of **terminal emulator** and its settings. There are many many terminal emulators out there (here is a [comparison](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
-
-Since you might be spending hundreds to thousands of hours in your terminal it pays off to look into its settings. Some of the aspects that you may want to modify in your terminal include:
-
-- Font choice
-- Color Scheme
-- Keyboard shortcuts
-- Tab/Pane support
-- Scrollback configuration
-- Performance (some newer terminals like [Alacritty](https://github.com/jwilm/alacritty) or [kitty](https://sw.kovidgoyal.net/kitty/) offer GPU acceleration).
+- 글꼴 선택
+- 색채 배합 (color scheme)
+- 키보드 단축기
+- 탭/창 보조
+- 스크롤백 설정
+- 성능 ( [Alacritty](https://github.com/jwilm/alacritty) 혹은 [kitty](https://sw.kovidgoyal.net/kitty/)와 같은 최신 터미널들은  GPU 가속화를 지원합니다).
 
 # Exercises
 
