@@ -230,8 +230,8 @@ Git은 "스테이징 영역" 이라는 메커니즘을 통해 스냅 샷에 포�
 
 {% comment %}
 
-The `git init` command initializes a new Git repository, with repository
-metadata being stored in the `.git` directory:
+`git init` 명령은  새로운 Git 저장소를 초기화 하고, 
+저장소 메타테이터를 `.git` 디렉토리에 저장합니다 :
 
 ```console
 $ mkdir myproject
@@ -246,8 +246,9 @@ No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
-How do we interpret this output? "No commits yet" basically means our version
-history is empty. Let's fix that.
+이 출력결과를 어떻게 해석하면 좋을까요? "No commits yet"은 기본적으로 version
+history가 비어 있음을 의미합니다. 수정 해 보겠습니다.
+
 
 ```console
 $ echo "hello, git" > hello.txt
@@ -268,20 +269,16 @@ $ git commit -m 'Initial commit'
  create mode 100644 hello.txt
 ```
 
-With this, we've `git add`ed a file to the staging area, and then `git
-commit`ed that change, adding a simple commit message "Initial commit". If we
-didn't specify a `-m` option, Git would open our text editor to allow us type a
-commit message.
+우리는 파일을 스테이징 영역에 `git add` 하였습니다,
+그리고 수정사항을 "Initial commit" 이라는 커밋 메시지를 추가하여 `git commit` 하였습니다. 
+만약 우리가 `-m`을 명시하지 않았다면 Git은 커밋 메시지를 입력 할수 있도록 텍스트 편집기를 실행 시킬 것십니다.
 
-Now that we have a non-empty version history, we can visualize the history.
-Visualizing the history as a DAG can be especially helpful in understanding the
-current status of the repo and connecting it with your understanding of the Git
-data model.
+이제 비어 있지 않은 version history가 있으므로 history를 시각화 할수 있습니다. 
+history를 DAG로 시각화하면 저장소의 현재 상태를 이해하고 이를 Git 데이터 모델에 대한 이해와 연결하는데 큰 도움이 될 수 있습니다.
 
-The `git log` command visualizes history. By default, it shows a flattened
-version, which hides the graph structure. If you use a command like `git log
---all --graph --decorate`, it will show you the full version history of the
-repository, visualized in graph form.
+`git log`명령은 history를 시각화 해줍니다. 기본적으로는 그래프 구조 가 아닌 평면화 된 버전을 보여줍니다. 
+만약 `git log --all --graph --decorate` 와 같은 명령을 사용하면 그래프로 시각화된 저장소의 전체 버전의 history가 표시됩니다.
+
 
 ```console
 $ git log --all --graph --decorate
@@ -292,9 +289,8 @@ $ git log --all --graph --decorate
       Initial commit
 ```
 
-This doesn't look all that graph-like, because it only contains a single node.
-Let's make some more changes, author a new commit, and visualize the history
-once more.
+단일 노드 만을 포함하기 때문에 그래프처럼 보이지는 않습니다. 
+좀 더 수정사항을 만들고, 새 커밋을 작성하여 history를 다시 한 번 시각화 해보겠습니다.
 
 ```console
 $ echo "another line" >> hello.txt
@@ -320,7 +316,7 @@ $ git commit -m 'Add a line'
  1 file changed, 1 insertion(+)
 ```
 
-Now, if we visualize the history again, we'll see some of the graph structure:
+이제 히스토리를 다시 시각화하면 그래프 구조의 일부를 볼 수 있습니다.
 
 ```
 * commit 35f60a825be0106036dd2fbc7657598eb7b04c67 (HEAD -> master)
@@ -336,10 +332,9 @@ Now, if we visualize the history again, we'll see some of the graph structure:
       Initial commit
 ```
 
-Also, note that it shows the current HEAD, along with the current branch
-(master).
+또한 현재 분기(master)와 함께 현재 HEAD를 표시합니다.
 
-We can look at old versions using the `git checkout` command.
+`git checkout`명령을 사용하여 이전 버전을 볼 수 있습니다.
 
 ```console
 $ git checkout 4515d17  # previous commit hash; yours will be different
@@ -365,8 +360,8 @@ hello, git
 another line
 ```
 
-Git can show you how files have evolved (differences, or diffs) using the `git
-diff` command:
+Git은 다음 `git diff` 명령을 사용하여 파일이 어떻게 진화했는지 (차이 또는 diffs) 보여줄 수 있습니다.
+
 
 ```console
 $ git diff 4515d17 hello.txt
@@ -381,18 +376,18 @@ index 94bab17..f0013b2 100644
 
 {% endcomment %}
 
-- `git help <command>`: get help for a git command
-- `git init`: creates a new git repo, with data stored in the `.git` directory
-- `git status`: tells you what's going on
-- `git add <filename>`: adds files to staging area
-- `git commit`: creates a new commit
-    - Write [good commit messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)!
-    - Even more reasons to write [good commit messages](https://chris.beams.io/posts/git-commit/)!
-- `git log`: shows a flattened log of history
-- `git log --all --graph --decorate`: visualizes history as a DAG
-- `git diff <filename>`: show differences since the last commit
-- `git diff <revision> <filename>`: shows differences in a file between snapshots
-- `git checkout <revision>`: updates HEAD and current branch
+- `git help <command>`: git 영령어에 대한 도움말 보기여줍니다.
+- `git init`: `.git` 디렉토리에 데이터가 저장된 새 git 저장소를 만듭니다.
+- `git status`: 진행 상황을 알려줍니다.
+- `git add <filename>`: 스테이징 영역에 파일을 추사합니다.
+- `git commit`: 새로운 커밋을 만듭니다.
+    - [좋은 커밋 메시지](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)를 작성하세요!
+    - [좋은 커밋 메시지](https://chris.beams.io/posts/git-commit/)를 작성해야하는 더 많은 이유!
+- `git log`: 평면화된 history의 로그를 표시합니다.
+- `git log --all --graph --decorate`: DAG을 사용하여 history를 시각화 합니다.
+- `git diff <filename>`: 마지막 커밋 이후 차이점을 보여줍니다.
+- `git diff <revision> <filename>`: 스냅샷 간 파일의 차이를 보여줍니다.
+- `git checkout <revision>`: HEAD와 현재 분기를 업데이트 합니다.
 
 ## Branching and merging
 
