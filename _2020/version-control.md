@@ -205,23 +205,20 @@ def load_reference(name_or_id):
 
 # Staging area
 
-This is another concept that's orthogonal to the data model, but it's a part of
-the interface to create commits.
+Staging area는 데이터 모델과 독립된 또 다른 개념이지만 커밋을 생성하는 인터페이스의 일부입니다.
 
-One way you might imagine implementing snapshotting as described above is to have
-a "create snapshot" command that creates a new snapshot based on the _current
-state_ of the working directory. Some version control tools work like this, but
-not Git. We want clean snapshots, and it might not always be ideal to make a
-snapshot from the current state. For example, imagine a scenario where you've
-implemented two separate features, and you want to create two separate commits,
-where the first introduces the first feature, and the next introduces the
-second feature. Or imagine a scenario where you have debugging print statements
-added all over your code, along with a bugfix; you want to commit the bugfix
-while discarding all the print statements.
+위에서 설명한 것처럼 스냅샷을 구현하기위해 생각해볼수 있는 한가지 방법은 작업 디렉토리의 _현재 상태_를 기준으로 새로운 스냅샷을 생성하는 "create snapshot" 명렁어를 사용하는 것입니다.
 
-Git accommodates such scenarios by allowing you to specify which modifications
-should be included in the next snapshot through a mechanism called the "staging
-area".
+일부 버전 제어 도구는 이와 같이 작동하지만 Git은 작동하지 않습니다. 
+
+우리는 깨끗한 스냅 샷을 원하며, 현재 상태에서 스냅 샷을 만드는 것이 항상 이상적인 것은 아닙니다.
+
+예를 들어 이러한 두 개의 개별 기능을 구현한후 첫번째 기능은 첫 번째 기능으로 소개하고 두먼쨰 기능은 두 번째 기능으로 소개하는 두 개의 개별 커밋을 생성하려고 하는 시나리오을 생상해보세요.
+또는 버그 수정과 동시에 코드 전체에 디버깅 명세 문이 추가 되는 시나리오를 상상해보세요.
+;모든 인쇄 문을 삭제하는 동안 버그 수정을 커밋하고 싶습니다.
+
+Git은 "스테이징 영역" 이라는 메커니즘을 통해 스냅 샷에 포함시켜야 하는 
+수정 사항을 지정할수 있도록 하여 이러한 시나리오를 수용합니다.
 
 # Git command-line interface
 
