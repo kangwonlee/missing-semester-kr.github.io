@@ -180,19 +180,12 @@ pdflatex paper.tex
 아마 누군가가 깃허브(GitHub)에서 여러분에게 풀 리퀘스트(pull requres;PR)을 보낼 때마다, 여러분은 그 코드가 스타일 체크(style check)되기를 바라고 성능 테스트(benchmark)를 실행하고 싶을 지도 모르겠죠?  
 이러한 필요가 생길 때가 바로 지속적 통합(continuous integration)을 고려해 봐야 할 때입니다.
 
-Continuous integration, or CI, is an umbrella term for "stuff that runs
-whenever your code changes", and there are many companies out there that
-provide various types of CI, often for free for open-source projects.
-Some of the big ones are Travis CI, Azure Pipelines, and GitHub Actions.
-They all work in roughly the same way: you add a file to your repository
-that describes what should happen when various things happen to that
-repository. By far the most common one is a rule like "when someone
-pushes code, run the test suite". When the event triggers, the CI
-provider spins up a virtual machines (or more), runs the commands in
-your "recipe", and then usually notes down the results somewhere. You
-might set it up so that you are notified if the test suite stops
-passing, or so that a little badge appears on your repository as long as
-the tests pass.
+지속적 통합(continuous integration), 또는 CI는 "코드가 바뀔 때마다 실행되는 것"에 대한 포괄적인 용어입니다, 그리고 다양한 종류의 CI를 제공하는 많은 회사들이 있습니다 (흔히 오픈소스 프로젝트인 경우 무료).
+큰 것들 중에는 트레비스 CI(Travis CI), 아주르 파이프라인(Azure Pipelines), 그리고 깃허브 액션즈(GitHub actions)가 있습니다.
+이것들은 거의 같은 방식으로 작동합니다:  
+여러분이 여러분의 레포지토리에 다양한 일들이 발생할 때 어떤 일이 일어나야 하는지에 대해 설명하는 파일을 그 레포지토리에 추가합니다.
+단연코 가장 흔한 것은 "누군가 코드를 푸쉬(push)하면, 테스트 스위트(test suite)를 실행한다"와 같은 규칙입니다. 그 이벤트가 촉발할 때, CI 제공자는 가상머신(virtual machine) 혹은 그 이상의 것을 돌리고, 여러분이 작성한 "레시피" 안에 있는 명령들을 실행시키고는, 그 다음에 보통 결과들을 어딘가에 적어둡니다.
+여러분은 테스트 스위트가 통과되는 것이 중지될 때 여러분이 통지를 받도록, 또는 테스트가 통과되는 한 여러분의 레포지토리에 작은 뱃지가 나타나도록 설정을 할 수도 있을 것입니다.
 
 As an example of a CI system, the class website is set up using GitHub
 Pages. Pages is a CI action that runs the Jekyll blog software on every
