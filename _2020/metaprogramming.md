@@ -192,22 +192,15 @@ CI 시스템의 예시로서, 수업 웹사이트가 깃허브 페이지스(GitH
 이게 우리가 웹사이트를 업데이트하는 걸 굉장히 쉽게 만들어 주죠!  
 우린 그냥 로컬에서 변화를 만들고, 깃(git)을 통해서 커밋(commit)하고, 그 다음에 푸쉬(push)할 뿐이에요. 나머지는 CI가 책임져 주는 거죠.
 
-## A brief aside on testing
+## 테스팅에 관한 간단한 여담
 
-Most large software projects come with a "test suite". You may already
-be familiar with the general concept of testing, but we thought we'd
-quickly mention some approaches to testing and testing terminology that
-you may encounter in the wild:
+대부분의 큰 소프트웨어 프로젝트에는 "테스트 스위트(test suite)가 딸려 있습니다. 여러분은 이미 테스팅의 일반적인 개념에 익숙할지도 모르지만, 우리는 여러분이 야생에서 마주할 수도 있는 몇몇 테스팅 접근법들과 테스팅 용어들에 대해 짧게 언급하는 게 나을 거라 생각했습니다:
 
--   Test suite: a collective term for all the tests
--   Unit test: a "micro-test" that tests a specific feature in isolation
--   Integration test: a "macro-test" that runs a larger part of the
-    system to check that different feature or components work _together_.
--   Regression test: a test that implements a particular pattern that
-    _previously_ caused a bug to ensure that the bug does not resurface.
--   Mocking: the replace a function, module, or type with a fake
-    implementation to avoid testing unrelated functionality. For example,
-    you might "mock the network" or "mock the disk".
+-   테스트 스위트(Test suite): 모든 테스트들에 대한 총칭
+-   유닛 테스트(Unit test, 단위 테스트): 특정 기능만 떼어놓고 테스트하는 "마이크로-테스트(micro-test)"
+-   통합 테스트(Integration test): 그 달라진 기능이나 요소들이 _함께_ 제대로 작동하는 지 확인하기 위해 시스템의 더 큰 부분을 실행하는 "매크로-테스트(macro-test)"
+-   회귀 테스트(Regression test): _이전에_ 버그를 일으켰던 특정 패턴을 구현함으로써 그 버그가 다시 나타나지 않는다는 것을 보장하기 위한 테스트
+-   [모킹(Mocking)](https://www.daleseo.com/python-unittest-mock/): 관련 없는 기능을 테스팅하는 것을 피하기 위해 가짜 구현(fake implementation)으로 함수, 모듈, 또는 타입을 대체하는 것. 예를 들면, "네트워크를 모킹"하거나 "디스크를 모킹"할 수 있다.
 
 # Exercises
 
