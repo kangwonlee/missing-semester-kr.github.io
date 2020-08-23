@@ -393,51 +393,50 @@ index 94bab17..f0013b2 100644
 
 {% comment %}
 
-Branching allows you to "fork" version history. It can be helpful for working
-on independent features or bug fixes in parallel. The `git branch` command can
-be used to create new branches; `git checkout -b <branch name>` creates and
-branch and checks it out.
+분기는 버전 history를 "fork"할 수 있습니다. 독립적 인 기능이나 버그 수정을 병렬로 작업하는 데 유용 할 수 있습니다. 
+`git branch` 명령을 사용하여 새 분기를 만들 수 있습니다. 
+`git checkout -b <branch name>` 로 브랜치를 만들고 확인합니다.
 
-Merging is the opposite of branching: it allows you to combine forked version
-histories, e.g. merging a feature branch back into master. The `git merge`
-command is used for merging.
+병합은 분기의 반대입니다. 예를 들어 기능의 분기를 master로 다시 병합하는 것과 같이 분기 된 버전 history를 결합 할 수 있습니다. 
+`git merge` 명령은 병합에 사용됩니다.
+
 
 {% endcomment %}
 
-- `git branch`: shows branches
-- `git branch <name>`: creates a branch
-- `git checkout -b <name>`: creates a branch and switches to it
-    - same as `git branch <name>; git checkout <name>`
-- `git merge <revision>`: merges into current branch
-- `git mergetool`: use a fancy tool to help resolve merge conflicts
-- `git rebase`: rebase set of patches onto a new base
+- `git branch`: 분기를 보여줍니다
+- `git branch <name>`: 분기를 생성합니다.
+- `git checkout -b <name>`: 분기를 생성하고 전환 합니다.
+    - `git branch <name>; git checkout <name>` 과 동일합니다.
+- `git merge <revision>`: 현재 분기를 병합 합니다.
+- `git mergetool`: 병합 충돌을 해결하는 데 도움이되는 멋진 도구를 사용합니다.
+- `git rebase`: 패치 세트를 새로운 베이스로 배치합니다.
 
 ## Remotes
 
-- `git remote`: list remotes
-- `git remote add <name> <url>`: add a remote
-- `git push <remote> <local branch>:<remote branch>`: send objects to remote, and update remote reference
-- `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
-- `git fetch`: retrieve objects/references from a remote
-- `git pull`: same as `git fetch; git merge`
-- `git clone`: download repository from remote
+- `git remote`: remote 를 나열합니다.
+- `git remote add <name> <url>`: remote를 추가합니다
+- `git push <remote> <local branch>:<remote branch>`: remote로 객체를 보내고 remote 참조를 업데이트합니다.
+- `git branch --set-upstream-to=<remote>/<remote branch>`: 로컬과 remote branch 사이의 통신을 설정합니다.
+- `git fetch`: 원격에서 객체 / 참조를 검색합니다.
+- `git pull`: `git fetch; git merge`와 동일합니다
+- `git clone`: 원격에서 저장소를 다운받습니다.
 
 ## Undo
 
-- `git commit --amend`: edit a commit's contents/message
-- `git reset HEAD <file>`: unstage a file
-- `git checkout -- <file>`: discard changes
+- `git commit --amend`: 커밋 내용 / 메시지 를 편집합니다.
+- `git reset HEAD <file>`: 파일을 unstage 
+- `git checkout -- <file>`: 변경 사항을 취소합니다.
 
 # Advanced Git
 
-- `git config`: Git is [highly customizable](https://git-scm.com/docs/git-config)
-- `git clone --depth=1`: shallow clone, without entire version history
-- `git add -p`: interactive staging
-- `git rebase -i`: interactive rebasing
-- `git blame`: show who last edited which line
-- `git stash`: temporarily remove modifications to working directory
-- `git bisect`: binary search history (e.g. for regressions)
-- `.gitignore`: [specify](https://git-scm.com/docs/gitignore) intentionally untracked files to ignore
+- `git config`: Git을 [고도의 사용](https://git-scm.com/docs/git-config)화 합니다.
+- `git clone --depth=1`: 전체 버전 history 없는 shallow 클론을 합니다. 
+- `git add -p`: 대화형 스테이징을 합니다.
+- `git rebase -i`: 대화형 리베이싱을 합니다.
+- `git blame`: 누가 특정 라인을 마지막으로 편집 하였는지 보여줍니다.
+- `git stash`: 작업 디렉토리에 대한 수정 사항을 일시적으로 제거합니다.
+- `git bisect`: history를 이진 탐색 합니다. (e.g. for regressions)
+- `.gitignore`: 의도적으로 추적되지 않는 파일을 [지정](https://git-scm.com/docs/gitignore)합니다.
 
 # Miscellaneous
 
