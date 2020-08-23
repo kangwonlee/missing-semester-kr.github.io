@@ -202,41 +202,14 @@ CI 시스템의 예시로서, 수업 웹사이트가 깃허브 페이지스(GitH
 -   회귀 테스트(Regression test): _이전에_ 버그를 일으켰던 특정 패턴을 구현함으로써 그 버그가 다시 나타나지 않는다는 것을 보장하기 위한 테스트
 -   [모킹(Mocking)](https://www.daleseo.com/python-unittest-mock/): 관련 없는 기능을 테스팅하는 것을 피하기 위해 가짜 구현(fake implementation)으로 함수, 모듈, 또는 타입을 대체하는 것. 예를 들면, "네트워크를 모킹"하거나 "디스크를 모킹"할 수 있다.
 
-# Exercises
+# 연습
 
-1.  Most makefiles provide a target called `clean`. This isn't intended
-    to produce a file called `clean`, but instead to clean up any files
-    that can be re-built by make. Think of it as a way to "undo" all of
-    the build steps. Implement a `clean` target for the `paper.pdf`
-    `Makefile` above. You will have to make the target
-    [phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html).
-    You may find the [`git ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
-    A number of other very common make targets are listed
-    [here](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets).
-2.  Take a look at the various ways to specify version requirements for
-    dependencies in [Rust's build
-    system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
-    Most package repositories support similar syntax. For each one
-    (caret, tilde, wildcard, comparison, and multiple), try to come up
-    with a use-case in which that particular kind of requirement makes
-    sense.
-3.  Git can act as a simple CI system all by itself. In `.git/hooks`
-    inside any git repository, you will find (currently inactive) files
-    that are run as scripts when a particular action happens. Write a
-    [`pre-commit`](https://git-scm.com/docs/githooks#_pre_commit) hook
-    that runs `make paper.pdf` and refuses the commit if the `make`
-    command fails. This should prevent any commit from having an
-    unbuildable version of the paper.
-4.  Set up a simple auto-published page using [GitHub
-    Pages](https://help.github.com/en/actions/automating-your-workflow-with-github-actions).
-    Add a [GitHub Action](https://github.com/features/actions) to the
-    repository to run `shellcheck` on any shell files in that
-    repository (here is [one way to do
-    it](https://github.com/marketplace/actions/shellcheck)). Check that
-    it works!
-5.  [Build your
-    own](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)
-    GitHub action to run [`proselint`](http://proselint.com/) or
-    [`write-good`](https://github.com/btford/write-good) on all the
-    `.md` files in the repository. Enable it in your repository, and
-    check that it works by filing a pull request with a typo in it.
+1. 대부분의 메이크파일(Makefile)은 `clean`이라고 하는 타겟을 제공합니다. 이건 `clean`이라는 파일을 생성하기 위한 것이 아니라 make에 의해서 다시 빌드될 수 있는 모든 파일들을 싹 지우기 위한 것입니다. 모든 빌드 스텝들을 "되돌리기(undo)"할 수 있는 방법이라고 생각하시면 되요.  
+   위에 있는 `paper.pdf` 메이크파일을 위한 `clean` 타겟을 구현해보세요. [포니](https://pinocc.tistory.com/131) 타겟(phony target)을 구현해야할 겁니다. 아마 [git ls-files](https://git-scm.com/docs/git-ls-files) [명령어](https://m.blog.naver.com/PostView.nhn?blogId=cyberpass&logNo=221037298316&proxyReferer=https:%2F%2Fwww.google.com%2F)가 유용할 겁니다.  
+   아주 흔한 다른 `make` 타겟들은 [여기](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets)에 나열되어 있습니다.
+2. [Rust's build
+   system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)에서 의존성들에 대한 버전 요구사항들을 명시하는 다양한 방법들을 살펴보세요. 대부분의 패키지 레포지토리가 비슷한 문법을 지원합니다. 각각의 방법에 대해서 그 특정한 종류의 요구사항이 말이 되는 활용 사례를 제시해 보세요.
+3. 깃(Git)은 그 자체로 단순한 CI 시스템으로서 기능할 수 있습니다. 어떤 깃 레포지토리(git repository)에든 있는 `.git/hooks` 안에서, 특정 행위가 일어날 때 스크립트(script)로서 실행되는 (현재 비활성인) 파일들을 발견할 수 있을 것입니다. `make paper.pdf`를 실행시키고 `make` 명령어가 실패하면 커밋을 거부하는 [프리커밋 훅(`pre-commit` hook)](https://git-scm.com/book/ko/v2/Git맞춤-Git-Hooks)을 작성해보세요.
+   이러면 빌드가 안 되는 버전의 paper를 어떤 커밋도 가지고 있지 않도록 방지해줄 것입니다.
+4. [깃허브 페이지스(GitHub Pages)](https://help.github.com/en/actions/automating-your-workflow-with-github-actions)를 사용해서 자동으로 게재되는 단순한 페이지를 하나 만들어 보세요. 레포지토리에 [깃허브 액션(GitHub Action)](https://github.com/features/actions)을 추가해서 레포지토리에 있는 모든 셸(shell) 파일들에 대해 `shellcheck`을 실행해보세요.(여기에 [그 방법 중 하나](https://github.com/marketplace/actions/shellcheck)가 있습니다.) 잘 작동하는 지 한 번 확인해보세요!
+5. [자신만의 깃허브 액션(GitHub Action)을 빌드](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)해서 레포지토리에 있는 모든 `.md` 파일들에 대해서 [`proselint`](http://proselint.com/) 또는 [`write-good`](https://github.com/btford/write-good)을 실행해보세요. 그걸 여러분의 레포지토리에서 활성화시키고, 안에 오타가 포함된 풀 리퀘스트(pull request; PR)를 보내서 잘 작동하는 지 확인해 보세요.
