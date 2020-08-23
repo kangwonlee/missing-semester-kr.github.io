@@ -184,15 +184,14 @@ pdflatex paper.tex
 큰 것들 중에는 트레비스 CI(Travis CI), 아주르 파이프라인(Azure Pipelines), 그리고 깃허브 액션즈(GitHub actions)가 있습니다.
 이것들은 거의 같은 방식으로 작동합니다:  
 여러분이 여러분의 레포지토리에 다양한 일들이 발생할 때 어떤 일이 일어나야 하는지에 대해 설명하는 파일을 그 레포지토리에 추가합니다.
-단연코 가장 흔한 것은 "누군가 코드를 푸쉬(push)하면, 테스트 스위트(test suite)를 실행한다"와 같은 규칙입니다. 그 이벤트가 촉발할 때, CI 제공자는 가상머신(virtual machine) 혹은 그 이상의 것을 돌리고, 여러분이 작성한 "레시피" 안에 있는 명령들을 실행시키고는, 그 다음에 보통 결과들을 어딘가에 적어둡니다.
+단연코 가장 흔한 것은 "누군가 코드를 푸쉬(push)하면, 테스트 스위트(test suite)를 실행한다"와 같은 규칙입니다. 그 이벤트가 촉발될 때, CI 제공자는 가상머신(virtual machine) 혹은 그 이상의 것을 돌리고, 여러분이 작성한 "레시피" 안에 있는 명령들을 실행시키고는, 보통 그 다음에는 결과들을 어딘가에 적어둡니다.
 여러분은 테스트 스위트가 통과되는 것이 중지될 때 여러분이 통지를 받도록, 또는 테스트가 통과되는 한 여러분의 레포지토리에 작은 뱃지가 나타나도록 설정을 할 수도 있을 것입니다.
 
-As an example of a CI system, the class website is set up using GitHub
-Pages. Pages is a CI action that runs the Jekyll blog software on every
-push to `master` and makes the built site available on a particular
-GitHub domain. This makes it trivial for us to update the website! We
-just make our changes locally, commit them with git, and then push. CI
-takes care of the rest.
+CI 시스템의 예시로서, 수업 웹사이트가 깃허브 페이지스(GitHub Pages)를 이용해서 준비되어 있습니다.  
+페이지스(Pages)는 `master` 브랜치에 올라오는 모든 푸쉬(push)에 대해서 제킬 블로그 소프트웨어([Jekyll](http://jekyllrb-ko.github.io))를 실행하고 빌드된 사이트가 특정 깃허브 도메인에서 사용 가능하도록 만드는 CI 동작입니다.
+이게 우리가 웹사이트를 업데이트하는 걸 굉장히 쉽게 만들어 주죠!
+CI takes care of the rest.  
+우린 그냥 로컬에서 변화를 만들고, 깃(git)을 통해서 커밋(commit)하고, 그 다음에 푸쉬(push)할 뿐이에요. 나머지는 CI가 책임져 주는 거죠.
 
 ## A brief aside on testing
 
