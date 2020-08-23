@@ -222,9 +222,9 @@ Git은 "스테이징 영역" 이라는 메커니즘을 통해 스냅 샷에 포�
 
 # Git command-line interface
 
-To avoid duplicating information, we're not going to explain the commands below
-in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
-for more information, or watch the lecture video.
+정보가 중복되는 것을 막기 위해 우리는 명령어에 대해 자세히 설명하지는 않을 것입니다. 
+자세한 내용은 강의 영상을 보거나, 더 많은 정보가 있는 Pro Git을 참고하기를 추천드립니다. 
+
 
 ## Basics
 
