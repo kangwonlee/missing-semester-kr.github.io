@@ -189,8 +189,7 @@ pdflatex paper.tex
 
 CI 시스템의 예시로서, 수업 웹사이트가 깃허브 페이지스(GitHub Pages)를 이용해서 준비되어 있습니다.  
 페이지스(Pages)는 `master` 브랜치에 올라오는 모든 푸쉬(push)에 대해서 제킬 블로그 소프트웨어([Jekyll](http://jekyllrb-ko.github.io))를 실행하고 빌드된 사이트가 특정 깃허브 도메인에서 사용 가능하도록 만드는 CI 동작입니다.
-이게 우리가 웹사이트를 업데이트하는 걸 굉장히 쉽게 만들어 주죠!
-CI takes care of the rest.  
+이게 우리가 웹사이트를 업데이트하는 걸 굉장히 쉽게 만들어 주죠!  
 우린 그냥 로컬에서 변화를 만들고, 깃(git)을 통해서 커밋(commit)하고, 그 다음에 푸쉬(push)할 뿐이에요. 나머지는 CI가 책임져 주는 거죠.
 
 ## A brief aside on testing
