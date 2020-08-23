@@ -233,21 +233,16 @@ alias ll
 별칭을 영구적으로 만들려면 다음 절에서 소개할 `.bashrc`나 `.zshrc`와 같은 shell 시작 파일에 포함시켜야 합니다.
 
 
-# Dotfiles
+# 도트 파일(Dotfiles)
 
-Many programs are configured using plain-text files known as _dotfiles_
-(because the file names begin with a `.`, e.g. `~/.vimrc`, so that they are
-hidden in the directory listing `ls` by default).
+많은 프로그램은 _dotfiles_ 로 알려진 일반 텍스트 파일을 사용하여 구성됩니다.
+(파일 이름이 `.`, `~/.vimrc` 예들로 시작하므로 기본적으로 디렉토리 목록에 숨겨져 있기 때문입니다.)
 
-Shells are one example of programs configured with such files. On startup, your shell will read many files to load its configuration.
-Depending on the shell, whether you are starting a login and/or interactive the entire process can be quite complex.
-[Here](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) is an excellent resource on the topic.
+쉘은 이러한 파일로 구성된 프로그램의 한 예입니다. 시작시 쉘은 구성을 로드하기 위해 많은 파일을 읽습니다. 쉘에 따라 로그인을 시작하든 쌍방향의 작업을 시작하든 둘 중 어떤 것을 시작하든 전체 프로세스는 상당히 복잡할 수 있습니다. 주제에 대한 자료는 [`여기`](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)에 있습니다. 
 
-For `bash`, editing your `.bashrc` or `.bash_profile` will work in most systems.
-Here you can include commands that you want to run on startup, like the alias we just described or modifications to your `PATH` environment variable.
-In fact, many programs will ask you to include a line like `export PATH="$PATH:/path/to/program/bin"` in your shell configuration file so their binaries can be found.
+`bash` 의 경우, `.bashrc` 혹은 `.bash_profile`의 편집은 대부분의 시스템에서 작동합니다. 여기에 방금 설명한 별칭이나 'PATH' 환경 변수 수정과 같이 시작 시 실행할 명령을 포함할 수 있습니다. 실제로 많은 프로그램에서는 binaries를 찾을 수 있도록 쉘 구성 파일에 `export PATH="$PATH:/path/to/program/bin"`과 같은 행을 포함하도록 요청할 것입니다.
 
-Some other examples of tools that can be configured through dotfiles are:
+도트 파일을 통해 구성할 수 있는 도구의 다른 예는 다음과 같습니다 :
 
 - `bash` - `~/.bashrc`, `~/.bash_profile`
 - `git` - `~/.gitconfig`
@@ -255,69 +250,45 @@ Some other examples of tools that can be configured through dotfiles are:
 - `ssh` - `~/.ssh/config`
 - `tmux` - `~/.tmux.conf`
 
-How should you organize your dotfiles? They should be in their own folder,
-under version control, and **symlinked** into place using a script. This has
-the benefits of:
+dotfiles를 어떻게 체계적으로 구성할 수 있을까요? 버전 관리 하에 자체 폴더에 있어야하며, 스크립트를 사용하여 **symlinked**를 배치해야합니다. 이것은 다음과 같은 이점이 있습니다.
 
-- **Easy installation**: if you log in to a new machine, applying your
-customizations will only take a minute.
-- **Portability**: your tools will work the same way everywhere.
-- **Synchronization**: you can update your dotfiles anywhere and keep them all
-in sync.
-- **Change tracking**: you're probably going to be maintaining your dotfiles
-for your entire programming career, and version history is nice to have for
-long-lived projects.
+- **쉬운 설치**: 새 컴퓨터에 로그인한 경우, 여러분의 customizations(사용자 정의)을 적용하는데 몇 분 밖에 걸리지 않습니다.
+- **이식성**: 여러분의 도구는 어디서나 동일한 방식으로 작동할 것입니다.
+- **동기화**: 어디서든 dotfile을 업데이트하고 모두 동기화 상태로 유지할 수 있습니다.
+- **변경 내용 추적**: 여러분은 아마 프로그래머로서 일을 할 동안 dotfiles을 유지 관리할 것이고, 버전 기록은 오래 지속되는 프로젝트에 유용할 것입니다.
 
-What should you put in your dotfiles?
-You can learn about your tool's settings by reading online documentation or
-[man pages](https://en.wikipedia.org/wiki/Man_page). Another great way is to
-search the internet for blog posts about specific programs, where authors will
-tell you about their preferred customizations. Yet another way to learn about
-customizations is to look through other people's dotfiles: you can find tons of
-[dotfiles
-repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)
-on Github --- see the most popular one
-[here](https://github.com/mathiasbynens/dotfiles) (we advise you not to blindly
-copy configurations though).
-[Here](https://dotfiles.github.io/) is another good resource on the topic.
+dotfiles에 무엇을 넣어야할까요?
+온라인상의 자료 또는 [`메인 페이지`](https://en.wikipedia.org/wiki/Man_page)를 읽으며 여러 가지 도구에 대한 설정울 배울 수 있습니다. 또 다른 좋은 방법은 인터넷에서 특정 프로그램에 대한 블로그 게시물을 검색하는 것입니다. 여기에서 블로거는 그들이 선호하는 customizations(사용자 정의)에 대해 이야기할 것입니다. customizations(사용자 정의)에 대해 배우는 또 다른 방법은 다른 사람들의 dotfile을 살펴 보는 것 입니다. Github에서 수많은 [`dotfiles 저장소`](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)를 찾을 수 있습니다. 가장 인기있는 저장소는 [`여기`](https://github.com/mathiasbynens/dotfiles)입니다.(하지만 configurations을 무턱대고 복사하는 것은 올바른 방법이 아님을 알려드립니다.) [`이것`](https://dotfiles.github.io/)은 이 주제에 대한 또 다른 좋은 자료입니다.
 
-All of the class instructors have their dotfiles publicly accessible on GitHub: [Anish](https://github.com/anishathalye/dotfiles),
-[Jon](https://github.com/jonhoo/configs),
-[Jose](https://github.com/jjgo/dotfiles).
+모든 강사들은 GitHub에서 공적으로 액세스할 수 있는 dotfiles을 가지고 있습니다 : [Anish](https://github.com/anishathalye/dotfiles), [Jon](https://github.com/jonhoo/configs), [Jose](https://github.com/jjgo/dotfiles).
 
 
-## Portability
+## 이식성(Portability)
 
-A common pain with dotfiles is that the configurations might not work when working with several machines, e.g. if they have different operating systems or shells. Sometimes you also want some configuration to be applied only in a given machine.
+dotfile의 일반적인 문제점은 예를 들어 운영 체제나 쉘이 서로 다른 경우와 같이 여러 장치로 작업할 때 configurations이 작동하지 않을 수 있다는 것입니다. 때로는 특정 시스템에만 일부 configuration을 적용하기를 원할 수도 있습니다.
 
-There are some tricks for making this easier.
-If the configuration file supports it, use the equivalent of if-statements to
-apply machine specific customizations. For example, your shell could have something
-like:
+이것을 쉽게 만드는 몇 가지 요령들이 있습니다. 구성 파일이 지원하는 경우, if문의 비교연산을 사용하여 특정한 사용자 설정을 적용할 수 있습니다. 예를 들어 쉘은 다음과 같은 것들을 활용할 수 있습니다.
 
 ```bash
 if [[ "$(uname)" == "Linux" ]]; then {do_something}; fi
 
-# Check before using shell-specific features
+# 쉘별 기능을 사용하기 전에 확인하기
 if [[ "$SHELL" == "zsh" ]]; then {do_something}; fi
 
-# You can also make it machine-specific
+# 특정 장치별로 만들기 
 if [[ "$(hostname)" == "myServer" ]]; then {do_something}; fi
 ```
 
-If the configuration file supports it, make use of includes. For example,
-a `~/.gitconfig` can have a setting:
+구성 파일이 이를 지원하는 경우, includes를 활용할 수 있습니다. 예를 들어 `~/.gitconfig`는 다음과 같은 설정을 가질 수 있습니다.  
 
 ```
 [include]
     path = ~/.gitconfig_local
 ```
 
-And then on each machine, `~/.gitconfig_local` can contain machine-specific
-settings. You could even track these in a separate repository for
-machine-specific settings.
+그리고 각 장치에서 `~/.gitconfig_local`은 장치별 설정들을 포함할 수 있습니다. 분리된 저장소(리포지토리)에서 시스템별 설정을 추적할 수도 있습니다.
 
-This idea is also useful if you want different programs to share some configurations. For instance, if you want both `bash` and `zsh` to share the same set of aliases you can write them under `.aliases` and have the following block in both:
+이것은 또한 다른 프로그램들이 일부 구성을 공유하기를 원하는 경우에도 유용합니다. 예를 들어, 여러분이 `bash`와 `zsh` 두 가지 모두 동일한 별칭으로 공유하고 싶은 경우 `.aliases` 아래에 표기하고 다음 블록을 포함시킬 수 있습니다.
 
 ```bash
 # Test if ~/.aliases exists and source it
@@ -326,86 +297,90 @@ if [ -f ~/.aliases ]; then
 fi
 ```
 
-# Remote Machines
+# 원격 장치(Remote Machines)
 
-It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
+프로그래머들이 일상 업무에 원격 서버를 이용하는 것은 점점 더 보편화되었습니다. 백엔드 소프트웨어를 배치하기 위해 원격 서버를 사용해야 하거나 더 높은 계산 능력을 가진 서버가 필요한 경우, 여러분은 결국 SSH(Secure Shell)를 사용하게 될 것입니다. 대부분의 툴과 마찬가지로 SSH는 구성성이 뛰어나므로 이에 대해 학습할 가치가 있습니다.
 
-To `ssh` into a server you execute a command as follows
+서버에서 `ssh`를 사용하려면 다음과 같은 명령을 실행합니다.
 
 ```bash
 ssh foo@bar.mit.edu
 ```
 
-Here we are trying to ssh as user `foo` in server `bar.mit.edu`.
-The server can be specified with a URL (like `bar.mit.edu`) or an IP (something like `foobar@192.168.1.42`). Later we will see that if we modify ssh config file you can access just using something like `ssh bar`.
-
-## Executing commands
-
-An often overlooked feature of `ssh` is the ability to run commands directly.
-`ssh foobar@server ls` will execute `ls` in the home folder of foobar.
-It works with pipes, so `ssh foobar@server ls | grep PATTERN` will grep locally the remote output of `ls` and `ls | ssh foobar@server grep PATTERN` will grep remotely the local output of `ls`.
+여러분은 서버 `bar.mit.edu`에서 사용자`foo`로 ssh를 사용하게 됩니다.
+서버는 URL ( 예) `bar.mit.edu` ) 또는 IP ( 예) `foobar @ 192.168.1.42` )로 지정할 수 있습니다. 나중에 ssh 구성 파일을 수정하면 `ssh bar`와 같은 것을 사용하여 액세스 할 수 있음을 알 수 있습니다.
 
 
-## SSH Keys
+## 명령실행(Executing commands)
 
-Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless, the private key (often `~/.ssh/id_rsa` and more recently `~/.ssh/id_ed25519`) is effectively your password, so treat it like so.
+놓치기 쉬운 `ssh`의 특징은 명령을 직접 실행할 수 있다는 점입니다.
+`ssh foobar @ server ls`는 foobar의 홈 폴더에서`ls`를 실행합니다.
+파이프와 함께 작동하므로 `ssh foobar @ server ls | grep PATTERN`은 `ls`의 근처의 원격 출력을 grep하고, `ls | ssh foobar@server grep PATTERN`은 먼 로컬 출력을 grep합니다.
 
-### Key generation
 
-To generate a pair you can run [`ssh-keygen`](https://www.man7.org/linux/man-pages/man1/ssh-keygen.1.html).
+## SSH키(SSH Keys)
+
+키 기반 인증은 공개키 암호화를 이용하여 클라이언트가 키를 노출하지 않고 비밀 개인 키(private key)를 소유하고 있음을 서버에 증명합니다. 이렇게하면 매번 암호를 다시 입력 할 필요가 없습니다. 그럼에도 불구하고 개인 키 (종종`~ / .ssh / id_rsa` 그리고 최근에는`~ / .ssh / id_ed25519`)가 사실상 암호이이므로 암호처럼 취급하면 됩니다.
+
+
+### 키 생성(Key generation)
+
+쌍을 생성하려면 [`ssh-keygen`](https://www.man7.org/linux/man-pages/man1/ssh-keygen.1.html)을 실행합니다.
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 ```
-You should choose a passphrase, to avoid someone who gets hold of your private key to access authorized servers. Use [`ssh-agent`](https://www.man7.org/linux/man-pages/man1/ssh-agent.1.html) or [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) so you do not have to type your passphrase every time.
+인증된 서버에 액세스할 수 있는 여러분의 개인 키(private key)를 보유한 사람을 피하려면 암호(passphrase)선택해야합니다. [`ssh-agent`](https://www.man7.org/linux/man-pages/man1/ssh-agent.1.html) 또는 [`gpg-agent`](https://linux.die.net/man/1/gpg-agent)를 사용하면 매번 암호를 입력할 필요없습니다.
 
-If you have ever configured pushing to GitHub using SSH keys, then you have probably done the steps outlined [here](https://help.github.com/articles/connecting-to-github-with-ssh/) and have a valid key pair already. To check if you have a passphrase and validate it you can run `ssh-keygen -y -f /path/to/key`.
+SSH 키를 사용하여 GitHub로 푸시를 구성한 적이 있다면, [here](https://help.github.com/articles/connecting-to-github-with-ssh/))에 설명된 단계를 수행한 후 유효한 키 쌍을 이미 가지고 있을 것입니다. 암호가 있는지 확인하고 유효성을 검사하려면 `ssh-keygen -y -f /path/to/key`를 실행할 수 있습니다.
 
-### Key based authentication
 
-`ssh` will look into `.ssh/authorized_keys` to determine which clients it should let in. To copy a public key over you can use:
+### 키 기반 인증(Key based authentication)
+
+`ssh`는 `ssh / authorized_keys`를 조사하여 허용해야하는 클라이언트를 결정합니다. 공용 키를 복사하려면 다음을 사용할 수 있습니다.
 
 ```bash
 cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
-A simpler solution can be achieved with `ssh-copy-id` where available:
+`ssh-copy-id`를 사용하여 더 간단게 사용할 수 있습니다.
 
 ```bash
 ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 ```
 
-## Copying files over SSH
+## SSH를 통해 파일 복사(Copying files over SSH)
 
-There are many ways to copy files over ssh:
+ssh를 통해 파일을 복사하는 방법에는 여러 가지가 있습니다.
 
-- `ssh+tee`, the simplest is to use `ssh` command execution and STDIN input by doing `cat localfile | ssh remote_server tee serverfile`. Recall that [`tee`](https://www.man7.org/linux/man-pages/man1/tee.1.html) writes the output from STDIN into a file.
-- [`scp`](https://www.man7.org/linux/man-pages/man1/scp.1.html) when copying large amounts of files/directories, the secure copy `scp` command is more convenient since it can easily recurse over paths. The syntax is `scp path/to/local_file remote_host:path/to/remote_file`
-- [`rsync`](https://www.man7.org/linux/man-pages/man1/rsync.1.html) improves upon `scp` by detecting identical files in local and remote, and preventing copying them again. It also provides more fine grained control over symlinks, permissions and has extra features like the `--partial` flag that can resume from a previously interrupted copy. `rsync` has a similar syntax to `scp`.
+- `ssh+tee`, 가장 간단한 방법은 `cat localfile | ssh remote_server tee serverfile`을 실행하여 `ssh`명령 실행(command execution) 그리고 STDIN 입력(input)을 사용하는 것입니다. [`tee`](https://www.man7.org/linux/man-pages/man1/tee.1.html)에서 STDIN의 출력을 파일로 작성합니다.
+- [`scp`](https://www.man7.org/linux/man-pages/man1/scp.1.html) 많은 양의 파일/디렉토리를 복사 할 때, 보안 복사 `scp` 명령은 경로를 쉽게 반복 할 수 있으므로 더 편리합니다. 구문은 `scp path/to/local_file remote_host:path/to/remote_file`입니다. 
+- [`rsync`](https://www.man7.org/linux/man-pages/man1/rsync.1.html)는 로컬과 원격에서 동일한 파일을 탐지해 다시 복사하지 못하게 함으로써 `scp`를 향상시킵니다. 또한 심볼릭 링크(symlinks), 권한(permissions)에 대해 보다 세밀한 제어를 제공하며 이전에 중단 된 복사본에서 다시 시작할 수있는`--partial` 플래그(flag)와 같은 추가 기능이 있습니다. `rsync`는 `scp`와 유사한 구문을 가지고 있습니다. 
 
-## Port Forwarding
 
-In many scenarios you will run into software that listens to specific ports in the machine. When this happens in your local machine you can type `localhost:PORT` or `127.0.0.1:PORT`, but what do you do with a remote server that does not have its ports directly available through the network/internet?.
+## 포트 포워딩(Port Forwarding)
 
-This is called _port forwarding_ and it
-comes in two flavors: Local Port Forwarding and Remote Port Forwarding (see the pictures for more details, credit of the pictures from [this StackOverflow post](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)).
+많은 시나리오에서 여러분은 장치의 특정 포트를 수신하는 소프트웨어를 만나게 될 것입니다. 로컬 시스템에서 발생하게 된다면 `localhost : PORT` 또는 `127.0.0.1 : PORT`를 입력 할 수 있습니다. 그러나, 네트워크/인터넷을 통해 직접 사용할 수 있는 포트가 없는 원격 서버가 있다면 어떻게 해야할까요?  
 
-**Local Port Forwarding**
+이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내요은 사진을 참조해주십시오. 저작권은 [StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
+
+**로컬 포트 포워딩(Local Port Forwarding)**
 ![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png  "Local Port Forwarding")
 
-**Remote Port Forwarding**
+**원격 포트 포워딩(Remote Port Forwarding)**
 ![Remote Port Forwarding](https://i.stack.imgur.com/4iK3b.png  "Remote Port Forwarding")
 
-The most common scenario is local port forwarding, where a service in the remote machine listens in a port and you want to link a port in your local machine to forward to the remote port. For example, if we execute  `jupyter notebook` in the remote server that listens to the port `8888`. Thus, to forward that to the local port `9999`, we would do `ssh -L 9999:localhost:8888 foobar@remote_server` and then navigate to `locahost:9999` in our local machine.
+가장 일반적인 시나리오는 로컬 포트 포워딩(local port forwarding)으로, 원격 장치의 서비스가 포트에서 수신 대기하고 로컬 장치의 포트를 원격 포트로 연결하는 경우입니다.
+예를 들어 '8888' 포트를 수신하는 원격 서버에서 주피터 노트북을 실행하면, 이를 로컬 포트 `9999`로 전달하기 위해 `ssh -L 9999:localhost:8888 foobar@remote_server`를 수행한 다음 로컬 장치에서 `locahost : 9999`로 이동합니다.
 
 
-## SSH Configuration
+## SSH 구성(SSH Configuration)
 
-We have covered many many arguments that we can pass. A tempting alternative is to create shell aliases that look like
+우리는 전달할 수 있는 많은 논쟁을 다루었습니다. 가장 매력적은 대안은 다음과 같이 쉘 별칭을 만드는 것입니다.
 ```bash
 alias my_server="ssh -i ~/.id_ed25519 --port 2222 -L 9999:localhost:8888 foobar@remote_server
 ```
 
-However, there is a better alternative using `~/.ssh/config`.
+그러나 `~/.ssh/config`를 사용하면 더 좋은 대안을 만들 수 있습니다. 
 
 ```bash
 Host vm
@@ -420,99 +395,96 @@ Host *.mit.edu
     User foobaz
 ```
 
-An additional advantage of using the `~/.ssh/config` file over aliases  is that other programs like `scp`, `rsync`, `mosh`, &c are able to read it as well and convert the settings into the corresponding flags.
+별칭(alias)보다 `~/.ssh/config` 파일을 사용하는 것의 또 다른 장점은 `scp`, `rsync`, `mosh`, `&c` 등의 프로그램도 읽을 수 있다는 것과 설정을 해당 플래그로 변환할 수 있다는 것입니다.
+
+`~/.ssh/config` 파일은 도트 파일(dotfile)로 간주될 수 있으며, 일반적으로 이것이 나머지 도트 파일과 같이 있어도 괜찮다는 점을 기억하세요. 그러나, 만약 여러분이 이것을 공개한다면, 여러분은 인터넷상의 낯선 사람들에게 잠재적으로 이런 정보를 제공할 수도 있습니다: 여러분의 서버 주소, 사용자, 개방된 포트, 등등. 이렇게 하면 일부 유형의 공격이 쉬워질 수 있으므로 SSH 구성을 공유하는 데 유의하십시오.
+
+서버측 구성은 보통 `/etc/ssh/sshd_config`에 지정됩니다. 여러분은 여기서 암호 인증 사용 안 함, ssh 포트 변경, X11 포워딩 사용 등의 변경 작업을 수행할 수 있습니다. 구성 설정을 각 사용자별로 지정할 수 있습니다.
+
+## 이외에 알아두면 좋은 사항
+
+원격 서버에 연결할 때 나타나는 흔한 문제들 중 하나는 컴퓨터를 종료/절전하거나, 네트워크를 변경할 때 연결이 끊어지는 것입니다. 게다가 만약 여러분이 연결에서 심한 지연(lag)을 경험하게 된다면 ssh를 사용하기가 꺼려질 수도 있습니다. 모바일 쉘 [Mosh](https://mosh.org/)는 로밍 연결(roaming connections), 간헐적 연결(internittent connectivity), 지능형 로컬 에코(intelligent local echo)가 가능하므로 ssh보다 더 낫습니다.
+
+때로는 원격 폴더를 마운트 하는것이 편리합니다. [sshfs](https://github.com/libfuse/sshfs)는 로컬로 원격 서버에 폴더를 마운트 하여 로컬 에디터를 사용할 수 있게 합니다.
 
 
-Note that the `~/.ssh/config` file can be considered a dotfile, and in general it is fine for it to be included with the rest of your dotfiles. However, if you make it public, think about the information that you are potentially providing strangers on the internet: addresses of your servers, users, open ports, &c. This may facilitate some types of attacks so be thoughtful about sharing your SSH configuration.
+# 셸 & 프레임워크
 
-Server side configuration is usually specified in `/etc/ssh/sshd_config`. Here you can make changes like disabling password authentication, changing ssh ports, enabling X11 forwarding, &c. You can specify config settings on a per user basis.
+셸 툴과 스크립팅에서 우리는 `bash` 셸을 다루었는데요. 그것은 `bash`셸이 단연코 가장 보편적이며, 대부분의 시스템이 그것을 기본 옵션으로 가지고 있기 때문입니다. 하지만 이것이 유일한 선택지는 아닙니다. 
 
-## Miscellaneous
+예를 들어, `bash`의 수퍼셋(superset)인 `zsh` 셸은 다음과 같이 별도의 설치나 구성이 필요없이 사용 가능한 많은 편리한 기능을 제공한다.
 
-A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
+- 더 깔끔한 글로빙(globbing), `**`
+- 인라인 글로빙/와일드카드 확장
+- 스펠링 수정
+- 더 나은 탭 완성/선택
+- 경로 확장 (예를 들어, `cd /u/lo/b` 은 `/usr/local/bin`로 확장됩니다.)
 
-Sometimes it is convenient to mount a remote folder. [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server
-locally, and then you can use a local editor.
+**프레임워크** 또한 여러분의 셸을 개션해 줍니다. 유명한 광범위 프레임워크 몇개를 소개하자면 [prezto](https://github.com/sorin-ionescu/prezto) 아니면 [oh-my-zsh](https://ohmyz.sh/)가 있고, 특정 기능에 초점을 맞춘 규모가 작은 것들에는[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 아니면 [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)가 있습니다. [fish](https://fishshell.com/)같은 셸들은 많은 사용자 친화적 기능들을 기본 탑재하고 있습니다. 이러한 기능들 중에는 아래와 같은 것들이 포함되어 있습니다:
 
+- 우측 프롬프트
+- 명령어 하이라이팅
+- 히스토리 서브스트링 검색
+- 맨 페이지(manual page) 기반의 플래그 완성 기능
+- 더 나은 자동 완성
+- 프롬프트 테마들
 
-# Shells & Frameworks
+이러한 프레임워크를 사용할 때 유의해야 할 점이 있습니다. 그것은 바로 실행하는 코드가 적절하게 최적화되지 않았거나 코드의 양이 너무 많을 때 프레임워크 사용이 셸 속도를 느리게 할 수 있다는 것입니다. 여러분은 이것에 대해 프로파일을 작성하고 자주 사용하지 않는 기능이나 속도 향상보다 더 중요하지 않은 기능들을 막아둘 수 있습니다. 
 
-During shell tool and scripting we covered the `bash` shell because it is by far the most ubiquitous shell and most systems have it as the default option. Nevertheless, it is not the only option.
+# 터미널 에뮬레이터
 
-For example, the `zsh` shell is a superset of `bash` and provides many convenient features out of the box such as:
+여러분의 터미널을 커스터마이징 하는것과 함께, 당신에게 딱 맞는 **터미널 에뮬레이터**와 그 설정을 찾아보는데 시간을 들이는 것도 가치가 있는 일입니다. 이 세상에는 정말 많은 터미널 에뮬레이터들이 있습니다. (여기 [비교]가 있습니다. (https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
 
-- Smarter globbing, `**`
-- Inline globbing/wildcard expansion
-- Spelling correction
-- Better tab completion/selection
-- Path expansion (`cd /u/lo/b` will expand as `/usr/local/bin`)
+여러분은 아마도 여러분의 터미널에서 수백 수천 시간을 보낼 것이기 때문에, 그 설정을 자세히 살펴보는게 확실히 도움이 됩니다. 여러분이 여러분의 터미널에서 수정하고 싶어할만한 것들은 다음과 같습니다. 
 
-**Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://ohmyz.sh/), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
+- 글꼴 선택
+- 색채 배합 (color scheme)
+- 키보드 단축기
+- 탭/창 보조
+- 스크롤백 설정
+- 성능 ( [Alacritty](https://github.com/jwilm/alacritty) 혹은 [kitty](https://sw.kovidgoyal.net/kitty/)와 같은 최신 터미널들은  GPU 가속화를 지원합니다).
 
-- Right prompt
-- Command syntax highlighting
-- History substring search
-- manpage based flag completions
-- Smarter autocompletion
-- Prompt themes
+# 실습
 
-One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
+## 작업 제어
 
-# Terminal Emulators
+1. 지금까지 공부한 바에 따르면, 우리는 명령어 `ps aux | grep` 로 PID를 조회하여 작업을 종료할 수 있습니다. 하지만 이것보다 더 나은 방법이 있습니다. 터미널에서 `sleep 10000`를  실행하고, `Ctrl-Z`로 그것을 백그라운드 실행하세요. 그리고 `bg`를 통해 이 작업을 계속합니다. 이제 [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html)을 사용해 pid를 찾은 다움 [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html)을 실행하면 pid를 직접 타이핑하지 않고 작업을 종료시킬 수 있습니다. (힌트: `-af` 플래그를 사용하세요).
 
-Along with customizing your shell, it is worth spending some time figuring out your choice of **terminal emulator** and its settings. There are many many terminal emulators out there (here is a [comparison](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
+2. 여러분이 다른 프로세스가 종료되기를 기다려 새 프로세스를 시작하려고 한다고 합시다, 이것을 어떻게 할 수 있을까요? 이 실습에서 프로세스 제한은 항상 `sleep 60 &`로 합니다.
+이것을 가능케 하는 또 다른 방법은 [`wait`](https://www.man7.org/linux/man-pages/man1/wait.1p.html) 명령어를 사용하는 것입니다. sleep 명령어를 실행한 뒤 백그라운드 작업이 끝날 때까지 기다려 `ls`가 실행되도록 하세요.
 
-Since you might be spending hundreds to thousands of hours in your terminal it pays off to look into its settings. Some of the aspects that you may want to modify in your terminal include:
+    하지만 만일 각기 다른 bash 창에서 작업을 실행하는 중이라면, 이 시도는 실패할 것입니다. `wait`은 자식 프로세스에만 적용되기 때문입니다. 지금껏 우리가 다루지 않은 기능 중 하나는 명령어 `kill`이 성공했을때 exit status가 0(zero)이 되며, 그렇지 않을때는 0이 아니라는 것(nonzero)입니다. 명령어 `kill -0`은 시그널을 보내지 않습니다만 프로세스가 존재하지 않을때 0이 아닌 exit status를 반환할 것입니다. 
+    `pidwait`이라는 이름의, pid를 가져오고 해당 프로세스가 끝날 때까지 기다리는 bash 명령어를 작성해 보세요. 불필요한 CPU 낭비 방지를 위해 `sleep` 명령어를 사용해야 합니다. 
 
-- Font choice
-- Color Scheme
-- Keyboard shortcuts
-- Tab/Pane support
-- Scrollback configuration
-- Performance (some newer terminals like [Alacritty](https://github.com/jwilm/alacritty) or [kitty](https://sw.kovidgoyal.net/kitty/) offer GPU acceleration).
+## 터미널 멀티플렉서
 
-# Exercises
+1. 이 `tmux` [튜토리얼](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)을 따라해 보고 [이 단계](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)에 따라 기본적인 커스터마이제이션 방법을 배워보세요. 
 
-## Job control
+## 별칭
 
-1. From what we have seen, we can use some `ps aux | grep` commands to get our jobs' pids and then kill them, but there are better ways to do it. Start a `sleep 10000` job in a terminal, background it with `Ctrl-Z` and continue its execution with `bg`. Now use [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html) to find its pid and [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html) to kill it without ever typing the pid itself. (Hint: use the `-af` flags).
+1. 오타 낼 경우를 대비해서 `cd`로 연결되는 별칭 `dc`를 생성합니다.
 
-1. Say you don't want to start a process until another completes, how you would go about it? In this exercise our limiting process will always be `sleep 60 &`.
-One way to achieve this is to use the [`wait`](https://www.man7.org/linux/man-pages/man1/wait.1p.html) command. Try launching the sleep command and having an `ls` wait until the background process finishes.
-
-    However, this strategy will fail if we start in a different bash session, since `wait` only works for child processes. One feature we did not discuss in the notes is that the `kill` command's exit status will be zero on success and nonzero otherwise. `kill -0` does not send a signal but will give a nonzero exit status if the process does not exist.
-    Write a bash function called `pidwait` that takes a pid and waits until the given process completes. You should use `sleep` to avoid wasting CPU unnecessarily.
-
-## Terminal multiplexer
-
-1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these steps](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/).
-
-## Aliases
-
-1. Create an alias `dc` that resolves to `cd` for when you type it wrongly.
-
-1.  Run `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`  to get your top 10 most used commands and consider writing shorter aliases for them. Note: this works for Bash; if you're using ZSH, use `history 1` instead of just `history`.
+2.  `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`를 실행해서 가장 많이 사용하는 명령어 10개를 확인합니다. 그리고 이들에게 짧은 별칭을 부여하는 것을 고려해 보세요. 주의: 이 방법은 Bash에서 유효합니다; 만일 ZSH를 쓰고 있다면, 그냥 `history` 말고 `history 1`를 사용하세요. 
 
 
-## Dotfiles
+## 도트 파일
 
-Let's get you up to speed with dotfiles.
-1. Create a folder for your dotfiles and set up version
-   control.
-1. Add a configuration for at least one program, e.g. your shell, with some
-   customization (to start off, it can be something as simple as customizing your shell prompt by setting `$PS1`).
-1. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized
-   utility](https://dotfiles.github.io/utilities/).
-1. Test your installation script on a fresh virtual machine.
-1. Migrate all of your current tool configurations to your dotfiles repository.
-1. Publish your dotfiles on GitHub.
+이제 도트 파일을 사용할때 작업 속도를 높여봅시다. 
+1. 도트 파일들을 위한 폴더를 생성하고, 버전 컨트롤을 구성합니다.
+2. 최소한 프로그램 하나에 구성을 추가합니다, 예. 여러분의 셸에 약간의 커스터마이제이션 하기(시작하는 차원에서, `$PS1`을 설정해 셸 프롬프트를 커스터마이제이션 하는것과 같이 간단한 것도 좋습니다).
+3. 새로운 머신에서 여러분의 도트파일을 빨리 (그리고 수작업 없이)설치하는 메서드를 생성하세요. 이것은 각 파일에 `ln -s`를 요청하는 셸 스크립트 처럼 간단한 것이어도 됩니다. 또는 [specialized
+   utility](https://dotfiles.github.io/utilities/)를 사용할 수도 있습니다.
+4. 여러분의 설치 스크립트를 새로운 가상 머신에서 테스트 해 보세요.
+5. 현재 도구 구성의 모든 사항을 여러분의 도트파일 레포지토리로 옮겨(migrate)줍니다.
+6. 여러분의 도트 파일을 GitHub에 공개하세요. 
 
-## Remote Machines
+## 원격 머신
 
-Install a Linux virtual machine (or use an already existing one) for this exercise. If you are not familiar with virtual machines check out [this](https://hibbard.eu/install-ubuntu-virtual-box/) tutorial for installing one.
+이번 실습을 위해서 리눅스 가상 머신을 설치 (혹은 기존의 것을 사용) 하세요. 만약 여러분이 가상머신 사용에 익숙하지 않다면,  [여기](https://hibbard.eu/install-ubuntu-virtual-box/) 튜토리얼을 참고해 설치해 보세요.
 
-1. Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -o -a 100 -t ed25519`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agent).
-1. Edit `.ssh/config` to have an entry as follows
+1. `~/.ssh/`로 이동한 다음 그곳에 SSH 키페어가 있는지 확인합니다. 만일 키페어가 없다면, `ssh-keygen -o -a 100 -t ed25519`를 통해 생성하세요. 비밀번호와 `ssh-agent`를 사용하는 것이 권장됩니다. 더 많은 정보는 [여기](https://www.ssh.com/ssh/agent)서 확인하세요. 
+
+2. `.ssh/config`를 수정해 다음과 같은 사항을 추가해 줍니다.
 
 ```bash
 Host vm
@@ -521,8 +493,8 @@ Host vm
     IdentityFile ~/.ssh/id_ed25519
     LocalForward 9999 localhost:8888
 ```
-1. Use `ssh-copy-id vm` to copy your ssh key to the server.
-1. Start a webserver in your VM by executing `python -m http.server 8888`. Access the VM webserver by navigating to `http://localhost:9999` in your machine.
-1. Edit your SSH server config by doing  `sudo vim /etc/ssh/sshd_config` and disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`. Restart the `ssh` service with `sudo service sshd restart`. Try sshing in again.
-1. (Challenge) Install [`mosh`](https://mosh.org/) in the VM and establish a connection. Then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
-1. (Challenge) Look into what the `-N` and `-f` flags do in `ssh` and figure out what a command to achieve background port forwarding.
+1. `ssh-copy-id vm`를 통해 ssh 키를 서버에 복사하세요.
+2. `python -m http.server 8888`를 실행해 여러분의 가상 머신에서 웹서버를 시작합니다. 여러분의 머신에서 `http://localhost:9999`를 통해 해당 서버에 접근할 수 있습니다.
+3. `sudo vim /etc/ssh/sshd_config`를 사용해 SSH 서버의 구성을 수정하세요. 그리고 `PasswordAuthentication`의 값을 변경해 비밀번호 인증을 해제합니다. `PermitRootLogin`의 값을 변경해 루트 로그인 기능을 해제합니다. `sudo service sshd restart` 명령어로 `ssh`를 재시작 합니다. ssh 접속을 다시 시도해 보세요. 
+4. (도전) 가상 머신에 [`mosh`](https://mosh.org/)를 설치해 연결을 구성해 보세요. 그리고 서버/가상머신의 네트워크 어댑터를 연결 해제 합니다. mosh가 이 문제를 제대로 해결할 수 있나요?
+5. (도전) `ssh`에서 `-N`과 `-f` 플래그가 어떤 역할을 하는지 살펴보세요. 그리고 백그라운드 포트 포워딩을 하기 위해서는 어떤 명령어를 써야 하는지 찾아보세요. 
