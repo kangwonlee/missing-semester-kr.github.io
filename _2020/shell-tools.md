@@ -46,13 +46,10 @@ mcd () {
 - `!!` - 인수를 포함하여 마지막 명령 전체를 포함합니다. 일반적으로는 사용 권한이 누락되어 실패할 때 사용합니다. `sudo`를 함께 써서 실패한 명령을 신속하게 다시 실행할 수 있습니다.
 - `$_` - 마지막 명령에서 나온 마지막 인수입니다. 대화형 셸에 있는 경우 `Esc`를 입력한 후 `.`을 입력해 이 값을 신속하게 얻을 수 있습니다.
 
-Commands will often return output using `STDOUT`, errors through `STDERR`, and a Return Code to report errors in a more script-friendly manner.
-The return code or exit status is the way scripts/commands have to communicate how execution went.
-A value of 0 usually means everything went OK; anything different from 0 means an error occurred.
+명령어들은 종종 'STDOUT`을 사용해서 출력을 하는데, 오류를 보고할 때는 좀 더 스크립트 친화적인 방식으로 `STDERR`를 사용해서 코드를 반환합니다. 리턴 코드 또는 종료 상태는 스크립트 또는 명령어들이 어떤 방식으로 실행 방법을 전달하는 지를 보여주는 것입니다. 값 0은 일반적으로 모든 것이 정상임을 의미합니다. 0이 아닌 다른 것은 오류가 발생했음을 의미합니다.
 
-Exit codes can be used to conditionally execute commands using `&&` (and operator) and `||` (or operator), both of which are [short-circuiting](https://en.wikipedia.org/wiki/Short-circuit_evaluation) operators. Commands can also be separated within the same line using a semicolon `;`.
-The `true` program will always have a 0 return code and the `false` command will always have a 1 return code.
-Let's see some examples
+종료 코드는 `&&`(and 연산자) 와 `||`(or 연산자) 즉, [short-circuiting](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 연산자들을 사용하여 조건부로 명령을 실행하는 데 사용할 수 있습니다. 그리고 세미콜론 ; 을 사용하여 동일한 행 내에서 명령을 분리 할 수도 있습니다. 
+참(true)인 프로그램은 항상 0 리턴 코드를 가지며 거짓(false) 명령은 항상 1 리턴 코드를 갖습니다.몇 가지 예를 통해 한 번 봅시다. 
 
 ```bash
 false || echo "Oops, fail"
@@ -74,13 +71,9 @@ false ; echo "This will always run"
 # This will always run
 ```
 
-Another common pattern is wanting to get the output of a command as a variable. This can be done with _command substitution_.
-Whenever you place `$( CMD )` it will execute `CMD`, get the output of the command and substitute it in place.
-For example, if you do `for file in $(ls)`, the shell will first call `ls` and then iterate over those values.
-A lesser known similar feature is _process substitution_, `<( CMD )` will execute `CMD` and place the output in a temporary file and substitute the `<()` with that file's name. This is useful when commands expect values to be passed by file instead of by STDIN. For example, `diff <(ls foo) <(ls bar)` will show differences between files in dirs  `foo` and `bar`.
+또 다른 일반적인 패턴은 명령의 출력을 변수로 가져 오는 것입니다. 이것은 _명령어대체_ 로 수행 할 수 있습니다. `$ (CMD)`를 기입 할 때마다 `CMD`가 실행되고 명령의 출력을 가져와 제자리에 대체합니다. 예를들어, 'for file in $ (ls)` 라는 코드를 수행하면 쉘은 먼저 `ls` 를 호출 한 다음 해당 값을 반복합니다. 위와 비슷하지만 상대적으로 덜 알려진 유사한 기능은 _절차대체(process replacement)_ 입니다. `<(CMD)` 는 `CMD` 를 실행하고 출력을 임시 파일에 배치하고 `<()` 를 해당 파일의 이름으로 대체합니다. 이 명령어는 보통 STDIN이 아닌 파일 형태로 값이 전달 될 때 유용합니다. 예를 들어, `diff <(ls foo) <(ls bar)` 는 디렉토리 `foo` 와 `bar` 에있는 파일 간의 차이점을 표시합니다.
 
-
-Since that was a huge information dump, let's see an example that showcases some of these features. It will iterate through the arguments we provide, `grep` for the string `foobar`, and append it to the file as a comment if it's not found.
+위에 너무 많은 정보만을 제공했기 때문에, 이러한 기능 중 일부를 보여주는 예를 살펴 보겠습니다. 아래는 우리가 제공하는 인수,`foobar` 문자열에 대해 `grep` 을 반복하고, 찾을 수없는 경우 주석으로 파일에 추가합니다.
 
 ```bash
 #!/bin/bash
@@ -100,13 +93,11 @@ for file in $@; do
 done
 ```
 
-In the comparison we tested whether `$?` was not equal to 0.
-Bash implements many comparisons of this sort - you can find a detailed list in the manpage for [`test`](https://www.man7.org/linux/man-pages/man1/test.1.html).
-When performing comparisons in bash, try to use double brackets `[[ ]]` in favor of simple brackets `[ ]`. Chances of making mistakes are lower although it won't be portable to `sh`. A more detailed explanation can be found [here](http://mywiki.wooledge.org/BashFAQ/031).
+비교에서 우리는`$?`가 0과 같지 않은지 테스트했습니다. Bash는 이런 종류의 많은 비교를 구현합니다. manpage서 [`test`](https://www.man7.org/linux/man-pages/man1/test.1.html) 에 대한 자세한 목록을 찾을 수 있습니다. bash에서 비교를 수행 할 때는 간단한 대괄호`[]`대신 이중 대괄호`[[]]`를 사용하십시오. 'sh'로 이식 할 수는 없지만 실수 할 가능성은 낮습니다. 자세한 설명은 [여기] (http://mywiki.wooledge.org/BashFAQ/031) 서 확인할 수 있습니다. 
 
-When launching scripts, you will often want to provide arguments that are similar. Bash has ways of making this easier, expanding expressions by carrying out filename expansion. These techniques are often referred to as shell _globbing_.
-- Wildcards - Whenever you want to perform some sort of wildcard matching, you can use `?` and `*` to match one or any amount of characters respectively. For instance, given files `foo`, `foo1`, `foo2`, `foo10` and `bar`, the command `rm foo?` will delete `foo1` and `foo2` whereas `rm foo*` will delete all but `bar`.
-- Curly braces `{}` - Whenever you have a common substring in a series of commands, you can use curly braces for bash to expand this automatically. This comes in very handy when moving or converting files.
+스크립트를 시작할 때 유사한 인수를 제공해야하는 경우가 종종 있을겁니다. Bash에는 이런 상황에서, 파일 이름 확장을 수행하여, 식을 보다 쉽게 확장 할 수있는 방법을 가지고 있습니다. 이러한 기술 중 하나가 쉘 _globbing_ 입니다.
+- Wildcards - 일종의 와일드 카드 일치를 수행 할 때마다 `?` 및 `*` 를 사용하여 각각 하나 또는 원하는 양의 문자를 일치시킬 수 있습니다. 예를 들어 `foo`,`foo1`,`foo2`,`foo10` 및 `bar` 파일이 있을 때, `rm foo?` 명령어를 치면, `foo1` 과 `foo2` 를 삭제하는 반면에 `rm foo *` 는 `bar`를 뺀 모든 파일을 삭제합니다. 
+- 중괄호(Curly braces) `{}` - 일련의 명령에 공통 부분 문자열이있을 때마다 bash에 중괄호를 사용하여이를 자동으로 확장 할 수 있습니다. 이것은 파일을 이동하거나 변환 할 때 매우 편리합니다.
 
 ```bash
 convert image.{png,jpg}
@@ -136,9 +127,9 @@ diff <(ls foo) <(ls bar)
 
 <!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
 
-Writing `bash` scripts can be tricky and unintuitive. There are tools like [shellcheck](https://github.com/koalaman/shellcheck) that will help you find errors in your sh/bash scripts.
+`bash` 스크립트를 작성하는 것은 까다롭고 직관적이지 않을 수 있습니다. sh / bash 스크립트에서 오류를 찾는 데 도움이되는 [shellcheck] (https://github.com/koalaman/shellcheck)와 같은 도구가 있으니 참고해보세요.
 
-Note that scripts need not necessarily be written in bash to be called from the terminal. For instance, here's a simple Python script that outputs its arguments in reversed order:
+참고로, 터미널에서 호출하기 위해 반드시 bash로 스크립트를 작성할 필요는 없습니다. 예를 들어 다음은 인수를 역순으로 출력하는 간단한 Python 스크립트입니다.
 
 ```python
 #!/usr/local/bin/python
@@ -147,30 +138,22 @@ for arg in reversed(sys.argv[1:]):
     print(arg)
 ```
 
-The kernel knows to execute this script with a python interpreter instead of a shell command because we included a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line at the top of the script.
-It is good practice to write shebang lines using the [`env`](https://www.man7.org/linux/man-pages/man1/env.1.html) command that will resolve to wherever the command lives in the system, increasing the portability of your scripts. To resolve the location, `env` will make use of the `PATH` environment variable we introduced in the first lecture.
-For this example the shebang line would look like `#!/usr/bin/env python`.
 
-Some differences between shell functions and scripts that you should keep in mind are:
-- Functions have to be in the same language as the shell, while scripts can be written in any language. This is why including a shebang for scripts is important.
-- Functions are loaded once when their definition is read. Scripts are loaded every time they are executed. This makes functions slightly faster to load, but whenever you change them you will have to reload their definition.
-- Functions are executed in the current shell environment whereas scripts execute in their own process. Thus, functions can modify environment variables, e.g. change your current directory, whereas scripts can't. Scripts will be passed by value environment variables that have been exported using [`export`](https://www.man7.org/linux/man-pages/man1/export.1p.html)
-- As with any programming language, functions are a powerful construct to achieve modularity, code reuse, and clarity of shell code. Often shell scripts will include their own function definitions.
+커널은 스크립트 상단에 [shebang] (https://en.wikipedia.org/wiki/Shebang_ (Unix)) 줄을 포함했기 때문에 이 스크립트를 쉘 명령 대신 파이썬 인터프리터로 실행하는 것을 알고 있습니다. [`env`] (https://www.man7.org/linux/man-pages/man1/env.1.html) 명령을 사용하여 명령이 시스템 어디에 있든 확인하는 것을 shebang 줄을 작성하여 연습하는 것이 좋습니다. 이것이 스크립트의 이식성을 증가시킵니다. 위치를 확인하기 위해`env`는 첫 번째 강의에서 소개 한`PATH` 환경 변수를 사용합니다. 이 예에서 shebang 줄은`#! / usr / bin / env python`과 같습니다.
+
+기억해야 할 셸 함수와 스크립트 간의 몇 가지 차이점은 다음과 같습니다.
+-함수는 쉘과 동일한 언어로 작성되어야하며 스크립트는 모든 언어로 작성 될 수 있습니다. 이것이 대본에 shebang을 포함하는 것이 중요한 이유입니다.
+-함수는 정의를 읽을 때 한 번로드됩니다. 스크립트는 실행될 때마다 로드됩니다. 이렇게하면 함수를 로드하는 속도가 약간 빨라지지만 변경할 때마다 정의를 다시로드해야합니다.
+-함수는 현재 쉘 환경에서 실행되는 반면 스크립트는 자체 프로세스에서 실행됩니다. 따라서 함수는 환경 변수를 수정할 수 있습니다. 예를들어, 현재 디렉토리를 변경하십시오 를 스크립트는 할 수 없지만습니다. 스크립트는 [`export`] (https://www.man7.org/linux/man-pages/man1/export.1p.html)를 사용하여 내 보낸 값 환경 변수로 전달됩니다.
+-모든 프로그래밍 언어와 마찬가지로 함수는 모듈성, 코드 재사용 및 쉘 코드의 명확성을 달성하기위한 강력한 구성입니다. 종종 쉘 스크립트는 자체 함수 정의를 포함합니다.
 
 # Shell Tools
 
-## Finding how to use commands
+## 명령 사용 방법 찾기
 
-At this point, you might be wondering how to find the flags for the commands in the aliasing section such as `ls -l`, `mv -i` and `mkdir -p`.
-More generally, given a command, how do you go about finding out what it does and its different options?
-You could always start googling, but since UNIX predates StackOverflow, there are built-in ways of getting this information.
+이 시점에서`ls -l`,`mv -i` 및`mkdir -p`와 같은 별칭 섹션에서 명령에 대한 플래그를 찾는 방법이 궁금 할 것입니다. 좀 더 일반적으로 명령이 주어지면, 당신은 어떻게 그 명령어의 기능과 다른 옵션을 찾을 수 있습니까? 당신은 언제든지 구글링을 통해서 검색을 시작할 수 있지만, UNIX가 StackOverflow 보다 이전이므로, 이 정보를 가져 오는 기본 제공 방법이 따로 있습니다.
 
-As we saw in the shell lecture, the first-order approach is to call said command with the `-h` or `--help` flags. A more detailed approach is to use the `man` command.
-Short for manual, [`man`](https://www.man7.org/linux/man-pages/man1/man.1.html) provides a manual page (called manpage) for a command you specify.
-For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes, including the `-i` flag we showed earlier.
-In fact, what I have been linking so far for every command is the online version of the Linux manpages for the commands.
-Even non-native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
-For interactive tools such as the ones based on ncurses, help for the commands can often be accessed within the program using the `:help` command or typing `?`.
+쉘 강의에서 보았 듯이 1 차 접근 방식은`-h` 또는`--help` 플래그를 사용하여 해당 명령들을 찾아볼 수 있습니다. 아니면, 더 자세한 접근 방식은`man` 명령을 사용하는 것입니다. manual의 줄임말 인 [`man`] (https://www.man7.org/linux/man-pages/man1/man.1.html)은 사용자가 지정한 명령에 대한 매뉴얼 페이지 (manpage라고 함)를 제공합니다. 예를 들어,`man rm`은 앞서 보여 준 `-i` 플래그를 포함하여 사용하는 플래그와 함께`rm` 명령의 동작을 출력합니다. 사실 지금까지 모든 명령에 대해 링크 한 것은, 명령에 대한 Linux 매뉴얼 페이지의 온라인 버전입니다. 기본이 아닌 명령도 개발자가 작성하여 설치 프로세스의 일부로 포함하면 매뉴얼 페이지 항목이 있습니다. ncurses 기반 도구와 같은 대화 형 도구의 경우, 프로그램 내에서 `: help` 명령을 사용하거나 `?` 를 입력하여 도움말에 액세스 할 수 있습니다.
 
 Sometimes manpages can provide overly detailed descriptions of the commands, making it hard to decipher what flags/syntax to use for common use cases.
 [TLDR pages](https://tldr.sh/) are a nifty complementary solution that focuses on giving example use cases of a command so you can quickly figure out which options to use.
