@@ -440,79 +440,45 @@ index 94bab17..f0013b2 100644
 
 # Miscellaneous
 
-- **GUIs**: there are many [GUI clients](https://git-scm.com/downloads/guis)
-out there for Git. We personally don't use them and use the command-line
-interface instead.
-- **Shell integration**: it's super handy to have a Git status as part of your
-shell prompt ([zsh](https://github.com/olivierverdier/zsh-git-prompt),
-[bash](https://github.com/magicmonty/bash-git-prompt)). Often included in
-frameworks like [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh).
-- **Editor integration**: similarly to the above, handy integrations with many
-features. [fugitive.vim](https://github.com/tpope/vim-fugitive) is the standard
-one for Vim.
-- **Workflows**: we taught you the data model, plus some basic commands; we
-didn't tell you what practices to follow when working on big projects (and
-there are [many](https://nvie.com/posts/a-successful-git-branching-model/)
-[different](https://www.endoflineblog.com/gitflow-considered-harmful)
-[approaches](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)).
-- **GitHub**: Git is not GitHub. GitHub has a specific way of contributing code
-to other projects, called [pull
-requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-- **Other Git providers**: GitHub is not special: there are many Git repository
-hosts, like [GitLab](https://about.gitlab.com/) and
-[BitBucket](https://bitbucket.org/).
+- **GUIs**: Git용 [GUI 클라이언트](https://git-scm.com/downloads/guis)가 많이 있습니다. 
+우리는 개인적으로 GUI클라이언트를 사용하지않고 명령어 인터페이스를 사용합니다.
+- **Shell integration**: 깃의 상태를 셸 프롬프트([zsh](https://github.com/olivierverdier/zsh-git-prompt),[bash](https://github.com/magicmonty/bash-git-prompt))의 일부으로 사용하는 것은 매우 편리합니다.
+종종 [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)과 같은 프레임워크는 이를 포함하고 있습니다.
+- **Editor integration**: 위와 유사하게 많은 기능이있는 편리한 통합입니다.  
+[fugitive.vim](https://github.com/tpope/vim-fugitive) Vim의 표준입니다.
+- **Workflows**: 우리는 데이터모델과 몇가지 기본 명령어를 가르쳐 드렸습니다. 
+우리는 큰 프로젝프 작업을 할때 따라야할 실천사항에 대해 말해주지 않았습니다.
+([많은](https://nvie.com/posts/a-successful-git-branching-model/)
+[다른](https://www.endoflineblog.com/gitflow-considered-harmful)
+[접근방식](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))이 있습니다.
+- **GitHub**: 깃은 깃허브가 아닙니다. 깃허브는 [pull requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)라고 불리는 다른 프로첵트에 코드를 기여하는 특정한 방법이 있습니다. 
+- **Other Git providers**: GitHub는 특별것이 아닙니다. [GitLab](https://about.gitlab.com/) 과
+[BitBucket](https://bitbucket.org/)같이 많은 Git 저장소 호스트가 있습니다.
 
 # Resources
 
-- [Pro Git](https://git-scm.com/book/en/v2) is **highly recommended reading**.
-Going through Chapters 1--5 should teach you most of what you need to use Git
-proficiently, now that you understand the data model. The later chapters have
-some interesting, advanced material.
-- [Oh Shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover
-from some common Git mistakes.
-- [Git for Computer
-Scientists](https://eagain.net/articles/git-for-computer-scientists/) is a
-short explanation of Git's data model, with less pseudocode and more fancy
-diagrams than these lecture notes.
-- [Git from the Bottom Up](https://jwiegley.github.io/git-from-the-bottom-up/)
-is a detailed explanation of Git's implementation details beyond just the data
-model, for the curious.
-- [How to explain git in simple
-words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)
-- [Learn Git Branching](https://learngitbranching.js.org/) is a browser-based
-game that teaches you Git.
+- [Pro Git](https://git-scm.com/book/en/v2) is **읽기를 강력히 권합니다**.
+데이터 모델을 이해 하고 있는 지금, 1 ~ 5 장을 살펴보면 Git을 능숙하게 사용하는 데 필요한 대부분의 내용을 배울 수 있습니다. 
+그 다음 장에는 흥미롭고, 고급 자료가 있습니다.
+- [Oh Shit, Git!?!](https://ohshitgit.com/)은 Git에서 일반적으로 일어날수 있는 실수들을 처리하는 방법에 대한 짧은 가이드 입니다.
+- [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/)은 데이터 모델에 대한 짧은 설명을 의사코드를 적게 사용하고 멋진 다이어그램을 활용한 강의 노트 입니다.
+- [Git from the Bottom Up](https://jwiegley.github.io/git-from-the-bottom-up/)은 호기심을 위해 데이터 모델뿐만 아니라 Git의 구현 세부 사항에 대해 자세히 설명 하였습니다..
+- [How to explain git in simple words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)
+- [Learn Git Branching](https://learngitbranching.js.org/) Git 을 학습하는 브라우저 기반 게임입니다.
 
 # Exercises
 
-1. If you don't have any past experience with Git, either try reading the first
-   couple chapters of [Pro Git](https://git-scm.com/book/en/v2) or go through a
-   tutorial like [Learn Git Branching](https://learngitbranching.js.org/). As
-   you're working through it, relate Git commands to the data model.
-1. Clone the [repository for the
-class website](https://github.com/missing-semester/missing-semester).
-    1. Explore the version history by visualizing it as a graph.
-    1. Who was the last person to modify `README.md`? (Hint: use `git log` with
-       an argument)
-    1. What was the commit message associated with the last modification to the
-       `collections:` line of `_config.yml`? (Hint: use `git blame` and `git
-       show`)
-1. One common mistake when learning Git is to commit large files that should
-   not be managed by Git or adding sensitive information. Try adding a file to
-   a repository, making some commits and then deleting that file from history
-   (you may want to look at
-   [this](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)).
-1. Clone some repository from GitHub, and modify one of its existing files.
-   What happens when you do `git stash`? What do you see when running `git log
-   --all --oneline`? Run `git stash pop` to undo what you did with `git stash`.
-   In what scenario might this be useful?
-1. Like many command line tools, Git provides a configuration file (or dotfile)
-   called `~/.gitconfig`. Create an alias in `~/.gitconfig` so that when you
-   run `git graph`, you get the output of `git log --all --graph --decorate
-   --oneline`.
-1. You can define global ignore patterns in `~/.gitignore_global` after running
-   `git config --global core.excludesfile ~/.gitignore_global`. Do this, and
-   set up your global gitignore file to ignore OS-specific or editor-specific
-   temporary files, like `.DS_Store`.
-1. Clone the [repository for the class
-   website](https://github.com/missing-semester/missing-semester), find a typo
-   or some other improvement you can make, and submit a pull request on GitHub.
+1. Git에 대한 경험이 없는 경우 [Pro Git](https://git-scm.com/book/en/v2) 의 처음 몇 장을 읽어 보거나 [Learn Git Branching](https://learngitbranching.js.org/) 과 같은 튜토리얼을 훑어보세요. 이러한 작업을 통해 Git 명령어와 데이터 모델을 관련시켜 보세요.
+1. [수업을 위한 웹사이트를](https://github.com/missing-semester/missing-semester) 클론해 보세요.
+    1. 버전 history를 그래프로 시각화하여 살펴보세요.
+    1. 마지막으로 `README.md`를 수정한 사람은 누구 입니까? (힌트 : `git log` 인수를 사용해보세요)
+    1. `_config.yml`의 `collections:` 라인의 마지막 수정과 관련된 커밋 메시지는 무엇입니까? (힌트 : git blame 과 git show 를 사용 사용해 보세요)
+1. Git을 배울 때 흔히 저지르는 실수 중 하나는 대용량 파일을 커밋하거나 Git에서 관리해서는 안되는 민감한 정보를 추가하는 것입니다. 저장소에 파일을 추가하는 커밋을 몇번 해보고 history에서 해당 파일을 삭제 하세요. (당신은 아마 [이걸](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)을 보고 싶을 거에요).
+1. GitHub에서 일부 저장소를 clone하고 기존 파일 중 하나를 수정합니다. 
+`git stash`할때 어떤 일이 생기나요? `git log--all --oneline` 을 실행할때 무엇을 볼수 있나요? 
+`git stash pop` 실행 하여  `git stash` 한 작업을 취소하세요. 어떤 시나리오가 유용할가요?
+1. 많은 명령어 도구들과 마찬가지로 Git은 `~/.gitconfig` 라고 불리는 환경설정 파일 (또는 dotfile)을 제공합니다. 
+`git graph`를 실행할 때 `git log --all --graph --decrypt --online` 의 출력을 얻을 수 있도록 `~/.gitconfig` 에 별칭을 생성해 보세요.
+1. `git config --global core.excludesfile  ~/.gitignore_global` 을 실행 하면 `~/.gitignore_global` 에서 전역 무시 패턴을 정의 할 수 있습니다. 이후 `.DS_Store` 와 같이 OS와 관련되거나 에디터와 관련된 임시 파일을 무시하도록 전역 gitignore 파일을 설정해 보세요.
+1. [수업을 위한 웹사이트의 저장소](https://github.com/missing-semester/missing-semester)를 clone하고, 
+오타 또는 기타 개선 사항을 찾아 GitHub에서 pull request 해보세요.
