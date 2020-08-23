@@ -444,48 +444,47 @@ Host *.mit.edu
 - 스크롤백 설정
 - 성능 ( [Alacritty](https://github.com/jwilm/alacritty) 혹은 [kitty](https://sw.kovidgoyal.net/kitty/)와 같은 최신 터미널들은  GPU 가속화를 지원합니다).
 
-# Exercises
+# 실습
 
-## Job control
+## 작업 제어
 
-1. From what we have seen, we can use some `ps aux | grep` commands to get our jobs' pids and then kill them, but there are better ways to do it. Start a `sleep 10000` job in a terminal, background it with `Ctrl-Z` and continue its execution with `bg`. Now use [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html) to find its pid and [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html) to kill it without ever typing the pid itself. (Hint: use the `-af` flags).
+1. 지금까지 공부한 바에 따르면, 우리는 명령어 `ps aux | grep` 로 PID를 조회하여 작업을 종료할 수 있습니다. 하지만 이것보다 더 나은 방법이 있습니다. 터미널에서 `sleep 10000`를  실행하고, `Ctrl-Z`로 그것을 백그라운드 실행하세요. 그리고 `bg`를 통해 이 작업을 계속합니다. 이제 [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html)을 사용해 pid를 찾은 다움 [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html)을 실행하면 pid를 직접 타이핑하지 않고 작업을 종료시킬 수 있습니다. (힌트: `-af` 플래그를 사용하세요).
 
-1. Say you don't want to start a process until another completes, how you would go about it? In this exercise our limiting process will always be `sleep 60 &`.
-One way to achieve this is to use the [`wait`](https://www.man7.org/linux/man-pages/man1/wait.1p.html) command. Try launching the sleep command and having an `ls` wait until the background process finishes.
+2. 여러분이 다른 프로세스가 종료되기를 기다려 새 프로세스를 시작하려고 한다고 합시다, 이것을 어떻게 할 수 있을까요? 이 실습에서 프로세스 제한은 항상 `sleep 60 &`로 합니다.
+이것을 가능케 하는 또 다른 방법은 [`wait`](https://www.man7.org/linux/man-pages/man1/wait.1p.html) 명령어를 사용하는 것입니다. sleep 명령어를 실행한 뒤 백그라운드 작업이 끝날 때까지 기다려 `ls`가 실행되도록 하세요.
 
-    However, this strategy will fail if we start in a different bash session, since `wait` only works for child processes. One feature we did not discuss in the notes is that the `kill` command's exit status will be zero on success and nonzero otherwise. `kill -0` does not send a signal but will give a nonzero exit status if the process does not exist.
-    Write a bash function called `pidwait` that takes a pid and waits until the given process completes. You should use `sleep` to avoid wasting CPU unnecessarily.
+    하지만 만일 각기 다른 bash 창에서 작업을 실행하는 중이라면, 이 시도는 실패할 것입니다. `wait`은 자식 프로세스에만 적용되기 때문입니다. 지금껏 우리가 다루지 않은 기능 중 하나는 명령어 `kill`이 성공했을때 exit status가 0(zero)이 되며, 그렇지 않을때는 0이 아니라는 것(nonzero)입니다. 명령어 `kill -0`은 시그널을 보내지 않습니다만 프로세스가 존재하지 않을때 0이 아닌 exit status를 반환할 것입니다. 
+    `pidwait`이라는 이름의, pid를 가져오고 해당 프로세스가 끝날 때까지 기다리는 bash 명령어를 작성해 보세요. 불필요한 CPU 낭비 방지를 위해 `sleep` 명령어를 사용해야 합니다. 
 
-## Terminal multiplexer
+## 터미널 멀티플렉서
 
-1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these steps](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/).
+1. 이 `tmux` [튜토리얼](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)을 따라해 보고 [이 단계](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)에 따라 기본적인 커스터마이제이션 방법을 배워보세요. 
 
-## Aliases
+## 별칭
 
-1. Create an alias `dc` that resolves to `cd` for when you type it wrongly.
+1. 오타 낼 경우를 대비해서 `cd`로 연결되는 별칭 `dc`를 생성합니다.
 
-1.  Run `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`  to get your top 10 most used commands and consider writing shorter aliases for them. Note: this works for Bash; if you're using ZSH, use `history 1` instead of just `history`.
+2.  `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`를 실행해서 가장 많이 사용하는 명령어 10개를 확인합니다. 그리고 이들에게 짧은 별칭을 부여하는 것을 고려해 보세요. 주의: 이 방법은 Bash에서 유효합니다; 만일 ZSH를 쓰고 있다면, 그냥 `history` 말고 `history 1`를 사용하세요. 
 
 
-## Dotfiles
+## 도트 파일
 
-Let's get you up to speed with dotfiles.
-1. Create a folder for your dotfiles and set up version
-   control.
-1. Add a configuration for at least one program, e.g. your shell, with some
-   customization (to start off, it can be something as simple as customizing your shell prompt by setting `$PS1`).
-1. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized
-   utility](https://dotfiles.github.io/utilities/).
-1. Test your installation script on a fresh virtual machine.
-1. Migrate all of your current tool configurations to your dotfiles repository.
-1. Publish your dotfiles on GitHub.
+이제 도트 파일을 사용할때 작업 속도를 높여봅시다. 
+1. 도트 파일들을 위한 폴더를 생성하고, 버전 컨트롤을 구성합니다.
+2. 최소한 프로그램 하나에 구성을 추가합니다, 예. 여러분의 셸에 약간의 커스터마이제이션 하기(시작하는 차원에서, `$PS1`을 설정해 셸 프롬프트를 커스터마이제이션 하는것과 같이 간단한 것도 좋습니다).
+3. 새로운 머신에서 여러분의 도트파일을 빨리 (그리고 수작업 없이)설치하는 메서드를 생성하세요. 이것은 각 파일에 `ln -s`를 요청하는 셸 스크립트 처럼 간단한 것이어도 됩니다. 또는 [specialized
+   utility](https://dotfiles.github.io/utilities/)를 사용할 수도 있습니다.
+4. 여러분의 설치 스크립트를 새로운 가상 머신에서 테스트 해 보세요.
+5. 현재 도구 구성의 모든 사항을 여러분의 도트파일 레포지토리로 옮겨(migrate)줍니다.
+6. 여러분의 도트 파일을 GitHub에 공개하세요. 
 
-## Remote Machines
+## 원격 머신
 
-Install a Linux virtual machine (or use an already existing one) for this exercise. If you are not familiar with virtual machines check out [this](https://hibbard.eu/install-ubuntu-virtual-box/) tutorial for installing one.
+이번 실습을 위해서 리눅스 가상 머신을 설치 (혹은 기존의 것을 사용) 하세요. 만약 여러분이 가상머신 사용에 익숙하지 않다면,  [여기](https://hibbard.eu/install-ubuntu-virtual-box/) 튜토리얼을 참고해 설치해 보세요.
 
-1. Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -o -a 100 -t ed25519`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agent).
-1. Edit `.ssh/config` to have an entry as follows
+1. `~/.ssh/`로 이동한 다음 그곳에 SSH 키페어가 있는지 확인합니다. 만일 키페어가 없다면, `ssh-keygen -o -a 100 -t ed25519`를 통해 생성하세요. 비밀번호와 `ssh-agent`를 사용하는 것이 권장됩니다. 더 많은 정보는 [여기](https://www.ssh.com/ssh/agent)서 확인하세요. 
+
+2. `.ssh/config`를 수정해 다음과 같은 사항을 추가해 줍니다.
 
 ```bash
 Host vm
@@ -494,8 +493,8 @@ Host vm
     IdentityFile ~/.ssh/id_ed25519
     LocalForward 9999 localhost:8888
 ```
-1. Use `ssh-copy-id vm` to copy your ssh key to the server.
-1. Start a webserver in your VM by executing `python -m http.server 8888`. Access the VM webserver by navigating to `http://localhost:9999` in your machine.
-1. Edit your SSH server config by doing  `sudo vim /etc/ssh/sshd_config` and disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`. Restart the `ssh` service with `sudo service sshd restart`. Try sshing in again.
-1. (Challenge) Install [`mosh`](https://mosh.org/) in the VM and establish a connection. Then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
-1. (Challenge) Look into what the `-N` and `-f` flags do in `ssh` and figure out what a command to achieve background port forwarding.
+1. `ssh-copy-id vm`를 통해 ssh 키를 서버에 복사하세요.
+2. `python -m http.server 8888`를 실행해 여러분의 가상 머신에서 웹서버를 시작합니다. 여러분의 머신에서 `http://localhost:9999`를 통해 해당 서버에 접근할 수 있습니다.
+3. `sudo vim /etc/ssh/sshd_config`를 사용해 SSH 서버의 구성을 수정하세요. 그리고 `PasswordAuthentication`의 값을 변경해 비밀번호 인증을 해제합니다. `PermitRootLogin`의 값을 변경해 루트 로그인 기능을 해제합니다. `sudo service sshd restart` 명령어로 `ssh`를 재시작 합니다. ssh 접속을 다시 시도해 보세요. 
+4. (도전) 가상 머신에 [`mosh`](https://mosh.org/)를 설치해 연결을 구성해 보세요. 그리고 서버/가상머신의 네트워크 어댑터를 연결 해제 합니다. mosh가 이 문제를 제대로 해결할 수 있나요?
+5. (도전) `ssh`에서 `-N`과 `-f` 플래그가 어떤 역할을 하는지 살펴보세요. 그리고 백그라운드 포트 포워딩을 하기 위해서는 어떤 명령어를 써야 하는지 찾아보세요. 
