@@ -173,18 +173,12 @@ pdflatex paper.tex
 여기에는 많은 이유가 있는데, 쓸데없는 리컴파일(recompile)을 피하고, 재현가능한(reproducible) 빌드를 하고, (고장났을 수도 있는) 최신 버전으로 자동 업데이트를 하지 않기 위함이죠.  
 이러한 종류의 의존성 잠금(dependency locking) 중 극단적인 경우가 _벤더링(vendoring)_ 인데, 여러분의 모든 의존성들의 모든 코드를 여러분의 프로젝트 안에 복사하는 겁니다. 이렇게 하면 여러분은 프로젝트에 대한 어떤 변화에 대해서도 통제력을 가지게 되고 프로젝트에 자기 나름의 변화들을 도입할 수 있지만, 시간이 지나면서 생기는 어떤 업데이트도 업스트림 관리자(upstream maintainer)로부터 명시적으로 풀(pull)해줘야 한다는 것을 의미하기도 합니다.
 
-# Continuous integration systems
+# [지속적 통합](https://www.redhat.com/ko/topics/devops/what-is-ci-cd) 시스템 (Continuous integration systems)
 
-<!-- 28분20초 -->
-
-As you work on larger and larger projects, you'll find that there are
-often additional tasks you have to do whenever you make a change to it.
-You might have to upload a new version of the documentation, upload a
-compiled version somewhere, release the code to pypi, run your test
-suite, and all sort of other things. Maybe every time someone sends you
-a pull request on GitHub, you want their code to be style checked and
-you want some benchmarks to run? When these kinds of needs arise, it's
-time to take a look at continuous integration.
+여러분이 더 큰 프로젝트에서 작업하게 될 수록, 프로젝트에 변화를 줄 때마다 추가적으로 수행해야 하는 일들이 있다는 것을 알게 될 것입니다.
+여러분은 아마 기록문서(documentation)의 새로운 버전을 업로드하고, 컴파일된 버전을 어딘가에 업로드하고, 코드를 파이파이(pypi)에 배포하고, [테스트 스위트(test suite)](https://m.blog.naver.com/PostView.nhn?blogId=netrance&logNo=110184403382&proxyReferer=https:%2F%2Fwww.google.com%2F)를 실행하고, 별의 별 것들을 다 해야 할 수도 있습니다.  
+아마 누군가가 깃허브(GitHub)에서 여러분에게 풀 리퀘스트(pull requres;PR)을 보낼 때마다, 여러분은 그 코드가 스타일 체크(style check)되기를 바라고 성능 테스트(benchmark)를 실행하고 싶을 지도 모르겠죠?  
+이러한 필요가 생길 때가 바로 지속적 통합(continuous integration)을 고려해 봐야 할 때입니다.
 
 Continuous integration, or CI, is an umbrella term for "stuff that runs
 whenever your code changes", and there are many companies out there that
