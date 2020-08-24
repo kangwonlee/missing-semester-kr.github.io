@@ -214,7 +214,9 @@ $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
     #!/bin/sh
     curl --head --silent https://missing.csail.mit.edu
     ```
+
     첫번째 줄을 작동시키는게 꽤 까다로울 것입니다. `#`으로 시작하는 것은 코멘트(comment)고, `!`는 큰 따옴표(`"`)로 둘러쌓인 문자열 내에서도 특별한 의미를 가집니다. 배시(Bash)는 작은 따옴표`'` 문자열과 큰따옴표를 구분합니다. 이것은 매우 헷갈리는 케이스입니다. Bash [인용 관련 메뉴얼 페이지](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)에 더 자세한 정보가 설명돼있습니다.
+
  1. 파일을 실행해보세요. 예를 들어, (`./semester`)라는 경로를 셸에 입력해보세요. 이것이 왜 작동하지 않는지 `ls`를 이용해 파악해보세요. (힌트: 파일의 비트 권한을 확인해보세요.)
  1. `sh` 인터프리터로 시작해 명령을 실행하고, `semester` 파일에 첫 인자로 주세요. (즉 `sh semester` 이렇게!). `./semester`는 안되는데, 앞에 거는 왜 실행이 될까요?
  1. `chmod` 프로그램을 살펴보세요. (`man chmod`를 사용해보세요.)
