@@ -4,179 +4,177 @@ title: "Q&A"
 date: 2019-01-30
 ready: true
 video:
-  aspect: 56.25
-  id: Wz50FvGG6xU
+    aspect: 56.25
+    id: Wz50FvGG6xU
 ---
 
-For the last lecture, we answered questions that the students submitted:
+마지막 강의에선, 학생들이 등록한 질문을 답변했습니다:
 
-- [Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc ](#any-recommendations-on-learning-operating-systems-related-topics-like-processes-virtual-memory-interrupts-memory-management-etc)
-- [What are some of the tools you'd prioritize learning first?](#what-are-some-of-the-tools-youd-prioritize-learning-first)
-- [When do I use Python versus a Bash scripts versus some other language?](#when-do-i-use-python-versus-a-bash-scripts-versus-some-other-language)
-- [What is the difference between `source script.sh` and `./script.sh`](#what-is-the-difference-between-source-scriptsh-and-scriptsh)
-- [What are the places where various packages and tools are stored and how does referencing them work? What even is `/bin` or `/lib`?](#what-are-the-places-where-various-packages-and-tools-are-stored-and-how-does-referencing-them-work-what-even-is-bin-or-lib)
-- [Should I `apt-get install` a python-whatever, or `pip install` whatever package?](#should-i-apt-get-install-a-python-whatever-or-pip-install-whatever-package)
-- [What's the easiest and best profiling tools to use to improve performance of my code?](#whats-the-easiest-and-best-profiling-tools-to-use-to-improve-performance-of-my-code)
-- [What browser plugins do you use?](#what-browser-plugins-do-you-use)
-- [What are other useful data wrangling tools?](#what-are-other-useful-data-wrangling-tools)
-- [What is the difference between Docker and a Virtual Machine?](#what-is-the-difference-between-docker-and-a-virtual-machine)
-- [What are the advantages and disadvantages of each OS and how can we choose between them (e.g. choosing the best Linux distribution for our purposes)?](#what-are-the-advantages-and-disadvantages-of-each-os-and-how-can-we-choose-between-them-eg-choosing-the-best-linux-distribution-for-our-purposes)
+- [프로세스, 가상메모리, 인터럽트, 메모리 관리와 같은 운영체제 관련 주제를 배우는 방법을 추천해주실 수 있나요?](#프로세스-가상메모리-인터럽트-메모리-관리와-같은-운영체제-관련-주제를-배우는-방법을-추천해주실-수-있나요)
+- [가장 우선순위에 두어 배워야 하는 툴이 무엇인가요?](#가장-우선순위에-두어-배워야-하는-툴이-무엇인가요)
+- [파이썬, 배시 스크립트(bash script), 그 외 언어들은 각각 언제 사용하는 건가요?](#파이썬-배시-스크립트bash-script-그-외-언어들은-각각-언제-사용하는-건가요)
+- [`source script.sh`와 `./script.sh`의 차이점은 무엇인가요?](#source-scriptsh와-scriptsh의-차이점은-무엇인가요)
+- [다양한 패키지와 툴은 어디에 저장되며 참조되는 건가요? `/bin` 또는 `/lib` 인가요?](#다양한-패키지와-툴은-어디에-저장되며-참조되는-건가요-bin-또는-lib-인가요)
+- [파이썬과 관련된 것들을 `apt-get install`으로 설치해야 하나요, 아님 `pip install`로 설치해야 하나요?](#파이썬과-관련된-것들을-apt-get-install으로-설치해야-하나요-아님-pip-install로-설치해야-하나요)
+- [제 코드의 성능을 향상하기 위해서 사용하는 가장 쉽고 좋은 프로파일링(profiling) 툴들은 무엇인가요?](#제-코드의-성능을-향상하기-위해서-사용하는-가장-쉽고-좋은-프로파일링profiling-툴들은-무엇인가요?)
+- [어떤 브라우저 플러그인을 사용하시나요?](#어떤-브라우저-플러그인을-사용하시나요)
+- [데이터를 다룰 수 있는 다른 유용한 툴은 무엇이 있나요?](#데이터를-다룰-수-있는-다른-유용한-툴은-무엇이-있나요)
+- [도커(Docker)와 가상 머신(Virtual Machine)의 차이점은 무엇인가요?](#도커docker와-가상-머신virtual-machine의-차이점은-무엇인가요)
+- [운영 체제 간 장단점이 각각 어떻게 되고 그 중 어떤 걸 골라야 하나요? (예를 들어 우리의 목적에 맞는 Linux 배포판을 고르는 등)](#운영-체제-간-장단점이-각각-어떻게-되고-그-중-어떤-걸-골라야-하나요-예를-들어-우리의-목적에-맞는-linux-배포판을-고르는-등)
 - [Vim vs Emacs?](#vim-vs-emacs)
-- [Any tips or tricks for Machine Learning applications?](#any-tips-or-tricks-for-machine-learning-applications)
-- [Any more Vim tips?](#any-more-vim-tips)
-- [What is 2FA and why should I use it?](#what-is-2fa-and-why-should-i-use-it)
-- [Any comments on differences between web browsers?](#any-comments-on-differences-between-web-browsers)
+- [머신 러닝을 위한 팁이나 기술들이 있나요?](#머신-러닝을-위한-팁이나-기술들이-있나요)
+- [다른 Vim 팁이 있나요?](#다른-vim-팁이-있나요)
+- [2FA란 무엇이고 왜 사용해야 하나요?](#2fa란-무엇이고-왜-사용해야-하나요?)
+- [웹 브라우저의 차이점에 대한 의견이 있나요?](#웹-브라우저의-차이점에-대한-의견이-있나요)
 
-## Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc 
+## 프로세스, 가상메모리, 인터럽트, 메모리 관리와 같은 운영체제 관련 주제를 배우는 방법을 추천해주실 수 있나요?
 
-First, it is unclear whether you actually need to be very familiar with all of these topics since they are very low level topics.
-They will matter as you start writing more low level code like implementing or modifying a kernel. Otherwise, most topics will not be relevant, with the exception of processes and signals that were briefly covered in other lectures. 
+가장 먼저, 위와 같은 주제가 매우 밑단(low level)의 내용이기 때문에 친숙해질 필요가 있을지 의문입니다.
+커널(Kernel)을 구현하거나 수정하는 것과 같이 더욱 밑단의 코드를 구현할 때 이런 주제들이 필요할 것입니다. 아니라면, 이전 강의에서 다루었던 프로세스나 관련 명령어 외에는 대부분의 운영체제 주제들이 필요로 하지 않을 것입니다.
 
-Some good resources to learn about this topic:
+위 주제를 배우는 데 도움이 되는 자료는 다음과 같습니다:
 
-- [MIT's 6.828 class](https://pdos.csail.mit.edu/6.828/) - Graduate level class on Operating System Engineering. Class materials are publicly available.
-- Modern Operating Systems (4th ed) - by Andrew S. Tanenbaum is a good overview of many of the mentioned concepts.
-- The Design and Implementation of the FreeBSD Operating System - A good resource about the FreeBSD OS (note that this is not Linux). 
-- Other guides like [Writing an OS in Rust](https://os.phil-opp.com/) where people implement a kernel step by step in various languages, mostly for teaching purposes. 
+- [MIT 6.828 강의](https://pdos.csail.mit.edu/6.828/) - 학부 수준의 운영체제 강의입니다. 강의 자료는 자유롭게 사용할 수 있습니다.
+- Modern Operating Systems (4판, Andrew S. Tanenbaum) - 위에서 언급한 주제들의 좋은 개요가 되는 책입니다.
+- The Design and Implementation of the FreeBSD Operating System - FreeBSD OS에 대한 좋은 책입니다. (리눅스를 다루진 않습니다)
+- 다른 가이드로는 [Writing an OS in Rust](https://os.phil-opp.com/)와 같이 교육 목적으로 사람들이 커널을 다양한 언어로 단계별로 구현하는 자료가 있습니다.
 
+## 가장 우선순위에 두어 배워야 하는 툴이 무엇인가요?
 
-## What are some of the tools you'd prioritize learning first?
+몇몇 주제들은 우선순위에 두어야 할 가치가 있습니다:
 
-Some topics worth prioritizing:
+- 키보드를 더 많이 사용하고 마우스를 덜 사용하는 방법을 익혀야 합니다. 키보드 단축키를 사용한다든지, 인터페이스를 바꾸는 등의 노력으로 익힐 수 있습니다.
+- 본인이 사용하는 에디터에 익숙해져야 합니다. 프로그래머로서 여러분 대부분의 시간은 파일을 편집하는 데 쓰이기 때문에 익숙해질 가치가 있습니다.
+- 워크플로우에서 반복 작업을 자동화 & 단순화하는 법을 익혀야 합니다. 이는 엄청난 시간 절약을 도와줍니다.
+- Git와 같은 버전 제어 툴 및 GitHub와 함께 사용하여 최신 소프트웨어 프로젝트에서 협업하는 방법을 익혀야 합니다.
 
-- Learning how to use your keyboard more and your mouse less. This can be through keyboard shortcuts, changing interfaces, &c.
-- Learning your editor well. As a programmer most of your time is spent editing files so it really pays off to learn this skill well.
-- Learning how to automate and/or simplify repetitive tasks in your workflow because the time savings will be enormous...
-- Learning about version control tools like Git and how to use it in conjunction with GitHub to collaborate in modern software projects.
+## 파이썬, 배시 스크립트(bash script), 그 외 언어들은 각각 언제 사용하는 건가요?
 
-## When do I use Python versus a Bash scripts versus some other language?
+일반적으로, 배시 스크립트는 특정 일련의 커멘드를 실행하여 사용하는 경우 일회성으로 유용하게 사용할 수 있습니다. 배시는 더 큰 프로그램이나 스크립트에서 작업하기 어렵게 만드는 특이한 특징을 가지고 있습니다:
 
-In general, bash scripts are useful for short and simple one-off scripts when you just want to run a specific series of commands. bash has a set of oddities that make it hard to work with for larger programs or scripts:
+- 배시는 단순한 사용사례에는 적용하기 쉽지만 가능한 모든 입력에는 적용하기 어렵습니다. 예를 들어, 배시 스크립트 매개변수에 공백을 넣으면 수많은 오류를 발생시킬 수 있습니다.
+- 배시는 코드 재사용이 불가능하여 작성한 이전 프로그램의 구성요소를 재사용하기가 어려울 수 있습니다. 일반적으로, 배시에는 소프트웨어 라이브러리라는 개념조차 없습니다.
+- 배시는 특정 값을 참조하기 위해 `$?`나 `$@`와 같은 마법의 문자열에 의존하는데, 이에 비해 다른 프로그래밍 언어들은 특정 값을 참조하기 위해 `exitCode`나 `sys.args`와 같이 분명하게 사용합니다.
 
-- bash is easy to get right for a simple use case but it can be really hard to get right for all possible inputs. For example, spaces in script arguments have led to countless bugs in bash scripts.
-- bash is not amenable to code reuse so it can be hard to reuse components of previous programs you have written. More generally, there is no concept of software libraries in bash.
-- bash relies on many magic strings like `$?` or `$@` to refer to specific values, whereas other languages refer to them explicitly, like `exitCode` or `sys.args` respectively. 
+그러므로 더 크고 복잡한 스크립트의 경우 Python과 Ruby와 같은 상위 언어를 사용하는 것을 권장합니다.
+위에서 언급한 언어들로 온라인에선 이미 다양한 문제를 해결하는 사람들이 만든 수많은 라이브러리를 찾을 수 있을 겁니다.
+만약 여러분이 원하는 특정 기능을 지원하는 라이브러리가 특정 언어를 사용한다면, 가장 좋은 해결 방법은 그 언어를 사용하는 것입니다.
 
-Therefore, for larger and/or more complex scripts we recommend using more mature scripting languages like Python or Ruby. 
-You can find online countless libraries that people have already written to solve common problems in these languages.
-If you find a library that implements the specific functionality you care about in some language, usually the best thing to do is to just use that language.
+## `source script.sh`와 `./script.sh`의 차이점은 무엇인가요?
 
-## What is the difference between `source script.sh` and `./script.sh`
+두 명렁어 다 배시 세션(bash session)에서 `script.sh`를 읽고 실행하지만, 어떤 세션에서 스크립트를 실행하는지에 따라 달라집니다.
+`source`의 경우 현재 배시 세션에서 실행되기 때문에, 스크립트를 통해서 실행되는 디렉터리 변경이나 함수 정의와 같은 환경에 대한 모든 변경사항은 유지됩니다.
+`./script.sh`와 같이 스크립트를 홀로 실행한다면, 현재 배시 세션에서 `script.sh`에 있는 커맨드를 실행하는 새로운 배시 인스턴스를 실행하게 됩니다.
+그러므로, `script.sh`가 디렉터리를 변경한다고 하면 새로운 배시 인스턴스에서는 디렉터리를 변경되지만, 스크립트를 나가고 부모 인스턴스(이전 인스턴스)에 돌아오면 부모 세션에선 디렉터리가 변경되지 않습니다.
+마찬가지로 `script.sh` 터미널에서 사용하고 싶은 함수를 정의했다면, 여러분은 현재 배시 세션에 적용하기 위해 `source`로 실행해야 합니다. 그렇지 않으면, 현재 쉘 대신 새로 생성된 배시 인스턴스에 함수가 정의될 것입니다.
 
-In both cases the `script.sh` will be read and executed in a bash session, the difference lies in which session is running the commands.
-For `source` the commands are executed in your current bash session and thus any changes made to the current environment, like changing directories or defining functions will persist in the current session once the `source` command finishes executing.
-When running the script standalone like `./script.sh`, your current bash session starts a new instance of bash that will run the commands in `script.sh`.
-Thus, if `script.sh` changes directories, the new bash instance will change directories but once it exits and returns control to the parent bash session, the parent session will remain in the same place.
-Similarly, if `script.sh` defines a function that you want to access in your terminal, you need to `source` it for it to be defined in your current bash session. Otherwise, if you run it, the new bash process will be the one to process the function definition instead of your current shell.
+## 다양한 패키지와 툴은 어디에 저장되며 참조되는 건가요? `/bin` 또는 `/lib` 인가요?
 
-## What are the places where various packages and tools are stored and how does referencing them work? What even is `/bin` or `/lib`?
+터미널에서 실행하는 프로그램은 모두 PATH 환경변수에 나열된 디렉터리에 있으며, 특정 프로그램을 찾는 위치를 확인하기 위해 `which` 명령어(또는 `type` 명령어)를 사용할 수 있습니다.
+일반적으로 특정 유형의 파일이 어디에 존재하는지에 대한 몇 가지 규칙이 있습니다. 하단에 우리가 여태까지 이야기했던 경로들이 있습니다. 더욱 포괄적인 목록들은 [파일시스템 계층구조 표준](https://ko.wikipedia.org/wiki/파일시스템_계층구조_표준)에서 확인하세요.
 
-Regarding programs that you execute in your terminal, they are all found in the directories listed in your `PATH` environment variable and you can use the `which` command (or the `type` command) to check where your shell is finding a specific program.
-In general, there are some conventions about where specific types of files live. Here are some of the ones we talked about, check the [Filesystem, Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) for a more comprehensive list.  
+- `/bin` - 필수 명령 바이너리(binary)들
+- `/sbin` - 일반적으로 루트(root)에 의해 실행되는 필수 시스템 바이너리들
+- `/dev` - 장치 파일, 하드웨어 장치에 대한 인터페이스(interface)인 특수 파일들
+- `/etc` - 호스트에 특성화된 시스템 전체 구성 파일들
+- `/home` - 시스템에 있는 유저들을 위한 홈 디렉터리들
+- `/lib` - 시스탬 프로그램을 위한 공통 라이브러리들
+- `/opt` - 선택적인 애플리케이션 소프트웨어
+- `/sys` - 시스템에 대한 정보와 설정을 담음 ([첫 강의](/2020/course-shell/)에서 다뤘습니다)
+- `/tmp` - 임시 파일들 (`/var/tmp`도 마찬가지). 주로 재부팅하면 지워집니다.
+- `/usr/` - 유저 데이터만 읽는 파일들
+  + `/usr/bin` - 필수적이지 않은 명령 바이너리들
+  + `/usr/sbin` - 일반적으로 루트에 의해 실행되는 필수적이지 않은 시스템 바이너리들
+  + `/usr/local/bin` - 사용자가 컴파일한 프로그램을 위한 바이너리들
+- `/var` - 로그 또는 캐시와 같은 가변 파일들
 
-- `/bin` - Essential command binaries
-- `/sbin` - Essential system binaries, usually to be run by root
-- `/dev` - Device files, special files that often are interfaces to hardware devices
-- `/etc` - Host-specific system-wide configuration files
-- `/home` - Home directories for users in the system
-- `/lib` - Common libraries for system programs
-- `/opt` - Optional application software
-- `/sys` - Contains information and configuration for the system (covered in the [first lecture](/2020/course-shell/))
-- `/tmp` - Temporary files (also `/var/tmp`). Usually deleted between reboots.
-- `/usr/` - Read only user data
-  + `/usr/bin` - Non-essential command binaries
-  + `/usr/sbin` - Non-essential system binaries, usually to be run by root
-  + `/usr/local/bin` - Binaries for user compiled programs
-- `/var` - Variable files like logs or caches
+## 파이썬과 관련된 것들을 `apt-get install`으로 설치해야 하나요, 아님 `pip install`로 설치해야 하나요?
 
-## Should I `apt-get install` a python-whatever, or `pip install` whatever package?
+이 질문에 대한 명확한 답변은 없습니다. 대신 이는 시스템의 패키지 매니저를 사용해야 하는지 언어별 패키지 매니저를 사용하여 소프트웨어를 설치해야 하는지에 대한 보다 일반적인 질문과 관련이 있습니다. 고려해야 할 몇 가지 사항은 다음과 같습니다:
 
-There's no universal answer to this question. It's related to the more general question of whether you should use your system's package manager or a language-specific package manager to install software. A few things to take into account:
+- 대부분의 패키지는 두 가지 방식으로 설치할 수 있을 거지만, 덜 인기 있거나 최신의 패키지는 여러분의 시스템 패키지 매니저에 없을 수 있습니다. 이럴 때 언어별 패키지 매니저를 사용하는 게 좋은 선택일 것입니다.
+- 비슷하게, 언어별 패키지 매니저는 시스템 패키지 매니저보다 최신버전의 패키지가 있을 수 있습니다.
+- 시스템 패키지 매니저를 사용할 때엔 라이브러리들은 시스템 전반에 설치될 것입니다. 그 말은 개발의 목적으로 두 가지 이상의 버전을 동시에 사용한다고 하면 시스템 패키지 매니저는 좋지 않은 선택일 것입니다. 이런 상황에선 대부분의 프로그래밍 언어들은 분리된 또는 가상의 환경을 제공해주기 때문에 충돌 없이 두 가지 이상의 버전을 동시에 사용할 수 있을 것입니다. 파이썬에는 virtualenv가 있고, 루비에는 RVM이 있습니다.
+- 운영 체제와 하드웨어 아키텍처에 따라 일부 패키지는 바이너리와 함께 제공되거나 컴파일해야 할 필요가 있습니다. 예를 들어 라즈베리 파이(Rasberry Pi)와 같은 ARM 컴퓨터에서는, 시스템 패키지 매니저에선 바이너리 형식의 파일을 사용하고 언어별 패키지 매니저에서는 컴파일이 필요하므로 전자가 후자보다 더 좋을 수 있습니다. 이것은 여러분의 구체적인 개발환경에 크게 의존합니다.
 
-- Common packages will be available through both, but less popular ones or more recent ones might not be available in your system package manager. In this, case using the language-specific tool is the better choice.
-- Similarly, language-specific package managers usually have more up to date versions of packages than system package managers.
-- When using your system package manager, libraries will be installed system wide. This means that if you need different versions of a library for development purposes, the system package manager might not suffice. For this scenario, most programming languages provide some sort of isolated or virtual environment so you can install different versions of libraries without running into conflicts. For Python, there's virtualenv, and for Ruby, there's RVM.
-- Depending on the operating system and the hardware architecture, some of these packages might come with binaries or might need to be compiled. For instance, in ARM computers like the Raspberry Pi, using the system package manager can be better than the language specific one if the former comes in form of binaries and the later needs to be compiled. This is highly dependent on your specific setup.
+여러분은 두 방식을 동시에 사용하면 충돌이 일어나고 디버깅하기 어려우므로 두 가지 방식 중 한 가지를 선택해 사용해야 합니다. 저희의 추천사항으로는 가능하면 언어별 패키지 매니저를 사용하고 시스템 전반 환경을 수정하는 걸 막기 위해 (파이썬의 virtualenv와 같은) 가상환경을 사용하는 것입니다.
 
-You should try to use one solution or the other and not both since that can lead to conflicts that are hard to debug. Our recommendation is to use the language-specific package manager whenever possible, and to use isolated environments (like Python's virtualenv) to avoid polluting the global environment. 
+## 제 코드의 성능을 향상하기 위해서 사용하는 가장 쉽고 좋은 프로파일링(profiling) 툴들은 무엇인가요?
 
-## What's the easiest and best profiling tools to use to improve performance of my code?
+프로파일링을 목적으로 사용하는 꽤 도움되는 가장 쉬운 툴은 [시간을 출력하는 것](/2020/debugging-profiling/#timing)입니다.
+여러분은 그저 여러분의 코드에 각각 다른 부분을 시간으로 재어서 확인하는 것입니다. 이를 반복한다면 여러분은 코드를 이중 탐색(binary search)해 어느 부분이 시간이 오래 걸리는지 찾아낼 수 있습니다.
 
-The easiest tool that is quite useful for profiling purposes is [print timing](/2020/debugging-profiling/#timing).
-You just manually compute the time taken between different parts of your code. By repeatedly doing this, you can effectively do a binary search over your code and find the segment of code that took the longest. 
+더욱 발전된 툴로써는 Valgrind의 [Callgrind](http://valgrind.org/docs/manual/cl-manual.html)를 사용하면 프로그램을 실행하고 모든 것이 얼마나 걸리는지, 스택 상황은 어떤지, 어떤 함수가 다른 함수를 호출하는지 확인할 수 있습니다. 그리고 Callgrind는 소스코드에 줄별로 얼마나 시간이 걸리는지 주석 처리를 한 새로운 코드를 만들어줍니다. 하지만 Callgrind는 여러분의 프로그램을 더욱 느리게 하고 쓰레드(thread)를 지원하지 않습니다. 다른 경우에는 [`perf`](http://www.brendangregg.com/perf.html) 툴이나 다른 언어에서 지원하는 샘플링 프로파일러 (sampling profiler)를 사용하면 유용한 데이터를 빠르고 예쁘게 내보냅니다. [Flamegraphs](http://www.brendangregg.com/flamegraphs.html)는 위 툴로 나온 데이터를 출력하기 위한 좋은 시각화 도구입니다. 또한, 작업 중인 프로그래밍 언어 또는 작업에 대한 특정 도구도 존재합니다. 예를 들어 웹 개발의 경우, Chrome과 Firefox에 내장된 개발 도구는 환상적인 프로파일러를 가지고 있습니다.
 
-For more advanced tools, Valgrind's [Callgrind](http://valgrind.org/docs/manual/cl-manual.html) lets you run your program and measure how long everything takes and all the call stacks, namely which function called which other function. It then produces an annotated version of your program's source code with the time taken per line. However, it slows down your program by an order of magnitude and does not support threads. For other cases, the [`perf`](http://www.brendangregg.com/perf.html) tool and other language specific sampling profilers can output useful data pretty quickly. [Flamegraphs](http://www.brendangregg.com/flamegraphs.html) are good visualization tool for the output of said sampling profilers. You should also try to use specific tools for the programming language or task you are working with. For example, for web development, the dev tools built into Chrome and Firefox have fantastic profilers.
+가끔 여러분의 시스템이 파일을 읽거나 네트워크 패킷을 보내는 등의 이벤트(시스템 호출)를 기다리는 파트가 여러분의 코드 중 가장 느린 곳일 겁니다. 이러면 하드웨어 기능 측면에서 이론적 속도에 대한 내부(back-of-the-envelope) 계산이 실제 판독 값에서 벗어나지 않는지 확인할 필요가 있습니다. 시스템 호출의 대기 시간을 분석할 수 있는 특수 도구도 있습니다. 예를 들어 [eBPF](http://www.brendangregg.com/blog/2019-01-01/learn-ebpf-tracing.html)와 같은 도구는 사용자 프로그램의 커널 추적을 도와줍니다. 만약 이러한 저수준의 프로파일링을 해야 한다면 [`bpftrace`](https://github.com/iovisor/bpftrace)도 사용하면 좋습니다.
 
-Sometimes the slow part of your code will be because your system is waiting for an event like a disk read or a network packet. In those cases, it is worth checking that back-of-the-envelope calculations about the theoretical speed in terms of hardware capabilities do not deviate from the actual readings. There are also specialized tools to analyze the wait times in system calls. These include tools like [eBPF](http://www.brendangregg.com/blog/2019-01-01/learn-ebpf-tracing.html) that perform kernel tracing of user programs. In particular [`bpftrace`](https://github.com/iovisor/bpftrace) is worth checking out if you need to perform this sort of low level profiling.
+## 어떤 브라우저 플러그인을 사용하시나요?
 
+사용하는 플러그인들은 주로 보안과 유용성에 초점이 맞춰져 있습니다:
 
-## What browser plugins do you use?
+- [uBlock Origin](https://github.com/gorhill/uBlock) - 이 플러그인은 그저 광고만 막지 않고, 페이지가 할 수 있는 [모든 종류](https://github.com/gorhill/uBlock/wiki/Blocking-mode)의 통신을 막는 블로커(blocker)입니다. 심지어 페이지 내 스크립트나 부가적인 리소스 로딩도 다룰 수 있습니다. 이런 차단을 하고 싶다면 [미디엄 모드](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-medium-mode)나 [하드 모드](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-hard-mode)를 사용하면 됩니다. 이 경우 설정을 충분히 변경하기 전에는 일부 사이트가 작동하지 않을 수 있지만, 온라인 보안을 크게 향상할 수 있습니다. 굳이 그럴 필요가 없다면, [이지 모드](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-easy-mode)는 충분히 일반적인 광고나 추적을 막을 수 있습니다. 또한, 추가 설정으로 어떤 거를 막을지 설정할 수 있습니다.
+- [Stylus](https://github.com/openstyles/stylus/) - Stylish의 수정 버전으로 ([사용자의 브라우저 기록을 탈취한 적](https://www.theregister.co.uk/2018/07/05/browsers_pull_stylish_but_invasive_browser_extension/)이 있는 Stylish는 사용하지 마세요!), 웹사이트 별 사용자 정의 CSS을 적용할 수 있게 해줍니다. Stylus를 사용하면 웹 사이트의 모양을 쉽게 수정할 수 있는데, 예를 들어 사이드바를 제거하거나 배경색을 변경하거나 텍스트 크기나 글꼴을 선택할 수 있습니다. 이를 통해 여러분이 자주 방문하는 웹사이트를 더 읽기 쉽게 만들 수 있습니다. 게다가 Stylus를 통해 [userstyles.org](https://userstyles.org/)에 공유된 스타일을 사용하거나 직접 자신의 스타일을 공유할 수 있습니다. 대부분의 웹사이트의 다크 모드 스타일은 거의 userstyle 사이트에 있습니다.
+- Full Page Screen Capture - Firefox와 [Chrome extension](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en) 둘 다 지원됩니다. 참고용으로 페이지를 인쇄하는 거보다 더 좋게 사이트를 전체 스크린샷으로 찍을 수 있습니다.
+- [Multi Account Containers](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/) - 쿠키들을 "containers" 단위로 분리하면서, 웹에서 서로 다른 정보를 통해 웹서핑할 수 있게 도와주거나 웹사이트 간 사용자 정보를 공유하지 못하도록 막을 수 있습니다.
+- 통합 암호 매니저(Password Manager Integration) - 대부분의 암호 매니저는 웹 사이트에 자격 증명을 입력하는 것이 더 편리할 뿐만 아니라 더 안전하게 만드는 브라우저 확장 기능이 있습니다. 단순히 사용자 및 암호를 복사하는 것에 비해 이러한 도구는 먼저 웹 사이트 도메인이 항목에 나열된 도메인과 일치하는지 확인하여 인기 웹 사이트를 가장하여 자격 증명을 도용하는 피싱 공격을 방지할 수 있습니다.
 
-Some of our favorites, mostly related to security and usability:
+## 데이터를 다룰 수 있는 다른 유용한 툴은 무엇이 있나요?
 
-- [uBlock Origin](https://github.com/gorhill/uBlock) - It is a [wide-spectrum](https://github.com/gorhill/uBlock/wiki/Blocking-mode) blocker that doesn’t just stop ads, but all sorts of third-party communication a page may try to do. This also cover inline scripts and other types of resource loading. If you’re willing to spend some time on configuration to make things work, go to [medium mode](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-medium-mode) or even [hard mode](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-hard-mode). Those will make some sites not work until you’ve fiddled with the settings enough, but will also significantly improve your online security. Otherwise, the [easy mode](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-easy-mode) is already a good default that blocks most ads and tracking. You can also define your own rules about what website objects to block.
-- [Stylus](https://github.com/openstyles/stylus/) - a fork of Stylish (don't use Stylish, it was shown to [steal users browsing history](https://www.theregister.co.uk/2018/07/05/browsers_pull_stylish_but_invasive_browser_extension/)), allows you to sideload custom CSS stylesheets to websites. With Stylus you can easily customize and modify the appearance of websites. This can be removing a sidebar, changing the background color or even the text size or font choice. This is fantastic for making websites that you visit frequently more readable. Moreover, Stylus can find styles written by other users and published in [userstyles.org](https://userstyles.org/). Most common websites have one or several dark theme stylesheets for instance. 
-- Full Page Screen Capture - Built into Firefox and [Chrome extension](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en). Let's you take a screenshot of a full website, often much better than printing for reference purposes.
-- [Multi Account Containers](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/) - lets you separate cookies into "containers", allowing you to browse the web with different identities and/or ensuring that websites are unable to share information between them.
-- Password Manager Integration - Most password managers have browser extensions that make inputting your credentials into websites not only more convenient but also more secure. Compared to simply copy-pasting your user and password, these tools will first check that the website domain matches the one listed for the entry, preventing phishing attacks that impersonate popular websites to steal credentials. 
+우리가 데이터 처리 강의 때 다루지 못했던 다른 툴로는 `jq`와 `pup`가 있는데, 이는 각각 JSON과 HTML에 최적화된 데이터 파서(parser)입니다. Perl 프로그래밍 언어 역시 더욱 고수준의 데이터 처리 파이프라인(pipeline)을 다루는 데 도움이 됩니다. 또 다른 기술은 공백 텍스트를 적절하게 정렬된 텍스트로 변환하는 데 사용할 수 있는 `column -t` 명령어입니다.
 
-## What are other useful data wrangling tools?
+일반적으로 더욱 독특한 데이터 처리 툴은 Vim과 Python입니다. 일부 복잡하고 다중 줄의 변경을 원하는 경우 Vim 매크로는 매우 귀중한 툴이 될 수 있습니다. 일련의 동작을 기록하기만 하면 될 뿐 아니라 원하는 횟수만큼 반복할 수 있는데, 예를 들어 [편집기 렉쳐 노트](/2020/editors/#macros) (그리고 작년 [강의 영상](/2019/editors/))에는 XML-formatted 파일을 Vim 매크로만으로 JSON으로 바꾸는 예시가 있습니다.
 
-Some of the data wrangling tools we did not have time to cover during the data wrangling lecture include `jq` or `pup` which are specialized parsers for JSON and HTML data respectively. The Perl programming language is another good tool for more advanced data wrangling pipelines. Another trick is the `column -t` command that can be used to convert whitespace text (not necessarily aligned) into properly column aligned text.
+CSV로 제공되는 표로 나타낸 데이터들은 Python 라이브러리인 [pandas](https://pandas.pydata.org/)라는 좋은 툴이 있습니다. 그룹별로, 조인(join) 또는 필터와 같은 복잡한 작업을 쉽게 정의할 뿐만 아니라 데이터의 서로 다른 속성을 쉽게 표시할 수 있기 때문입니다. 또한 pandas에선 XLS, HTML, LaTex와 같이 표로 나타낸 다양한 파일 형식으로 변환하는 것을 도와줍니다. 대안으로는 R 프로그래밍 언어 (논의할 필요 없이 [나쁜](http://arrgh.tim-smith.us/) 프로그래밍 언어)에서는 데이터를 통한 통계 계산에 많은 기능이 있으며 파이프라인의 마지막 단계로 상당히 유용할 수 있습니다. [ggplot2](https://ggplot2.tidyverse.org/)는 R의 훌륭한 플롯 라이브러리입니다.
 
-More generally a couple of more unconventional data wrangling tools are vim and Python. For some complex and multi-line transformations, vim macros can be a quite invaluable tools to use. You can just record a series of actions and repeat them as many times as you want, for instance in the editors [lecture notes](/2020/editors/#macros) (and last year's [video](/2019/editors/)) there is an example of converting a XML-formatted file into JSON just using vim macros.
+## 도커(Docker)와 가상 머신(Virtual Machine)의 차이점은 무엇인가요?
 
-For tabular data, often presented in CSVs, the [pandas](https://pandas.pydata.org/) Python library is a great tool. Not only because it makes it quite easy to define complex operations like group by, join or filters; but also makes it quite easy to plot different properties of your data. It also supports exporting to many table formats including XLS, HTML or LaTeX. Alternatively the R programming language (an arguably [bad](http://arrgh.tim-smith.us/) programming language) has lots of functionality for computing statistics over data and can be quite useful as the last step of your pipeline. [ggplot2](https://ggplot2.tidyverse.org/) is a great plotting library in R. 
+도커는 컨테이너(container)라고 불리는 좀 더 일반적인 개념에 기반을 두고 있습니다. 컨테이너와 가상 머신의 주요 차이점은 가상 머신은 커널(kernel)이 호스트 시스템과 같더라도 커널을 포함한 전체 OS 스택을 실행한다는 것입니다. VM(가상 머신)과 달리 컨테이너는 다른 커널 인스턴스를 실행하지 않고 커널을 호스트와 공유합니다. Linux에서 이것은 LXC라는 메커니즘을 통해 달성되며, 일련의 격리 메커니즘을 사용하여 자체 하드웨어에서 실행된다고 생각되는 프로그램을 실행하지만 실제로는 호스트와 하드웨어와 커널을 공유합니다. 따라서 컨테이너는 전체 VM보다 오버헤드(overhead)가 낮습니다.
+반대로 컨테이너는 가상 머신보다 더 약한 격리를 가지며 호스트가 컨테이너와 같은 커널을 실행하는 경우에만 작동합니다. 예를 들어, MacOS에서 도커를 실행하는 경우 도커는 초기 Linux 커널을 얻기 위해 Linux 가상 시스템을 실행해야 하므로 오버헤드는 여전히 상당합니다. 마지막으로, 도커는 컨테이너의 구체적인 구현이며 소프트웨어 배포에 적합합니다. 이 때문에 일부 이상한 점이 있는데, 예를 들어 도커 컨테이너는 기본적으로 재부팅을 하면 모든 저장 정보가 초기화됩니다.
 
-## What is the difference between Docker and a Virtual Machine?
+## 운영 체제 간 장단점이 각각 어떻게 되고 그 중 어떤 걸 골라야 하나요? (예를 들어 우리의 목적에 맞는 Linux 배포판을 고르는 등)
 
-Docker is based on a more general concept called containers. The main difference between containers and virtual machines is that virtual machines will execute an entire OS stack, including the kernel, even if the kernel is the same as the host machine. Unlike VMs, containers avoid running another instance of the kernel and instead share the kernel with the host. In Linux, this is achieved through a mechanism called LXC, and it makes use of a series of isolation mechanism to spin up a program that thinks it's running on its own hardware but it's actually sharing the hardware and kernel with the host. Thus, containers have a lower overhead than a full VM. 
-On the flip side, containers have a weaker isolation and only work if the host runs the same kernel. For instance if you run Docker on macOS, Docker needs to spin up a Linux virtual machine to get an initial Linux kernel and thus the overhead is still significant. Lastly, Docker is a specific implementation of containers and it is tailored for software deployment. Because of this, it has some quirks: for example, Docker containers will not persist any form of storage between reboots by default.
+Linux 배포판(distro)이 많아도, 각각은 대부분의 사용 사례에서 상당히 같게 작동될 것입니다.
+대부분의 Linux 및 UNIX 기능들은 대부분의 배포판에서 배울 수 있습니다.
+배포판들의 주요 차이점은 패키지 업데이트를 다루는 방법입니다.
+Arch Linux와 같은 배포판은 문제점이 많은 양날의 검인 롤링 업데이트 정책을 사용한다. 반대로 Debian, CentOS, Ubuntu LTS와 같은 배포판은 리포지토리(repository)에 업데이트를 릴리스할 때 훨씬 엄격하므로, 새로운 기능을 희생시켜 더 안정적이다.
+데스크톱과 서버에 쉽고 안정적인 경험을 하고 싶다면 Debian이나 Ubuntu를 추천한다.
 
-## What are the advantages and disadvantages of each OS and how can we choose between them (e.g. choosing the best Linux distribution for our purposes)?
+macOS는 인터페이스를 잘 다듬은 Windows와 Linux 사이의 좋은 타협점입니다. 다만 macOS는 Linux보단 BSD에 기반을 두기 때문에, 시스템과 명령어가 약간 다릅니다.
+한번 다룰만한 대안은 FreeBSD입니다. 비록 일부 프로그램이 FreeBSD에서 돌아가지 않겠지만, BSD 환경은 Linux보다 훨씬 덜 단편화되어있고 더 잘 문서화되어 있습니다.
+Windows 애플리케이션을 만들거나 게임을 위한 훌륭한 드라이버 지원과 같은 Windows만의 인정할만한 기능들을 사용해야 할 때 외에는 Windows는 추천하지 않습니다.
 
-Regarding Linux distros, even though there are many, many distros, most of them will behave fairly identically for most use cases. 
-Most of Linux and UNIX features and inner workings can be learned in any distro. 
-A fundamental difference between distros is how they deal with package updates. 
-Some distros, like Arch Linux, use a rolling update policy where things are bleeding-edge but things might break every so often. On the other hand, some distros like Debian, CentOS or Ubuntu LTS releases are much more conservative with releasing updates in their repositories so things are usually more stable at the expense of sacrificing newer features. 
-Our recommendation for an easy and stable experience with both desktops and servers is to use Debian or Ubuntu.
-
-Mac OS is a good middle point between Windows and Linux that has a nicely polished interface. However, Mac OS is based on BSD rather than Linux, so some parts of the system and commands are different.
-An alternative worth checking is FreeBSD. Even though some programs will not run on FreeBSD, the BSD ecosystem is much less fragmented and better documented than Linux. 
-We discourage Windows for anything but for developing Windows applications or if there is some deal breaker feature that you need, like good driver support for gaming. 
-
-For dual boot systems, we think that the most working implementation is macOS' bootcamp and that any other combination can be problematic  on the long run, specially if you combine it with other features like disk encryption. 
+듀얼 부팅으로 시스템을 설계할 때엔 macOS의 bootcamp가 가장 좋은 조합이라고 생각합니다. 다른 조합은 디스크 암호화와 같은 다른 기능들을 적용하여 사용할 때 장기적으로 문제가 될 수 있습니다.
 
 ## Vim vs Emacs?
 
-The three of us use vim as our primary editor but Emacs is also a good alternative and it's worth trying both to see which works better for you. Emacs does not follow vim's modal editing, but this can be enabled through Emacs plugins like [Evil](https://github.com/emacs-evil/evil) or [Doom Emacs](https://github.com/hlissner/doom-emacs). 
-An advantage of using Emacs is that extensions can be implemented in Lisp, a better scripting language than vimscript, Vim's default scripting language.
+3명의 강의자는 다 주력 에디터로 Vim을 사용하지만, Emacs 역시 좋은 대안품이니 둘 다 사용해보고 어느 것이 여러분에게 맞는지 찾아보세요. Emacs는 Vim의 모달(modal) 편집을 지원하지 않지만, [Evil](https://github.com/emacs-evil/evil)이나 [Doom Emacs](https://github.com/hlissner/doom-emacs)를 사용해 이를 지원하게 할 수 있습니다.
+Emacs를 사용하는 장점은 Vim의 기본 스크립팅 언어인 Vimscript보다 더 나은 스크립팅 언어인 Lisp에서 확장 프로그램을 구현할 수 있다는 것입니다.
 
-## Any tips or tricks for Machine Learning applications?
+## 머신 러닝을 위한 팁이나 기술들이 있나요?
 
-Some of the lessons and takeaways from this class can directly be applied to ML applications. 
-As it is the case with many science disciplines, in ML you often perform a series of experiments and want to check what things worked and what didn't. 
-You can use shell tools to easily and quickly search through these experiments and aggregate the results in a sensible way. This could mean subselecting all experiments in a given time frame or that use a specific dataset. By using a simple JSON file to log all relevant parameters of the experiments, this can be incredibly simple with the tools we covered in this class. 
-Lastly, if you do not work with some sort of cluster where you submit your GPU jobs, you should look into how to automate this process since it can be a quite time consuming task that also eats away your mental energy. 
+이 수업의 강의나 기술들을 가지고 바로 ML(Machine Learning - 머신러닝)에 적용할 수 있습니다.
+많은 과학 분야는 그렇듯이, ML에서는 종종 일련의 실험을 수행하며 어떤 것이 효과가 있고 어떤 것이 효과가 없었는지 확인하고 싶어합니다.
+쉘(shell) 툴를 사용하여 이러한 실험을 쉽고 빠르게 검색하고 결과를 합리적인 방법으로 집계할 수 있습니다. 예를 들어 특정 기간 모든 실험을 하위 선택하거나 특정 데이터 집합을 사용할 수 있다는 것입니다. 간단한 JSON 파일을 사용하여 실험의 모든 관련 정보들을 정리하는 작업을 이 강의에서 다룬 도구를 사용하면 믿을 수 없을 정도로 간단히 할 수 있다.
+마지막으로 GPU로 사용하는 클러스터(cluster)로 작업하지 않는 경우, 이 프로세스는 상당한 시간이 걸려 멘탈이 흔들릴 수 있으므로 자동화하는 방법을 살펴봐야 한다.
 
-## Any more Vim tips?
+## 다른 Vim 팁이 있나요?
 
-A few more tips:
+몇가지 더 있습니다:
 
-- Plugins - Take your time and explore the plugin landscape. There are a lot of great plugins that address some of vim's shortcomings or add new functionality that composes well with existing vim workflows. For this, good resources are [VimAwesome](https://vimawesome.com/) and other programmers' dotfiles.
-- Marks - In vim, you can set a mark doing `m<X>` for some letter `X`. You can then go back to that mark doing `'<X>`. This let's you quickly navigate to specific locations within a file or even across files. 
-- Navigation - `Ctrl+O` and `Ctrl+I` move you backward and forward respectively through your recently visited locations.
-- Undo Tree - Vim has a quite fancy mechanism for keeping track of changes. Unlike other editors, vim stores a tree of changes so even if you undo and then make a different change you can still go back to the original state by navigating the undo tree. Some plugins like [gundo.vim](https://github.com/sjl/gundo.vim) and [undotree](https://github.com/mbbill/undotree) expose this tree in a graphical way. 
-- Undo with time - The `:earlier` and `:later` commands will let you navigate the files using time references instead of one change at a time.
-- [Persistent undo](https://vim.fandom.com/wiki/Using_undo_branches#Persistent_undo) is an amazing built-in feature of vim that is disabled by default. It persists undo history between vim invocations. By setting `undofile` and `undodir` in your `.vimrc`, vim will storage a per-file history of changes.
-- Leader Key - The leader key is a special key that is often left to the user to be configured for custom commands. The pattern is usually to press and release this key (often the space key) and then some other key to execute a certain command. Often, plugins will use this key to add their own functionality, for instance the UndoTree plugin uses `<Leader> U` to open the undo tree. 
-- Advanced Text Objects - Text objects like searches can also be composed with vim commands. E.g. `d/<pattern>` will delete to the next match of said pattern or `cgn` will change the next occurrence of the last searched string. 
+- 플러그인 - 시간을 내어 플러그인을 찾고 사용해보세요. Vim의 단점을 해결하거나 기존 Vim 워크플로우와 잘 어울리는 새로운 기능을 추가하는 훌륭한 플러그인이 많이 있습니다. [VimAwesome](https://vimawesome.com/)이나 프로그래머들의 닷파일(dotfile)들을 참고한다면 좋은 플러그인들을 확인할 수 있을 겁니다.
+- 마크(mark) - Vim에서 `m`를 통해 글자 `X`를 마크할 수 있습니다. 마크를 해 놓으면 파일 안이나 여러 파일 간 특정 위치를 빠르게 이동할 수 있습니다. 
+- 네비게이션 - `Ctrl+O`와 `Ctrl+I`를 이용해 최근 방문한 위치들을 앞, 뒤로 이동할 수 있습니다.
+- 트리 되돌리기 - Vim은 변화를 추적하기 위해 멋진 메커니즘을 사용하고 있습니다. 다른 에디터와 다르게 Vim은 파일 변화를 저장하는 트리를 저장하기 때문에 실행 취소 후 파일을 변경해도 트리를 통해 원래 상태로 돌아갈 수 있습니다. [gundo.vim](https://github.com/sjl/gundo.vim)나 [undotree](https://github.com/mbbill/undotree)와 같은 플러그인을 사용하면 트리를 그래픽적으로 볼 수 있습니다.
+- 시간을 활용한 실행 취소 - `:earlier`와 `:later` 명령어로 한 번에 하나의 변경사항 대신 시간을 참조해 실행 취소할 수 있습니다.
+- [지속 실행 취소](https://vim.fandom.com/wiki/Using_undo_branches#Persistent_undo)은 기본적으로는 비활성화되어 있는 Vim에 내장된 대단한 기능입니다. 이 기능은 Vim 호출의 실행 취소를 지속하게 해줍니다. 여러분의 `.vimrc`에 `undofile`와 `undodir`를 설정해놓으면, Vim은 파일당 변경 내역을 저장합니다.
+- 리더 키 - 리더 키는 사용자 지정 명령에 대해 구성되도록 사용자에게 남겨두는 특수 키 입니다. 패턴은 대개 이 키(흔히 스페이스 키)를 눌렀다가 놓으면, 그다음 특정 명령을 실행하는 다른 키도 있습니다. 예를 들어 UndoTree 플러그인은 ` U`를 사용하여 실행 취소 트리를 여는 등 플러그인이 이 키를 사용하여 자체 기능을 추가하는 경우가 많습니다.
+- 고급 텍스트 개체 - 검색과 같은 텍스트 개체도 Vim 명령어로 구성할 수 있습니다. 예를들어 `d/`은 해당 패턴의 다음 일치로 삭제하거나, `cgn`은 마지막으로 검색된 문자열이 그 다음으로 나온 그 위치의 문자열을 변경합니다.
 
-## What is 2FA and why should I use it?
+## 2FA란 무엇이고 왜 사용해야 하나요?
 
-Two Factor Authentication (2FA) adds an extra layer of protection to your accounts on top of passwords. In order to login, you not only have to know some password, but you also have to "prove" in some way you have access to some hardware device. In the most simple case, this can be achieved by receiving an SMS on your phone, although there are [known issues](https://www.kaspersky.com/blog/2fa-practical-guide/24219/) with SMS 2FA. A better alternative we endorse is to use a [U2F](https://en.wikipedia.org/wiki/Universal_2nd_Factor) solution like [YubiKey](https://www.yubico.com/).
+투팩터 인증(2FA - Two Factor Authentication)는 여러분 계정의 보안을 비밀번호 말고도 하나의 추가적인 보안 단계를 추가하는 것을 말합니다. 2FA를 사용한 계정에 로그인하려면, 비밀번호를 알아야 하는 것은 물론이고 계정주 본인의 하드웨어에 접근할 수 있는지 "증명"해야 합니다. 가장 쉬운 예시로는 핸드폰의 문자를 받아 인증을 받는 SMS 2FA가 있습니다. 다만 이는 [알려진 문제점](https://www.kaspersky.com/blog/2fa-practical-guide/24219/)이 있어, 더 나은 대책으로는 [YubiKey](https://www.yubico.com/)와 같은 [U2F](https://en.wikipedia.org/wiki/Universal_2nd_Factor) 솔루션을 사용하는 것이 좋다.
 
-## Any comments on differences between web browsers?
+## 웹 브라우저의 차이점에 대한 의견이 있나요?
 
-The current landscape of browsers as of 2020 is that most of them are like Chrome because they use the same engine (Blink). This means that Microsoft Edge which is also based on Blink, and Safari, which is based on WebKit, a similar engine to Blink, are just worse versions of Chrome. Chrome is a reasonably good browser both in terms of performance and usability. Should you want an alternative, Firefox is our recommendation. It is comparable to Chrome in pretty much every regard and it excels for privacy reasons.
-Another browser called [Flow](https://www.ekioh.com/flow-browser/) is not user ready yet, but it is implementing a new rendering engine that promises to be faster than the current ones. 
+현재 2020년 기준 대부분 브라우저는 같은 엔진(블링크 - Blink)을 사용하기 때문에 Chrome과 비슷합니다. 블링크를 기반으로 하는 마이크로소프트 엣지와 블링크와 비슷한 엔진인 웹킷(WebKit)을 기반으로 하는 사파리는 크롬의 하위호환일 뿐입니다. 크롬은 성능과 사용성 측면에서 모두 상당히 좋은 브라우저입니다. 만약 대안을 원한다면, Firefox를 추천합니다. Firefox는 거의 모든 면에서 Chrome과 견줄 만하고 프라이버시 때문에 뛰어납니다.
+또 다른 브라우저인 [Flow](https://www.ekioh.com/flow-browser/)는 아직 사용자가 사용할 수 있을 만큼 발전되지 않았지만, 현재보다 빠른 속도를 약속하는 새로운 렌더링 엔진을 구현하고 있습니다.
