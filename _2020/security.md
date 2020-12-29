@@ -10,7 +10,7 @@ video:
 
 지난 해의 [security and privacy lecture](/2019/security/)는 컴퓨터 _사용자_ 측면에서 어떻게 더 안전해 질 수 있는가에 초점을 맞췄습니다. 이번에는, Git에서의 Hash 함수 혹은 키 유도 함수의 사용과 SSH 에서의 대칭/비대칭 암호 시스템과 같이 지난 수업에서 다룬 도구를 이해하는데 관련이 있는 보안과 암호학 개념에 초점을 맞출 것입니다.
 
-이 강의는 컴퓨터 시스템 보안 ([6.858](https://css.csail.mit.edu/6.858/)) 혹은 암호학([6.857](https://courses.csail.mit.edu/6.857/) and 6.875)에 대한 완벽한 대체 강의가 아닙니다. 보안 업무를 하기 위해서는 보안에 관한 정규 교육을 받아야 합니다. 전문가가 아니라면, [본인 만든 암호를 사용하지 마세요](https://www.schneier.com/blog/archives/2015/05/amateurs_produc.html). 이 원칙은 시스템 보안에도 적용됩니다.
+이 강의는 컴퓨터 시스템 보안 ([6.858](https://css.csail.mit.edu/6.858/)) 혹은 암호학([6.857](https://courses.csail.mit.edu/6.857/) and 6.875)에 대한 완벽한 대체 강의가 아닙니다. 보안 업무를 하기 위해서는 보안에 관한 정규 교육을 받아야 합니다. 전문가가 아니라면, [본인이 만든 암호를 사용하지 마세요](https://www.schneier.com/blog/archives/2015/05/amateurs_produc.html). 이 원칙은 시스템 보안에도 적용됩니다.
 
 이 강의는 기본적인 암호 개념을 비공식적(이지만 효율적)으로 다루고 있습니다. 이 강의는 독자가 어떻게 안전한 시스템이나 암호학 프로토콜을 _설계_ 할 수 있는지 가르치기에는 부족하지만, 독자가 이미 사용하는 프로그램과 프로토콜에 대해 일반적인 이해를 할 수 있도록 도움을 주고자 합니다.
 
@@ -157,7 +157,7 @@ Keybase에는 [사회적 증명](https://keybase.io/blog/chat-apps-softer-than-t
 
 ## Two-factor authentication
 
-[Two-factor authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)(2FA)에서는 도난된 암호와 [phishing](https://en.wikipedia.org/wiki/Phishing) 공격으로부터 보호하기위해 2FA 인증자([YuviKey](https://www.yubico.com/), "보유한 것"등)와 함께 암호("알고있는 것")를 사용해야 합니다.
+[Two-factor authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)(2FA)에서는 도난된 암호와 [phishing](https://en.wikipedia.org/wiki/Phishing) 공격으로부터 보호하기위해 2FA 인증자([YubiKey](https://www.yubico.com/), "보유한 것"등)와 함께 암호("알고있는 것")를 사용해야 합니다.
 
 ## 전체 디스크 암호화
 
@@ -179,7 +179,7 @@ End-to-end의 보안은 비대칭 키 암호화에서 부트스트랩 됩니다.
 
 `ssh-keygen` 실행 시, `public_key, private_key`의 비대칭 키쌍이 생성됩니다. 이는 운영체제에서 제공되는 엔트로피를 사용하여 무작위로 생성됩니다(하드웨어 이벤트 등에서 수집). 
 공용 키는 그대로 저장되며(공개키 이므로 비밀 유지하는 것은 중요하지 않음), 개인키는 디스크에 암호화되어 저장되어야 합니다.
-`ssh-keygen` 프로그램은 사용자에게 암호를 묻고, 이는 키 윧ㅎ 함수를 통해 제공되어 키를 생성 한 다음 대칭 암호로 개인 키를 암호화하는 데 사용됩니다.
+`ssh-keygen` 프로그램은 사용자에게 암호를 묻고, 이는 키 유도 함수를 통해 제공되어 키를 생성 한 다음 대칭 암호로 개인 키를 암호화하는 데 사용됩니다.
 
 사용 시, 서버가 클라이언트의 공용 키(`.ssh/authorized_keys`에 저장된 파일)를 알게 되면, 연결 클라이언트는 비대칭 서명을 사용해 신원을 증명할 수 있습니다.
 이것은 [challenge-response](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication)을 통해 이루어집니다.

@@ -177,7 +177,7 @@ pdflatex paper.tex
 
 여러분이 더 큰 프로젝트에서 작업하게 될 수록, 프로젝트에 변화를 줄 때마다 추가적으로 수행해야 하는 일들이 있다는 것을 알게 될 것입니다.
 여러분은 아마 기록문서(documentation)의 새로운 버전을 업로드하고, 컴파일된 버전을 어딘가에 업로드하고, 코드를 파이파이(pypi)에 배포하고, [테스트 스위트(test suite)](https://m.blog.naver.com/PostView.nhn?blogId=netrance&logNo=110184403382&proxyReferer=https:%2F%2Fwww.google.com%2F)를 실행하고, 별의 별 것들을 다 해야 할 수도 있습니다.  
-아마 누군가가 깃허브(GitHub)에서 여러분에게 풀 리퀘스트(pull requres;PR)을 보낼 때마다, 여러분은 그 코드가 스타일 체크(style check)되기를 바라고 성능 테스트(benchmark)를 실행하고 싶을 지도 모르겠죠?  
+아마 누군가가 깃허브(GitHub)에서 여러분에게 풀 리퀘스트(pull request;PR)을 보낼 때마다, 여러분은 그 코드가 스타일 체크(style check)되기를 바라고 성능 테스트(benchmark)를 실행하고 싶을 지도 모르겠죠?  
 이러한 필요가 생길 때가 바로 지속적 통합(continuous integration)을 고려해 봐야 할 때입니다.
 
 지속적 통합(continuous integration), 또는 CI는 "코드가 바뀔 때마다 실행되는 것"에 대한 포괄적인 용어입니다, 그리고 다양한 종류의 CI를 제공하는 많은 회사들이 있습니다 (흔히 오픈소스 프로젝트인 경우 무료).
