@@ -258,7 +258,7 @@ dotfiles를 어떻게 체계적으로 구성할 수 있을까요? 버전 관리 
 - **변경 내용 추적**: 여러분은 아마 프로그래머로서 일을 할 동안 dotfiles을 유지 관리할 것이고, 버전 기록은 오래 지속되는 프로젝트에 유용할 것입니다.
 
 dotfiles에 무엇을 넣어야할까요?
-온라인상의 자료 또는 [`메인 페이지`](https://en.wikipedia.org/wiki/Man_page)를 읽으며 여러 가지 도구에 대한 설정울 배울 수 있습니다. 또 다른 좋은 방법은 인터넷에서 특정 프로그램에 대한 블로그 게시물을 검색하는 것입니다. 여기에서 블로거는 그들이 선호하는 customizations(사용자 정의)에 대해 이야기할 것입니다. customizations(사용자 정의)에 대해 배우는 또 다른 방법은 다른 사람들의 dotfile을 살펴 보는 것 입니다. Github에서 수많은 [`dotfiles 저장소`](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)를 찾을 수 있습니다. 가장 인기있는 저장소는 [`여기`](https://github.com/mathiasbynens/dotfiles)입니다.(하지만 configurations을 무턱대고 복사하는 것은 올바른 방법이 아님을 알려드립니다.) [`이것`](https://dotfiles.github.io/)은 이 주제에 대한 또 다른 좋은 자료입니다.
+온라인상의 자료 또는 [`매뉴얼 페이지`](https://en.wikipedia.org/wiki/Man_page)를 읽으며 여러 가지 도구에 대한 설정울 배울 수 있습니다. 또 다른 좋은 방법은 인터넷에서 특정 프로그램에 대한 블로그 게시물을 검색하는 것입니다. 여기에서 블로거는 그들이 선호하는 customizations(사용자 정의)에 대해 이야기할 것입니다. customizations(사용자 정의)에 대해 배우는 또 다른 방법은 다른 사람들의 dotfile을 살펴 보는 것 입니다. Github에서 수많은 [`dotfiles 저장소`](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)를 찾을 수 있습니다. 가장 인기있는 저장소는 [`여기`](https://github.com/mathiasbynens/dotfiles)입니다.(하지만 configurations을 무턱대고 복사하는 것은 올바른 방법이 아님을 알려드립니다.) [`이것`](https://dotfiles.github.io/)은 이 주제에 대한 또 다른 좋은 자료입니다.
 
 모든 강사들은 GitHub에서 공적으로 액세스할 수 있는 dotfiles을 가지고 있습니다 : [Anish](https://github.com/anishathalye/dotfiles), [Jon](https://github.com/jonhoo/configs), [Jose](https://github.com/jjgo/dotfiles).
 
@@ -361,7 +361,7 @@ ssh를 통해 파일을 복사하는 방법에는 여러 가지가 있습니다.
 
 많은 시나리오에서 여러분은 장치의 특정 포트를 수신하는 소프트웨어를 만나게 될 것입니다. 로컬 시스템에서 발생하게 된다면 `localhost : PORT` 또는 `127.0.0.1 : PORT`를 입력 할 수 있습니다. 그러나, 네트워크/인터넷을 통해 직접 사용할 수 있는 포트가 없는 원격 서버가 있다면 어떻게 해야할까요?  
 
-이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내요은 사진을 참조해주십시오. 저작권은 [StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
+이것을 _포트 포워딩(port forwarding)_ 이라고 하며 로컬 포트 포워딩(Local Port Forwarding)과 원격 포트 포워딩(Remote Port Forwarding)의 두 가지 형태로 제공됩니다. (자세한 내용은 사진을 참조해주십시오. 저작권은 [StackOverflow 게시물](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)에 있습니다.) 
 
 **로컬 포트 포워딩(Local Port Forwarding)**
 ![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png  "Local Port Forwarding")
@@ -403,7 +403,7 @@ Host *.mit.edu
 
 ## 이외에 알아두면 좋은 사항
 
-원격 서버에 연결할 때 나타나는 흔한 문제들 중 하나는 컴퓨터를 종료/절전하거나, 네트워크를 변경할 때 연결이 끊어지는 것입니다. 게다가 만약 여러분이 연결에서 심한 지연(lag)을 경험하게 된다면 ssh를 사용하기가 꺼려질 수도 있습니다. 모바일 쉘 [Mosh](https://mosh.org/)는 로밍 연결(roaming connections), 간헐적 연결(internittent connectivity), 지능형 로컬 에코(intelligent local echo)가 가능하므로 ssh보다 더 낫습니다.
+원격 서버에 연결할 때 나타나는 흔한 문제들 중 하나는 컴퓨터를 종료/절전하거나, 네트워크를 변경할 때 연결이 끊어지는 것입니다. 게다가 만약 여러분이 연결에서 심한 지연(lag)을 경험하게 된다면 ssh를 사용하기가 꺼려질 수도 있습니다. 모바일 쉘 [Mosh](https://mosh.org/)는 로밍 연결(roaming connections), 간헐적 연결(intermittent connectivity), 지능형 로컬 에코(intelligent local echo)가 가능하므로 ssh보다 더 낫습니다.
 
 때로는 원격 폴더를 마운트 하는것이 편리합니다. [sshfs](https://github.com/libfuse/sshfs)는 로컬로 원격 서버에 폴더를 마운트 하여 로컬 에디터를 사용할 수 있게 합니다.
 
