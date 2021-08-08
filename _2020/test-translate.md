@@ -325,6 +325,6 @@ set editing-mode vi
     1. 플러그인의 [documentation](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)을 읽으세요. CtrlP로 프로젝트 디렉토리를 탐색하여 파일을 찾고, Vim을 연 다음, Vim 커맨드-라인을 사용하여 `:CtrlP`를 시작하세요.
     1. [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)을 여러분의 `~/.vimrc`에 추가하여 CtrlP를 Ctrl-P를 누름으로써 열 수 있게 커스터마이징 해보세요.
 1. Vim 사용법을 연습하기 위해, 강의해서 진행되었던 [Demo](#demo)를 여러분의 컴퓨터로 다시 반복해보세요.
-1. 다음 달 까지 _모든_ 텍스트 편집에 Vim을 사용해보세요. 뭔가 비효율적으로 느껴지거나, "더 나은 방법이 있을 거야"라고 생각될 때마다, 구글을 검색해보면, 아마 방법은 있을 것입니다. 만약 막히는 부분이 있다면 오피스 아워에 방문하거나 우리에게 이메일을 보내주세요.
+1. 다음 달 까지 모든 텍스트 편집에 Vim을 사용해보세요. 뭔가 비효율적으로 느껴지거나, "더 나은 방법이 있을 거야"라고 생각될 때마다, 구글을 검색해보면, 아마 방법은 있을 것입니다. 만약 막히는 부분이 있다면 오피스 아워에 방문하거나 우리에게 이메일을 보내주세요.
 1. Vim 바인딩을 이용하여 여러분의 다른 도구들을 설정해보세요 (관련 설명은 위에서 설명했습니다)
 1. (심화) Vim 매크로를 사용하여 XML을 JSON으로 변환해보세요 ([example file](/2020/files/example-data.xml)). 여러분 혼자 힘으로 해야하지만, 만약 막히는 부분이 있다면, 위의 [매크로](#macros) 섹션을 참고하세요.
