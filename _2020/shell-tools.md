@@ -182,7 +182,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 
 `find`의 편리성에도 불구하고, 그 구문을 기억하기가 까다로울 수 있습니다.예를 들어, 어떤 패턴 `PATTERN`과 일치하는 파일을 찾으려면 `find -name PATTERN` (또는 패턴의 대소문자를 구분하지 않으려면 `-iname`)를 실행해야 합니다. 이러한 상황에 대비해서 별칭을 만들어서 편리하게 쓸 수 있지만, 쉘 철학의 일부는 대안을 탐색하는 것이 좋다는 것입니다. 쉘의 가장 좋은 속성 중 하나는 프로그램을 호출하는 것이므로 일부 대체 방법을 찾거나 직접 작성할 수 있다는 점을 기억하십시오. 예를 들어 [fd](https://github.com/sharkdp/fd)는`find`에 대한 간단하고 빠른 사용자 친화적 대안입니다. `fd`는 색상화된 출력, 기본 정규식 일치 및 유니 코드 지원과 같은 멋진 기본값을 제공합니다. 또한 제 생각에는 보다 직관적인 것 같습니다. 예를 들어 패턴 `PATTERN`을 찾는 구문은 `fd PATTERN`입니다.
 
-대부분의 사람들은`find`와`fd` 둘 다 좋다는 데 동의할 것입니다. 그러나 여러분 중 일부는 빠른 검색을 위해 어떤 종류의 인덱스나 데이터베이스를 컴파일하는 것과 비교하여 매번 파일을 찾는 것의 효율성에 대해 궁금해 할 것입니다. 그것이 바로 [locate](https://www.man7.org/linux/man-pages/man1/locate.1.html)의 목적입니다. `locate`는 [updatedb](https://www.man7.org/linux/man-pages/man1/updatedb.1.html)를 사용하여 업데이트 된 데이터베이스를 사용합니다. 대부분의 시스템에서`updatedb`는 [cron](https://www.man7.org/linux/man-pages/man8/cron.8.html)을 통해 매일 업데이트됩니다. 따라서 둘 사이애서 한 가지 고려해야 할 점은 탐색 속도와 최신화입니다. 또한 `find` 와 유사한 도구는 파일 크기, 수정 시간 또는 파일 권한과 같은 속성을 사용하여 파일을 찾을 수도 있지만 `find`는 파일 이름만 사용합니다. 보다 자세한 비교는 [여기](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)에서 확인할 수 있습니다.
+대부분의 사람들은`find`와`fd` 둘 다 좋다는 데 동의할 것입니다. 그러나 여러분 중 일부는 빠른 검색을 위해 어떤 종류의 인덱스나 데이터베이스를 컴파일하는 것과 비교하여 매번 파일을 찾는 것의 효율성에 대해 궁금해 할 것입니다. 그것이 바로 [locate](https://www.man7.org/linux/man-pages/man1/locate.1.html)의 목적입니다. `locate`는 [updatedb](https://www.man7.org/linux/man-pages/man1/updatedb.1.html)를 사용하여 업데이트 된 데이터베이스를 사용합니다. 대부분의 시스템에서`updatedb`는 [cron](https://www.man7.org/linux/man-pages/man8/cron.8.html)을 통해 매일 업데이트됩니다. 따라서 둘 사이에서 한 가지 고려해야 할 점은 탐색 속도와 최신화입니다. 또한 `find` 와 유사한 도구는 파일 크기, 수정 시간 또는 파일 권한과 같은 속성을 사용하여 파일을 찾을 수도 있지만 `find`는 파일 이름만 사용합니다. 보다 자세한 비교는 [여기](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)에서 확인할 수 있습니다.
 
 ## 코드 찾기
 
@@ -190,7 +190,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 
 지금은 `grep`에 매우 다양한 도구를 제공하는 많은 플래그가 있음을 알고 있습니다. 제가 자주 사용하는 것들은 일치하는 줄 주위에 **C**ontext를 가져 오기 위해 `-C` 옵션을 사용하고, 일치하는 줄을 **V**erting하는 데 사용하기 위한 `-v`입니다. 즉, 일치하지 **않는** 모든 줄을 출력합니다. 예를 들어, `grep -C 5`는 일치하는 전 후 다섯 줄을 출력해줍니다. 많은 파일을 빠르게 검색할 때 `-R`을 사용하는 것이 좋습니다. 이는 **R**ecursively 하게 디렉토리로 이동하여 일치하는 문자열에 대한 파일을 검색하기 때문입니다.
  
-그러나`grep -R`은 다중 CPU 지원, & c를 사용하여`.git` 폴더를 무시하는 등 여러 가지 방법으로 개선 할 수 있습니다. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 및 [rg](https://github.com/BurntSushi/ripgrep)를 포함한 많은 것들이 `grep` 의 대안으로 개발되었습니다. grep 의 대안으로 나온 저 모든 것들은 환상적이며 거의 동일한 기능을 제공합니다. 지금은 얼마나 빠르고 직관적인지를 고려할 때 ripgrep (`rg`)를 사용하고 있습니다. 몇 가지 예 :
+그러나`grep -R`은 다중 CPU 지원, & c를 사용하여`.git` 폴더를 무시하는 등 여러가지 방법으로 개선할 수 있습니다. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 및 [rg](https://github.com/BurntSushi/ripgrep)를 포함한 많은 것들이 `grep`의 대안으로 개발되었습니다. `grep`의 대안으로 나온 저 모든 것들은 환상적이며 거의 동일한 기능을 제공합니다. 지금은 얼마나 빠르고 직관적인지를 고려할 때 ripgrep(`rg`)를 사용하고 있습니다. 몇 가지 예 :
 
 ```bash
 # Find all python files where I used the requests library
