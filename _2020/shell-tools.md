@@ -159,7 +159,7 @@ for arg in reversed(sys.argv[1:]):
 
 ## 파일 찾기
 
-모든 프로그래머가 직면하는 가장 일반적인 반복 작업 중 하나는 파일이나 디렉토리를 찾는 것입니다. 모든 유닉스 계열 시스템은 파일을 찾는 훌륭한 셸 도구인 [find](https://www.man7.org/linux/man-pages/man1/find.1.html)를 패키지로 함께 제공합니다. `find`는 일부 기준과 일치하는 파일을 재귀 적으로 검색합니다. 몇 가지 예 :
+모든 프로그래머가 직면하는 가장 일반적인 반복 작업 중 하나는 파일이나 디렉토리를 찾는 것입니다. 모든 유닉스 계열 시스템은 파일을 찾는 훌륭한 셸 도구인 [find](https://www.man7.org/linux/man-pages/man1/find.1.html)를 패키지로 함께 제공합니다. `find`는 일부 기준과 일치하는 파일을 재귀적으로 검색합니다. 몇 가지 예 :
 
 ```bash
 # Find all directories named src
