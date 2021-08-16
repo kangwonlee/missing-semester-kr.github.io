@@ -190,7 +190,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 
 지금은`grep`에 매우 다양한 도구를 제공하는 많은 플래그가 있음을 알고 있습니다. 제가 자주 사용하는 것들은 일치하는 줄 주위에 **C** ontext를 가져 오기 위해 `-C` 옵션을 사용하고, 일치하는 줄을 **v** erting하는 데 사용하기 위한 `-v`입니다. 즉, 일치하지 **않는** 모든 줄을 출력합니다. 예를 들어`grep -C 5`는 일치하는 전 후 5 줄을 출력해줍니다. 많은 파일을 빠르게 검색 할 때`-R`을 사용하는 것이 좋습니다. 이는 **R** ecursively 하게 디렉토리로 이동하여 일치하는 문자열에 대한 파일을 검색하기 때문입니다.
  
-그러나`grep -R`은 다중 CPU 지원, & c를 사용하여`.git` 폴더를 무시하는 등 여러 가지 방법으로 개선 할 수 있습니다. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 및 [rg](https : // github)를 포함한 많은 것들이 `grep` 의 대안으로 개발되었습니다. grep 의 대안으로 나온 저 모든 것들은 환상적이며 거의 동일한 기능을 제공합니다. 지금은 얼마나 빠르고 직관적인지를 고려할 때 ripgrep (`rg`)를 사용하고 있습니다. 몇 가지 예 :
+그러나`grep -R`은 다중 CPU 지원, & c를 사용하여`.git` 폴더를 무시하는 등 여러 가지 방법으로 개선 할 수 있습니다. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 및 [rg](https://github.com/BurntSushi/ripgrep)를 포함한 많은 것들이 `grep` 의 대안으로 개발되었습니다. grep 의 대안으로 나온 저 모든 것들은 환상적이며 거의 동일한 기능을 제공합니다. 지금은 얼마나 빠르고 직관적인지를 고려할 때 ripgrep (`rg`)를 사용하고 있습니다. 몇 가지 예 :
 
 ```bash
 # Find all python files where I used the requests library
