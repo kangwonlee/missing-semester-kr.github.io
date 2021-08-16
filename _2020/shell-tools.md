@@ -229,7 +229,7 @@ rg --stats PATTERN
 
 # 연습문제
 
-1. [`man ls`] (https://www.man7.org/linux/man-pages/man1/ls.1.html)를 읽고 다음과 같은 방식으로 파일을 나열하는`ls` 명령을 작성합니다.
+1. [man ls](https://www.man7.org/linux/man-pages/man1/ls.1.html)를 읽고 다음과 같은 방식으로 파일을 나열하는`ls` 명령을 작성합니다.
 
     - 모든 파일 포함, 모든 숨겨진 파일 포함
     - 사이즈는 사람이 읽을 수 있을 법한 형식으로 (e.g. 454M instead of 454279954)
