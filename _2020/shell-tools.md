@@ -222,7 +222,7 @@ rg --stats PATTERN
 지금까지 이러한 작업을 수행하기 위해 필요한 위치에 이미 있다고 가정했습니다. 그러나 디렉토리를 빠르게 탐색하는 방법은 무엇입니까?
 쉘 별칭을 작성하거나 [ln -s](https://www.man7.org/linux/man-pages/man1/ln.1.html)를 사용하여 심볼릭 링크를 만드는 등 이를 수행 할 수있는 간단한 방법이 많이 있습니다. 하지만 사실, 개발자가 이미 매우 영리하고 정교한 솔루션을 찾아 냈다는 것입니다.
 
-이 과정의 주제와 마찬가지로, 당신은 종종 일반적인 경우를 최적화하고자 할 것입니다. [`fasd`] (https://github.com/clvv/fasd) 및 [`autojump`] (https://github.com/wting/)와 같은 도구를 통해 자주 and / or 최근 파일과 디렉토리를 찾을 수 있습니다. Fasd는 [_frecency_] (https://developer.mozilla.org/en/The_Places_frecency_algorithm), 즉 _frequency_ 및 _recency_ 별로 파일 및 디렉토리의 순위를 매 깁니다.
+이 과정의 주제와 마찬가지로, 당신은 종종 일반적인 경우를 최적화하고자 할 것입니다. [fasd](https://github.com/clvv/fasd) 및 [autojump](https://github.com/wting/)와 같은 도구를 통해 자주 and / or 최근 파일과 디렉토리를 찾을 수 있습니다. Fasd는 [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_algorithm), 즉 _frequency_ 및 _recency_ 별로 파일 및 디렉토리의 순위를 매 깁니다.
 기본적으로 `fasd` 는 _frecent_ 디렉토리의 하위 문자열을 사용하여 빠르게`cd`하는 데 사용할 수있는 `z` 명령을 추가합니다. 예를 들어`/ home / user / files / cool_project`로 자주 이동하는 경우 `z cool` 을 사용하여 바로 이동할 수 있습니다. autojump를 사용하면 `j cool` 을 사용하여 동일한 디렉토리 변경을 수행 할 수 있습니다.
 
 [`tree`] (https://linux.die.net/man/1/tree), [`broot`] (https://github.com/ Canop / broot) 또는 [`nnn`] (https://github.com/jarun/nnn) 또는 [`ranger`] (https://github.com/ranger/ranger)와 같은 본격적인 파일 관리자 디렉토리 구조에 대한 개요를 신속하게 파악하기위한 더 복잡한 도구도 존재합니다. 
