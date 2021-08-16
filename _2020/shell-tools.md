@@ -213,7 +213,7 @@ rg --stats PATTERN
 
 대부분의 셸에서 'Ctrl + R'을 사용하여 history을 역방향으로 검색 할 수 있습니다. 'Ctrl + R'을 누른 후 히스토리에있는 명령과 일치시킬 하위 문자열을 입력 할 수 있습니다. 계속 누르고 있으면 history에서 cycle을 순환합니다. [zsh](https://github.com/zsh-users/zsh-history-substring-search)에서 위쪽 / 아래쪽 화살표를 사용하여 활성화 할 수도 있습니다. 'Ctrl + R' 에 추가 기능은 [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) 바인딩을 사용하여 제공됩니다. `fzf`는 많은 명령과 함께 사용할 수있는 범용 퍼지 파인더입니다. 이것은 당신의 history를 모호하게 일치시켜 결과를 좀 더 편리하고 시각적으로 즐거운 방식으로 제시해줍니다. 
 
-내가 정말 좋아하는 또 다른 멋진 기록 관련 트릭은 ** 기록 기반 자동 제안 ** 입니다. [fish] (https://fishshell.com/) 셸에서 처음 도입 된 이 기능은 공통 접두사를 공유하는 가장 최근에 입력 한 명령으로 현재 셸 명령을 동적으로 자동 완성합니다. [zsh] (https://github.com/zsh-users/zsh-autosuggestions)에서 활성화 할 수 있으며 셸을 사용하는데 엄청난 도움이 됩니다. 
+내가 정말 좋아하는 또 다른 멋진 기록 관련 트릭은 **기록 기반 자동 제안** 입니다. [fish] (https://fishshell.com/) 셸에서 처음 도입 된 이 기능은 공통 접두사를 공유하는 가장 최근에 입력 한 명령으로 현재 셸 명령을 동적으로 자동 완성합니다. [zsh] (https://github.com/zsh-users/zsh-autosuggestions)에서 활성화 할 수 있으며 셸을 사용하는데 엄청난 도움이 됩니다. 
 
 마지막으로 명심해야 할 점은 선행 공백으로 명령을 시작하면 쉘 히스토리에 추가되지 않는다는 것입니다. 이것은 암호 또는 기타 민감한 정보로 명령을 입력 할 때 유용합니다. 만약 선행 공백을 추가하지 않는 실수를 한 경우, 시작 부분을 수동으로 제거하고 `.bash_history` 또는 `.zhistory`를 편집하면 됩니다. 
 
