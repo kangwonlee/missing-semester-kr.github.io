@@ -171,7 +171,7 @@ find . -mtime -1
 # Find all zip files with size in range 500k to 10M
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
-파일 나열 외에도 find는 쿼리와 일치하는 파일에 대한 작업을 수행 할 수도 있습니다. 이 속성(작업)은 상당히 단조로운 작업을 단순화하는 데 매우 유용 할 수 있습니다.
+파일 나열 외에도 `find`는 쿼리와 일치하는 파일에 대한 작업을 수행할 수도 있습니다. 이 속성(작업)은 상당히 단조로운 작업을 단순화하는 데 매우 유용할 수 있습니다.
 
 ```bash
 # Delete all files with .tmp extension
