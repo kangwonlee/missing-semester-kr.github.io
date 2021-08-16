@@ -299,7 +299,7 @@ cat out.txt
 그러나 zip 파일을 만드는 것과 같이 **모든** 파일로 작업을 수행하려면 어떻게해야합니까?
 지금까지 본 것처럼 명령은 인수와 STDIN 모두에서 입력을받습니다.
 명령을 파이핑 할 때 STDOUT을 STDIN에 연결하지만 'tar'와 같은 일부 명령은 인수에서 입력을받습니다.
-이러한 문제를 해결하기 위해 STDIN을 인수로 사용하여 명령을 실행하는 [`xargs`] (https://www.man7.org/linux/man-pages/man1/xargs.1.html) 명령이 있습니다.
+이러한 문제를 해결하기 위해 STDIN을 인수로 사용하여 명령을 실행하는 [xargs](https://www.man7.org/linux/man-pages/man1/xargs.1.html) 명령이 있습니다.
 예를 들어`ls | xargs rm`은 현재 디렉토리의 파일을 삭제합니다.
 
     당신의 임무는 폴더에서 모든 HTML 파일을 재귀 적으로 찾아서 zip 파일을 만드는 명령을 작성하는 것입니다. 파일에 공백이 있어도 명령은 작동되어야 합니다. (hint: check `-d` flag for `xargs`)
