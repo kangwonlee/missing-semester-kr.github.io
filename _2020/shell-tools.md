@@ -127,7 +127,7 @@ diff <(ls foo) <(ls bar)
 
 <!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
 
-`bash` 스크립트를 작성하는 것은 까다롭고 직관적이지 않을 수 있습니다. sh / bash 스크립트에서 오류를 찾는 데 도움이되는 [shellcheck] (https://github.com/koalaman/shellcheck)와 같은 도구가 있으니 참고해보세요.
+`bash` 스크립트를 작성하는 것은 까다롭고 직관적이지 않을 수 있습니다. sh / bash 스크립트에서 오류를 찾는 데 도움이되는 [shellcheck](https://github.com/koalaman/shellcheck)와 같은 도구가 있으니 참고해보세요.
 
 참고로, 터미널에서 호출하기 위해 반드시 bash로 스크립트를 작성할 필요는 없습니다. 예를 들어 다음은 인수를 역순으로 출력하는 간단한 Python 스크립트입니다.
 
