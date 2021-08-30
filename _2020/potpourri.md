@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Potpourri"
+title: "기타 흥미로운 주제들"
 date: 2019-01-29
 ready: true
 video:
@@ -10,61 +10,53 @@ video:
 
 ## Table of Contents
 
-- [Keyboard remapping](#keyboard-remapping)
-- [Daemons](#daemons)
+- [키보드 매핑](#키보드-매핑)
+- [데몬](#데몬)
 - [FUSE](#fuse)
-- [Backups](#backups)
-- [APIs](#apis)
-- [Common command-line flags/patterns](#common-command-line-flagspatterns)
-- [Window managers](#window-managers)
-- [VPNs](#vpns)
-- [Markdown](#markdown)
-- [Hammerspoon(desktop-automation-on-macOS)](#hammerspoon-desktop-automation-on-macos)
-- [Booting + Live USBs](#booting--live-usbs)
-- [Docker, Vagrant, VMs, Cloud, OpenStack](#docker-vagrant-vms-cloud-openstack)
-- [Notebook programming](#notebook-programming)
+- [백업](#백업)
+- [API](#api)
+- [일반적인 명령줄 플래그/패턴](#일반적인-명령줄-플래그패턴)
+- [창 관리자(Window managers)](#창-관리자window-managers)
+- [VPN](#vpn)
+- [마크다운](#마크다운)
+- [해머스푼 (macOS 데스크탑 자동화 프로그램)](#해머스푼-macos-데스크탑-자동화-프로그램)
+- [부팅 + 라이브USB](#부팅--라이브usb)
+- [도커, 베이그런트, 가상 환경, 클라우드, 오픈스택](#도커-베이그런트-가상-환경-클라우드-오픈스택)
+- [노트북 프로그래밍](#노트북-프로그래밍)
 - [GitHub](#github)
 
-## Keyboard remapping
+## 키보드 매핑
 
-As a programmer, your keyboard is your main input method. As with pretty much anything in your computer, it is configurable (and worth configuring).
+프로그래머가 사용하는 주 입력 장치는 키보드입니다. 컴퓨터에 있는 대부분의 장치처럼 키보드도 자유롭게 설정이 가능합니다(또한 그럴 가치가 있습니다).
 
-The most basic change is to remap keys.
-This usually involves some software that is listening and, whenever a certain key is pressed, it intercepts that event and replaces it with another event corresponding to a different key. Some examples:
-- Remap Caps Lock to Ctrl or Escape. We (the instructors) highly encourage this setting since Caps Lock has a very convenient location but is rarely used.
-- Remapping PrtSc to Play/Pause music. Most OSes have a play/pause key.
-- Swapping Ctrl and the Meta (Windows or Command) key.
+가장 기본적인 설정은 키를 다시 매핑하는 것입니다. 여기에는 일반적으로 이벤트를 감지하는 소프트웨어가 있어 특정 키를 누를 때마다 해당 이벤트를 가로채서 다른 키에 해당하는 다른 이벤트로 대체합니다. 예를 들면, 
+- Caps Lock을 Ctrl 또는 Escape로 재매핑. Caps Lock은 누르기 편한 위치에 있지만 자주 사용하지는 않기에 이 설정을 적극적으로 권합니다.
+- PrtSc를 Play/Pause music 키로 재매핑. 대부분의 운영체제에는 play/puase 키가 있습니다.
+- Ctrl 과 Meta(Windows 또는 Command)를 맞교환.
 
-You can also map keys to arbitrary commands of your choosing. This is useful for common tasks that you perform. Here, some software listens for a specific key combination and executes some script whenever that event is detected.
-- Open a new terminal or browser window.
-- Inserting some specific text, e.g. your long email address or your MIT ID number.
-- Sleeping the computer or the displays.
+임의의 명령에 키를 매핑할 수도 있습니다. 특히 자주 사용하는 작업에 유용합니다. 여기서 일부 소프트웨어는 특정 키 조합을 인식하고 이벤트가 감지될 때마다 스크립트를 실행합니다. 
+- 새 터미널이나 브라우저 창 열기
+- 특정 텍스트 입력(예: 이메일 주소나 학번)
+- 컴퓨터나 디스플레이를 절전 모드로 전환
 
-There are even more complex modifications you can configure:
-- Remapping sequences of keys, e.g. pressing shift five times toggles Caps Lock.
-- Remapping on tap vs on hold, e.g. Caps Lock key is remapped to Esc if you quickly tap it, but is remapped to Ctrl if you hold it and use it as a modifier.
-- Having remaps being keyboard or software specific.
+다음 예시처럼 더 복잡한 구성도 가능합니다.
+- 키 시퀀스 재매핑, 예: shift를 5번 누르면 Caps Lock이 전환.
+- 탭, 홀드로 재매핑, 예: Caps Lock을 빠르게 누르면 Esc로 매핑됩니다. 단, 키를 누른 상태에서 수정키로 사용하면 Ctrl로 다시 매핑됩니다.
+- 키보드나 소프트웨어에 따라 재매핑 필요
 
-Some software resources to get started on the topic:
-- macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) or [BetterTouchTool](https://folivora.ai/)
-- Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) or [Autokey](https://github.com/autokey/autokey)
-- Windows - Builtin in Control Panel, [AutoHotkey](https://www.autohotkey.com/) or [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
-- QMK - If your keyboard supports custom firmware you can use [QMK](https://docs.qmk.fm/) to configure the hardware device itself so the remaps works for any machine you use the keyboard with.
+키보드 매핑을 시작하는 데 도움이 될 참고 자료:
+- macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) 또는 [BetterTouchTool](https://folivora.ai/)
+- Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) 또는 [Autokey](https://github.com/autokey/autokey)
+- Windows - 제어판, [AutoHotkey](https://www.autohotkey.com/) 또는 [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
+- QMK - 키보드가 커스텀 펌웨어를 지원하는 경우 [QMK](https://docs.qmk.fm/)를 사용해 키보드를 사용하는 모든 기기에서 매핑이 작동하도록 할 수 있습니다.
 
-## Daemons
+## 데몬
 
-You are probably already familiar with the notion of daemons, even if the word seems new.
-Most computers have a series of processes that are always running in the background rather than waiting for a user to launch them and interact with them.
-These processes are called daemons and the programs that run as daemons often end with a `d` to indicate so.
-For example `sshd`, the SSH daemon, is the program responsible for listening to incoming SSH requests and checking that the remote user has the necessary credentials to log in.
+단어 자체는 생소하게 들리겠지만 여러분은 이미 데몬의 개념에 익숙할 것입니다. 대부분의 컴퓨터에는 사용자가 시작하고 상호작용할 때까지 기다리지 않고 항상 백그라운드에서 실행되는 일련의 프로세스가 있습니다. 이러한 프로세스를 데몬이라고 하며 데몬으로 실행되는 프로그램은 종종 이를 나타내기 위해 `d`로 끝납니다. 예를 들면 SSH 데몬인 `sshd`는 SSH 요청을 수신하고 원격 사용자가 로그인하는데 필요한 자격을 가졌는지 확인하는 프로그램입니다. 
 
-In Linux, `systemd` (the system daemon) is the most common solution for running and setting up daemon processes.
-You can run `systemctl status` to list the current running daemons. Most of them might sound unfamiliar but are responsible for core parts of the system such as managing the network, solving DNS queries or displaying the graphical interface for the system.
-Systemd can be interacted with the `systemctl` command in order to `enable`, `disable`, `start`, `stop`, `restart` or check the `status` of services (those are the `systemctl` commands).
+리눅스에서 `systemd`(시스템 데몬)는 데몬 프로세스를 실행하고 설정하기 위한 가장 일반적인 솔루션입니다. `systemctl status`를 실행해 현재 실행 중인 데몬 리스트를 나열할 수 있습니다. 대부분 생소하게 들릴 수도 있지만, 네트워크 관리, DNS 쿼리 해결, 시스템 그래픽 인터페이스 표시 같은 시스템에서 핵심적인 역할을 담당합니다. Systemd는 `systemctl`명령어와 상호작용해 서비스를 `활성화`, `비활성화`, `시작`, `종료`, `재시작` 하거나 서비스의 상태를 확인할 수 있습니다(이는 systemctl 명령입니다). 
 
-More interestingly, `systemd` has a fairly accessible interface for configuring and enabling new daemons (or services).
-Below is an example of a daemon for running a simple Python app.
-We won't go in the details but as you can see most of the fields are pretty self explanatory.
+더 흥미로운 점은 `systemd`에는 새로운 데몬이나 서비스를 구성하고 활성화하기 위해 접근하기 쉬운 인터페이스가 있습니다. 다음은 간단한 파이썬 앱을 실행하기 위한 데몬의 사례입니다. 자세한 설명은 생략합니다.
 
 ```ini
 # /etc/systemd/system/myapp.service
@@ -83,330 +75,140 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use [`cron`](https://www.man7.org/linux/man-pages/man8/cron.8.html), a daemon your system already runs to perform scheduled tasks.
+일정한 빈도로 프로그램을 실행하고 싶다면 굳이 데몬을 만들 필요는 없습니다. 시스템이 이미 실행 중인 데몬인 [`cron`](https://www.man7.org/linux/man-pages/man8/cron.8.html)을 사용하여 예약된 작업을 수행할 수 있습니다.
 
 ## FUSE
 
-Modern software systems are usually composed of smaller building blocks that are composed together.
-Your operating system supports using different filesystem backends because there is a common language of what operations a filesystem supports.
-For instance, when you run `touch` to create a file, `touch` performs a system call to the kernel to create the file and the kernel performs the appropriate filesystem call to create the given file.
-A caveat is that UNIX filesystems are traditionally implemented as kernel modules and only the kernel is allowed to perform filesystem calls.
+현대 소프트웨어 시스템은 일반적으로 작은 빌딩 블록으로 구성됩니다. 파일 시스템이 지원하는 작업에 대한 공통 언어가 있기 때문에 운영 체제는 다른 파일 시스템 백엔드 사용을 지원합니다. 예를 들면 `touch`로 파일을 만들 때, `touch`는 커널에 파일을 생성하라고 시스템 콜을 하고 커널은 적절한 파일 시스템 호출을 실행해 파일을 생성합니다. 주의할 점은 UNIX 파일 시스템은 전통적으로 커널 모듈로 구현되며 커널만 파일 시스템 호출을 수행할 수 있다는 것입니다. 
 
-[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) (Filesystem in User Space) allows filesystems to be implemented by a user program. FUSE lets users run user space code for filesystem calls and then bridges the necessary calls to the kernel interfaces.
-In practice, this means that users can implement arbitrary functionality for filesystem calls.
+[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) (Filesystem in User Space)를 사용하면 사용자 프로그램에서 파일 시스템을 구현할 수 있습니다. FUSE를 사용하면 사용자가 파일 시스템 호출을 위한 사용자 공간 코드를 실행한 다음 필요한 호출을 커널 인터페이스에 연결합니다. 실제로 이것은 사용자가 파일 시스템 호출에 대해 임의의 기능을 구현할 수 있음을 의미합니다.
 
-For example, FUSE can be used so whenever you perform an operation in a virtual filesystem, that operation is forwarded through SSH to a remote machine, performed there, and the output is returned back to you.
-This way, local programs can see the file as if it was in your computer while in reality it's in a remote server.
-This is effectively what `sshfs` does.
+예를 들어 FUSE를 사용하면 가상 파일 시스템에서 작업을 수행할 때마다 해당 작업이 SSH를 통해 원격 시스템으로 전달되어 원격 시스템에서 수행되고 출력이 다시 사용자에게 반환됩니다. 이런 식으로 로컬 프로그램은 파일이 실제로는 원격 서버에 있지만 사용자의 컴퓨터에 있는 것처럼 볼 수 있습니다. 이것이 `sshfs`가 하는 일입니다.
 
-Some interesting examples of FUSE filesystems are:
-- [sshfs](https://github.com/libfuse/sshfs) - Open locally remote files/folder through an SSH connection.
-- [rclone](https://rclone.org/commands/rclone_mount/) - Mount cloud storage services like Dropbox, GDrive, Amazon S3 or Google Cloud Storage and open data locally.
-- [gocryptfs](https://nuetzlich.net/gocryptfs/) - Encrypted overlay system. Files are stored encrypted but once the FS is mounted they appear as plaintext in the mountpoint.
-- [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
-- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
+FUSE 파일 시스템의 몇 가지 예를 첨부합니다.
+- [sshfs](https://github.com/libfuse/sshfs) - SSH 연결을 통해 로컬에서 원격 파일/폴더를 열 수 있습니다.
+- [rclone](https://rclone.org/commands/rclone_mount/) - Dropbox, GDrive, Amazon S3 or Google Cloud Storage 같은 클라우드 서비스를 배치하고 로컬에서 데이터를 사용합니다.
+- [gocryptfs](https://nuetzlich.net/gocryptfs/) - 암호화된 오버레이 시스템. 파일은 암호화되어 저장되지만 파일 시스템이 마운트되면, 마운트 지점에서 일반 텍스트로 나타납니다.
+- [kbfs](https://keybase.io/docs/kbfs) - 처음부터 끝까지 암호화된 분산 파일 시스템. 개인, 공유, 공개 파일을 생성할 수 있습니다.
+- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - 검색이 쉽도록 중복 제거, 압축 및 암호화된 백업을 합니다.
 
-## Backups
+## 백업
 
-Any data that you haven’t backed up is data that could be gone at any moment, forever.
-It's easy to copy data around, it's hard to reliable backup data.
-Here are some good backup basics and the pitfalls of some approaches.
+백업하지 않은 데이터는 언제든지 영원히 사라질 수 있는 데이터입니다. 데이터를 복사하는 것은 간단하지만 안정적으로 백업하기는 어렵습니다. 다음은 백업의 기본 사항과 일부 접근 방식의 함정입니다.
 
-First, a copy of the data in the same disk is not a backup, because the disk is the single point of failure for all the data. Similarly, an external drive in your home is also a weak backup solution since it could be lost in a fire/robbery/&c. Instead, having an off-site backup is a recommended practice.
+일단 동일한 디스크에 데이터 사본을 두는 것은 백업이 아닙니다. 디스크는 모든 데이터에 대한 단일 실패 지점(SPOF)이기 때문입니다. 마찬가지로 집에 외장 드라이브를 두는 것 또한 화재, 절도 등의 위험이 있으므로 취약한 백업 솔루션입니다. 대신 오프사이트 백업을 추천합니다.
 
-Synchronization solutions are not backups. For instance, Dropbox/GDrive are convenient solutions, but when data is erased or corrupted they propagate the change. For the same reason, disk mirroring solutions like RAID are not backups. They don't help if data gets deleted, corrupted or encrypted by ransomware.
+동기화는 백업이 아닙니다. 예를 들면 Dropbox나 GDrive는 편리하지만 데이터가 유실되거나 손상되면 변경 내용이 그대로 반영됩니다. 같은 이유로 RAID와 같은 미러링 디스크 솔루션 또한 백업이 아닙니다. 랜섬웨어에 의해 데이터가 삭제되거나 손상, 암호화되면 도움이 안 됩니다.
 
-Some core features of good backups solutions are versioning, deduplication and security.
-Versioning backups ensure that you can access your history of changes and efficiently recover files.
-Efficient backup solutions use data deduplication to only store incremental changes and reduce the storage overhead.
-Regarding security, you should ask yourself what someone would need to know/have in order to read your data and, more importantly, to delete all your data and associated backups.
-Lastly, blindly trusting backups is a terrible idea and you should verify regularly that you can use them to recover data.
+좋은 백업 솔루션의 핵심은 버전 관리, 중복 제거 및 보안입니다. 백업 버전 관리를 통해 파일의 변경 내역을 확인하고 효율적으로 복구할 수 있습니다. 효율적인 백업 솔루션은 변경 사항만 저장해서 저장 오버헤드를 줄이는 데이터 중복 제거 방식을 사용합니다. 보안과 관련해 누군가가 당신의 데이터를 읽거나 더 나아가서 당신의 모든 데이터와 관련 백업 파일을 삭제하는데 필요한 정보가 무엇인지 자문해야 합니다. 마지막으로, 맹목적으로 백업을 신뢰하는 것은 그다지 좋은 생각이 아닙니다. 정기적으로 백업을 사용해 데이터를 복구할 수 있는지 확인해야 합니다.
 
-Backups go beyond local files in your computer.
-Given the significant growth of web applications, large amounts of your data are only stored in the cloud.
-For instance, your webmail, social media photos, music playlists in streaming services or online docs are gone if you lose access to the corresponding accounts.
-Having an offline copy of this information is the way to go, and you can find online tools that people have built to fetch the data and save it.
+백업 대상은 컴퓨터의 로컬 파일, 그 이상입니다. 웹 애플리케이션의 엄청난 성장으로, 데이터 상당 부분이 클라우드에만 저장됩니다. 예를 들어 해당 계정에 접속할 수 없으면 웹메일, SNS에 업로드한 사진, 스트리밍 서비스의 플레이리스트, 온라인 문서는 사라집니다. 정보의 오프라인 사본을 갖는 것이 가장 좋은 방법이며 사람들이 데이터를 가져와 저장하기 위해 구축한 온라인 도구를 찾을 수 있습니다.
 
-For a more detailed explanation, see 2019's lecture notes on [Backups](/2019/backups).
+자세한 설명은 2019년 [백업 강의 노트](/2019/backups)를 참고하세요.
 
+## API
 
-## APIs
+이 수업에서는 컴퓨터를 보다 효율적으로 사용해 _로컬_ 업무를 수행하는 방법에 대해 많은 이야기를 나눴지만, 수업 중 많은 주제가 인터넷의 더 넓은 범위로 확장될 수 있다는 것을 알게 될 것입니다. 많은 온라인 서비스에는 사용자가 데이터를 이용할 수 있도록 도와주는 "API"가 있습니다. 예를 들어, 미국 정부는 여러분이 일기 예보를 편리하게 알 수 있도록 하는 API를 제공하고 있습니다.
 
-We've talked a lot in this class about using your computer more
-efficiently to accomplish _local_ tasks, but you will find that many of
-these lessons also extend to the wider internet. Most services online
-will have "APIs" that let you programmatically access their data. For
-example, the US government has an API that lets you get weather
-forecasts, which you could use to easily get a weather forecast in your
-shell.
+이러한 API는 대개 유사한 형식을 가지고 있습니다. API는 경로 및 쿼리 매개변수를 통해 읽고 싶은 데이터나 수행하려는 작업을 나타내는 구조화된 URL로, 종종 `api.service.com`에 뿌리를 두고 있습니다. 예를 들어 미국 날씨 데이터의 경우, 특정 지역의 날씨 정보를 얻고자 한다면 https://api.weather.gov/points/42.3604,-71.094 에 (`curl`을 이용해) GET 요청을 발행합니다. 응답은 사용자가 해당 지역의 구체적인 일기 정보를 확인할 수 있도록 다른 여러 URL을 포함하고 있습니다. 대개 이런 응답은 JSON 형식인데 [`jq`](https://stedolan.github.io/jq/) 같은 도구를 통해 다른 형식으로 변환할 수 있습니다.
 
-Most of these APIs have a similar format. They are structured URLs,
-often rooted at `api.service.com`, where the path and query parameters
-indicate what data you want to read or what action you want to perform.
-For the US weather data for example, to get the forecast for a
-particular location, you issue GET request (with `curl` for example) to
-https://api.weather.gov/points/42.3604,-71.094. The response itself
-contains a bunch of other URLs that let you get specific forecasts for
-that region. Usually, the responses are formatted as JSON, which you can
-then pipe through a tool like [`jq`](https://stedolan.github.io/jq/) to
-massage into what you care about.
+일부 API에는 인증이 필요하며, 요청에 일종의 비밀 _토큰_ 을 포함해야 합니다. 그리고 특정 서비스를 사용하기 위해서는 API 문서를 참조하십시오. 또한 "[OAuth](https://www.oauth.com/)"는 자주 사용되는 프로토콜입니다. OAuth는 서비스에서 "당신인 것처럼 행동"할 수 있고 미리 설정해둔 특정 목적을 위해서 사용할 수 있는 토큰을 발행하는 방법입니다. 토큰에 접근할 수 있는 사람이라면 누구나 토큰이 계정에서 허용한 모든 작업을 수행할 수 있기 때문에 토큰은 _비밀_ 이라는 점을 명심해야 합니다.
 
-Some APIs require authentication, and this usually takes the form of
-some sort of secret _token_ that you need to include with the request.
-You should read the documentation for the API to see what the particular
-service you are looking for uses, but "[OAuth](https://www.oauth.com/)"
-is a protocol you will often see used. At its heart, OAuth is a way to
-give you tokens that can "act as you" on a given service, and can only
-be used for particular purposes. Keep in mind that these tokens are
-_secret_, and anyone who gains access to your token can do whatever the
-token allows under _your_ account!
+[IFTTT](https://ifttt.com/)는 API를 기반으로 한 웹사이트이자 서비스로 여러 서비스를 통합해 임의로 특정 이벤트를 연동시킬 수 있습니다. 한 번 도전해보세요!
 
-[IFTTT](https://ifttt.com/) is a website and service centered around the
-idea of APIs — it provides integrations with tons of services, and lets
-you chain events from them in nearly arbitrary ways. Give it a look!
+## 일반적인 명령줄 플래그/패턴
 
-## Common command-line flags/patterns
+명령줄(Command-line) 도구는 매우 다양하므로 사용하기 전에 `man`페이지를 확인하고 싶을 때가 많습니다. 도구들은 몇 가지 공통점을 가지고 있기 때문에 알아두면 좋습니다.
 
-Command-line tools vary a lot, and you will often want to check out
-their `man` pages before using them. They often share some common
-features though that can be good to be aware of:
+- 대부분의 툴은 간단한 사용법을 소개하는 일종의 `--help` 플래그를 지원합니다. 
+- 한 번 시행하면 되돌리기 어려운 변화를 일으킬 수 있는 도구는 대개 "테스트 실행(dry run)" 기능을 가지고 있는데, _예상되는 결과_ 를 출력만 하고 실제로 수행하지는 않는 기능입니다. 마찬가지로 작업에 대한 메시지를 출력하는 "대화형" 플래그를 지원합니다.
+- 프로그램의 버전을 확인하려면 `--version` or `-V`를 사용하세요. (버그 보고에 편리합니다!)
+- 많은 프로그램이 더 자세한 설명을 출력하기 위한 `--verbose` 나 `-v` 플래그를 지원합니다. 일반적으로 플래그를 여러 번 반복하면(`-vvv`) 디버깅할 때 편리하도록 _더욱_ 자세한 설명을 출력합니다. 이와 유사하게, `--quiet` 플래그는 오류 발생 시에만 출력되도록 하는 플래그입니다.
+- 많은 도구에서 파일 이름 대신 `-`는 인자에 따라 "표준 입력" 또는 "표준 출력"을 의미합니다. 
+- 파괴적인 도구는 기본적으로 되돌릴 수 없지만 "재귀" 플래그(보통 `-r`)로 되돌릴 수 있습니다.
+- 때로는 플래그와 유사한 형태를 일반 인자로 전달하고 싶을 때가 있습니다. 예를 들어 `-r`이라는 파일을 삭제하려 한다고 가정해 보십시오. 또는 `ssh machine foo`처럼 한 프로그램을 다른 프로그램을 "통해" 실행하고 프로그램(`foo`) "내부"에 플래그를 전달하고자 할 수도 있습니다. 특수 인자 `--`는 플래그와 옵션(`-`로 시작하는 것)의 실행을 _중단_ 하도록 하여 플래그처럼 보이는 것을 다음과 같이 해석하지 않고 전달할 수 있습니다: `rm -- -r` 또는 `ssh machine --for-ssh -- foo --for-foo`.
 
- - Most tools support some kind of `--help` flag to display brief usage
-   instructions for the tool.
- - Many tools that can cause irrevocable change support the notion of a
-   "dry run" in which they only print what they _would have done_, but
-   do not actually perform the change. Similarly, they often have an
-   "interactive" flag that will prompt you for each destructive action.
- - You can usually use `--version` or `-V` to have the program print its
-   own version (handy for reporting bugs!).
- - Almost all tools have a `--verbose` or `-v` flag to produce more
-   verbose output. You can usually include the flag multiple times
-   (`-vvv`) to get _more_ verbose output, which can be handy for
-   debugging. Similarly, many tools have a `--quiet` flag for making it
-   only print something on error.
- - In many tools, `-` in place of a file name means "standard input" or
-   "standard output", depending on the argument.
- - Possibly destructive tools are generally not recursive by default,
-   but support a "recursive" flag (often `-r`) to make them recurse.
- - Sometimes, you want to pass something that _looks_ like a flag as a
-   normal argument. For example, imagine you wanted to remove a file
-   called `-r`. Or you want to run one program "through" another, like
-   `ssh machine foo`, and you want to pass a flag to the "inner" program
-   (`foo`). The special argument `--` makes a program _stop_ processing
-   flags and options (things starting with `-`) in what follows, letting
-   you pass things that look like flags without them being interpreted
-   as such: `rm -- -r` or `ssh machine --for-ssh -- foo --for-foo`.
+## 창 관리자(Window managers)
 
-## Window managers
+대부분의 사용자는 윈도우, 맥 OS, 우분투에서 기본적으로 제공되는 "드래그 앤 드롭" 창 관리자에 익숙할 것입니다. 화면에 일종의 고정된 창이 있으며, 드래그하여 크기를 조절하고, 서로 겹치게 할 수 있습니다. 이는 "플로팅" 창 관리자라고 하는 창 관리자의 한 _유형_ 일 뿐입니다. 특히 리눅스에는 다양한 기능이 있습니다. 타일링 창 관리자는 창을 겹치지 않게 타일처럼 가지런히 배치합니다(tmux처럼). 타일링 창 관리자를 사용하면 화면이 _레이아웃_ 에 따라 정렬된 오픈된 창으로 채워집니다. 단 하나의 창만 켜 두었다면 화면 전체를 차지합니다. 그 상태에서 창을 하나 더 켜면 원래 창은 축소되어 공간을 확보합니다(2/3나 1/3 정도). 세 번째 창을 열면 다시 기존 창들의 크기를 줄여 새 창을 위한 공간을 만들기를 반복합니다. tmux와 마찬가지로 마우스 터치 없이 키보드만으로 타일링 된 창을 이동하고 크기를 조절하고 탐색할 수 있습니다. 한번 시도해보세요!
 
-Most of you are used to using a "drag and drop" window manager, like
-what comes with Windows, macOS, and Ubuntu by default. There are windows
-that just sort of hang there on screen, and you can drag them around,
-resize them, and have them overlap one another. But these are only one
-_type_ of window manager, often referred to as a "floating" window
-manager. There are many others, especially on Linux. A particularly
-common alternative is a "tiling" window manager. In a tiling window
-manager, windows never overlap, and are instead arranged as tiles on
-your screen, sort of like panes in tmux. With a tiling window manager,
-the screen is always filled by whatever windows are open, arranged
-according to some _layout_. If you have just one window, it takes up the
-full screen. If you then open another, the original window shrinks to
-make room for it (often something like 2/3 and 1/3). If you open a
-third, the other windows will again shrink to accommodate the new
-window. Just like with tmux panes, you can navigate around these tiled
-windows with your keyboard, and you can resize them and move them
-around, all without touching the mouse. They are worth looking into!
+## VPN
 
+VPN이 유행이긴 하지만 그것이 [정당한 이유](https://gist.github.com/joepie91/5a9909939e6ce7d09e29) 때문인지는 확실치 않습니다. VPN이 수행하는 작업과 VPN이 사용자에게 제공하지 않는 작업은 무엇인지 알고 사용해야 합니다. VPN은 그저 인터넷 서비스 제공업체를 바꾸는 한 방법일 뿐입니다. 여러분이 생성한 트래픽은 "실제" 위치가 아닌 VPN 제공업체에서 오는 것처럼 보이며 연결된 네트워크에는 암호화된 트래픽만 표시됩니다.
 
-## VPNs
+이런 점이 매력적으로 보일 수도 있지만, 여러분이 VPN을 사용할 때 실제로 하는 일은 ISP에서 VPN 호스팅 회사로 신뢰를 이동하는 행위라는 것을 명심하십시오. 여러분의 ISP가 _볼 수 있는_ 것들은 이제 VPN 제공 업체가 _대신_ 볼 수 있습니다. ISP보다 VPN 제공 업체를 _더 신뢰한다면_ 상관없겠지만, 그게 아니라면 VPN을 사용함으로써 잃는 것보다 얻은 것이 더 많다고 장담할 수는 없습니다. 공항에서 암호화되지 않은 공용 와이파이를 사용할 때 꺼림칙하다고 생각할 수도 있겠지만, 그렇다고 집에서 사용하는 것이 더 신뢰할만하다고 보기도 어렵습니다.
 
-VPNs are all the rage these days, but it's not clear that's for [any
-good reason](https://gist.github.com/joepie91/5a9909939e6ce7d09e29). You
-should be aware of what a VPN does and does not get you. A VPN, in the
-best case, is _really_ just a way for you to change your internet
-service provider as far as the internet is concerned. All your traffic
-will look like it's coming from the VPN provider instead of your "real"
-location, and the network you are connected to will only see encrypted
-traffic.
+또한 요즘에는 민감한 정보를 담고 있는 트래픽 대부분이 _이미_ HTTPS나 TLS로 암호화되어 있습니다. 이 경우 사용자가 "나쁜" 네트워크를 사용하고 있는지는 중요하지 않습니다. 네트워크 운영자는 사용자가 통신하는 서버는 알지만 어떤 데이터를 주고받는지는 전혀 알 수 없기 때문입니다.
 
-While that may seem attractive, keep in mind that when you use a VPN,
-all you are really doing is shifting your trust from you current ISP to
-the VPN hosting company. Whatever your ISP _could_ see, the VPN provider
-now sees _instead_. If you trust them _more_ than your ISP, that is a
-win, but otherwise, it is not clear that you have gained much. If you
-are sitting on some dodgy unencrypted public Wi-Fi at an airport, then
-maybe you don't trust the connection much, but at home, the trade-off is
-not quite as clear.
+위에서 "VPN은 그저 인터넷 서비스 제공업체를 바꾸는 한 방법일 뿐"이라고 했는데요. VPN 제공업체가 실수로 소프트웨어를 잘못 구성해 암호화가 약하거나 완전히 비활성화된 경우는 전례가 없습니다. 일부 VPN 제공업체는 악의적 이어서 (최소한 기회주의적 이어서) 당신의 트래픽을 모조리 기록해 제3자에게 넘길 수 있습니다. 처음부터 사용하지 않는 것이 잘못된 VPN을 선택하는 것보다 낫습니다.
 
-You should also know that these days, much of your traffic, at least of
-a sensitive nature, is _already_ encrypted through HTTPS or TLS more
-generally. In that case, it usually matters little whether you are on
-a "bad" network or not -- the network operator will only learn what
-servers you talk to, but not anything about the data that is exchanged.
+만일의 경우를 대비해 MIT는 학생들을 위해 [VPN을 운영](https://ist.mit.edu/vpn)하고 있습니다. 직접 실행하고 싶다면 [와이어 가드](https://www.wireguard.com/)를 살펴보십시오.
 
-Notice that I said "in the best case" above. It is not unheard of for
-VPN providers to accidentally misconfigure their software such that the
-encryption is either weak or entirely disabled. Some VPN providers are
-malicious (or at the very least opportunist), and will log all your
-traffic, and possibly sell information about it to third parties.
-Choosing a bad VPN provider is often worse than not using one in the
-first place.
+## 마크다운
 
-In a pinch, MIT [runs a VPN](https://ist.mit.edu/vpn) for its students,
-so that may be worth taking a look at. Also, if you're going to roll
-your own, give [WireGuard](https://www.wireguard.com/) a look.
+앞으로 경력을 쌓으면서 글을 쓸 기회가 있을지도 모릅니다. 그렇다면 최대한 간단한 방식으로 텍스트를 표시하고 싶을 것입니다. 예를 들면 텍스트를 굵게 또는 기울임 꼴로 바꾸거나 헤더, 링크 및 코드 조각을 추가할 수도 있습니다. 이런 경우에 Word나 LaTex 같은 무거운 도구를 사용하는 대신 경량화된 마크업 언어인 [마크다운](https://commonmark.org/help/)을 사용하기를 권합니다.
 
-## Markdown
-
-There is a high chance that you will write some text over the course of
-your career. And often, you will want to mark up that text in simple
-ways. You want some text to be bold or italic, or you want to add
-headers, links, and code fragments. Instead of pulling out a heavy tool
-like Word or LaTeX, you may want to consider using the lightweight
-markup language [Markdown](https://commonmark.org/help/).
-
-You have probably seen Markdown already, or at least some variant of it.
-Subsets of it are used and supported almost everywhere, even if it's not
-under the name Markdown. At its core, Markdown is an attempt to codify
-the way that people already often mark up text when they are writing
-plain text documents. Emphasis (*italics*) is added by surrounding a
-word with `*`. Strong emphasis (**bold**) is added using `**`. Lines
-starting with `#` are headings (and the number of `#`s is the subheading
-level). Any line starting with `-` is a bullet list item, and any line
-starting with a number + `.` is a numbered list item. Backtick is used
-to show words in `code font`, and a code block can be entered by
-indenting a line with four spaces or surrounding it with
-triple-backticks:
+이전에 마크다운이나 마크다운에서 변형된 무언가를 본 적이 있을 것입니다. 마크다운이라는 이름으로 사용되지 않더라도 거의 모든 곳에서 부분적으로 마크다운을 사용하고 있습니다. 마크다운은 일반 텍스트 문서를 작성할 때 텍스트를 표시하는 방법을 체계적으로 정리한 것입니다. 강조 (*기울임 꼴*)는 문자열 양쪽에 `*`을 붙이면 됩니다. 강한 강조 (**굵게**)는 문자열에 `**`을 추가하면 됩니다. `#`로 시작하는 행은 헤더를 의미합니다. (그리고 `#`의 개수가 부제목의 레벨을 조절합니다.) `-`로 시작하는 행은 글머리 기호 목록의 항목이고 숫자 + `.`으로 시작하는 행은 번호 목록의 항목입니다. 백 틱은 `코드 글꼴`로 단어를 표시하는 데 사용되고, 코드 블록은 4개의 공백으로 행을 들여 쓰거나 백 틱 3개로 둘러싸서 입력할 수 있습니다:
 
     ```
-    code goes here
+    코드 입력 공간
     ```
 
-To add a link, place the _text_ for the link in square brackets,
-and the URL immediately following that in parentheses: `[name](url)`.
-Markdown is easy to get started with, and you can use it nearly
-everywhere. In fact, the lecture notes for this lecture, and all the
-others, are written in Markdown, and you can see the raw Markdown
-[here](https://raw.githubusercontent.com/missing-semester/missing-semester/master/_2020/potpourri.md).
+링크를 추가하려면 대괄호로 _링크를 설명하는 텍스트_ 를 묶고 바로 뒤에 괄호로 묶은 URL을 배치합니다: `[텍스트](URL)`. 마크다운은 배우기 쉽고 거의 모든 곳에서 사용할 수 있습니다. 이 강의 노트 또한 모두 마크다운으로 작성됐으며 실제 마크다운 코드는 [여기](https://raw.githubusercontent.com/missing-semester/missing-semester/master/_2020/potpourri.md)에서 볼 수 있습니다.
 
+## 해머스푼 (macOS 데스크탑 자동화 프로그램)
 
+[해머스푼](https://www.hammerspoon.org/)은 macOS 데스크탑 전용 자동화 프레임워크입니다. 운영체제 기능과 연결되는 Lua 스크립트로 키보드/마우스, 윈도우, 디스플레이, 파일 시스템 등과 상호작용할 수 있습니다.
 
-## Hammerspoon (desktop automation on macOS)
+해머스푼을 이용한 몇 가지 예:
 
-[Hammerspoon](https://www.hammerspoon.org/) is a desktop automation framework
-for macOS. It lets you write Lua scripts that hook into operating system
-functionality, allowing you to interact with the keyboard/mouse, windows,
-displays, filesystem, and much more.
+- 단축키로 화면을 특정 위치로 이동
+- 특정 레이아웃에서 창을 자동으로 배치하는 메뉴 모음 버튼 생성
+- (WiFi 네트워크를 감지해) 실험실에 도착하면 스피커 음소거
+- 실수로 친구의 전원 공급 장치를 가져갔을 때 경고창 팝업
 
-Some examples of things you can do with Hammerspoon:
+해머스푼을 사용하면 메뉴 버튼, 키보드 입력, 이벤트와 연결된 Lua 코드를 실행할 수 있으며 시스템과 상호작용할 수 있는 광범위한 라이브러리를 제공하기 때문에 기본적으로 할 수 있는 작업에 제한이 없습니다.
+많은 사람이 해머스푼 설정을 공개하고 있어 필요하다면 대개 검색으로 찾을 수 있지만, 직접 처음부터 작성하는 것도 좋습니다.
 
-- Bind hotkeys to move windows to specific locations
-- Create a menu bar button that automatically lays out windows in a specific layout
-- Mute your speaker when you arrive in lab (by detecting the WiFi network)
-- Show you a warning if you've accidentally taken your friend's power supply
+### 참고 자료
 
-At a high level, Hammerspoon lets you run arbitrary Lua code, bound to menu
-buttons, key presses, or events, and Hammerspoon provides an extensive library
-for interacting with the system, so there's basically no limit to what you can
-do with it. Many people have made their Hammerspoon configurations public, so
-you can generally find what you need by searching the internet, but you can
-always write your own code from scratch.
+- [해머스푼 시작하기](https://www.hammerspoon.org/go/)
+- [샘플](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
+- [Anish의 해머스푼 설정](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)
 
-### Resources
+## 부팅 + 라이브USB
 
-- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)
-- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
-- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)
+컴퓨터를 부팅하면 운영체제가 로딩되기 전에 [BIOS](https://en.wikipedia.org/wiki/BIOS)/[UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)가 시스템을 초기화합니다. 이 과정에서 특정 키를 눌러 이 소프트웨어 계층을 구성할 수 있습니다. 예를 들어 부팅 과정에서 컴퓨터는 "BIOS를 설정하려면 F9를 누르시오. 부팅 메뉴에 접속하려면 F12를 누르시오."라고 할 수도 있습니다. BIOS 메뉴에서 하드웨어와 관련된 모든 설정을 변경할 수 있습니다. 또한 부팅 메뉴에서 하드 드라이브 대신 대체 장치에서 부팅하도록 할 수도 있습니다.
 
-## Booting + Live USBs
+[라이브 USB](https://en.wikipedia.org/wiki/Live_USB)는 운영 체제가 포함된 USB 플래시 드라이브입니다. 운영 체제 (예: 리눅스 배포판)를 다운로드하고 플래시 드라이브에서 구워서 만들 수 있습니다. 이 과정은 `.iso` 파일을 단순히 디스크에 복제하는 것보다는 복잡하지만 [유넷부트인](https://unetbootin.github.io/) 같은 툴로 라이브 USB를 만드는 데 도움을 받을 수 있습니다. 
 
-When your machine boots up, before the operating system is loaded, the
-[BIOS](https://en.wikipedia.org/wiki/BIOS)/[UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
-initializes the system. During this process, you can press a specific key
-combination to configure this layer of software. For example, your computer may
-say something like "Press F9 to configure BIOS. Press F12 to enter boot menu."
-during the boot process. You can configure all sorts of hardware-related
-settings in the BIOS menu. You can also enter the boot menu to boot from an
-alternate device instead of your hard drive.
+라이브 USB는 다양한 용도로 유용하게 사용되는데, 무엇보다도 기존 운영 체제에 문제가 생겨 부팅이 안 되는 경우, 라이브 USB로 데이터를 복구하거나 운영 체제를 고칠 수 있습니다. 
 
-[Live USBs](https://en.wikipedia.org/wiki/Live_USB) are USB flash drives
-containing an operating system. You can create one of these by downloading an
-operating system (e.g. a Linux distribution) and burning it to the flash drive.
-This process is a little bit more complicated than simply copying a `.iso` file
-to the disk. There are tools like [UNetbootin](https://unetbootin.github.io/)
-to help you create live USBs.
+## 도커, 베이그런트, 가상 환경, 클라우드, 오픈스택
 
-Live USBs are useful for all sorts of purposes. Among other things, if you
-break your existing operating system installation so that it no longer boots,
-you can use a live USB to recover data or fix the operating system.
+[가상 머신](https://en.wikipedia.org/wiki/Virtual_machine) 및 컨테이너와 같은 유사한 도구를 사용해 운영체제를 포함한 전체 컴퓨터 시스템을 에뮬레이트 할 수 있습니다. 테스트, 개발 또는 탐색(예: 잠재적인 악성 코드 실행)을 위한 격리된 환경을 구성하는 데 유용합니다.
 
-## Docker, Vagrant, VMs, Cloud, OpenStack
+[베이그런트](https://www.vagrantup.com/)는 컴퓨터 구성(운영체제, 서비스, 패키지 등)을 코드로 설명한 다음 간단한 `vagrant up`으로 가상 환경을 인스턴스화할 수 있는 도구입니다. [Docker](https://www.docker.com/)는 개념적으로 유사하지만, 컨테이너를 사용한다는 차이가 있습니다.
 
-[Virtual machines](https://en.wikipedia.org/wiki/Virtual_machine) and similar
-tools like containers let you emulate a whole computer system, including the
-operating system. This can be useful for creating an isolated environment for
-testing, development, or exploration (e.g. running potentially malicious code).
+클라우드에서 가상 머신을 대여할 수 있으며 다음과 같은 기능이 있습니다:
 
-[Vagrant](https://www.vagrantup.com/) is a tool that lets you describe machine
-configurations (operating system, services, packages, etc.) in code, and then
-instantiate VMs with a simple `vagrant up`. [Docker](https://www.docker.com/)
-is conceptually similar but it uses containers instead.
+- 서비스를 호스팅하는 데 사용되는 공용 IP 주소를 가진 저렴한 상시 작동 시스템
+- CPU, 디스크, 램 및 GPU가 장착된 컴퓨터
+- 물리적으로 접속할 수 있는 것보다 더 많은 컴퓨터(비용은 초 단위로 계산되므로 짧은 시간 동안 많은 컴퓨터가 필요하다면 몇 분 동안 1,000대의 컴퓨터를 대여할 수 있습니다.)
 
-You can rent virtual machines on the cloud, and it's a nice way to get instant
-access to:
+[아마존 AWS](https://aws.amazon.com/), [구글 클라우드](https://cloud.google.com/) 그리고 [디지털 오션](https://www.digitalocean.com/) 같은 서비스가 유명합니다.
 
-- A cheap always-on machine that has a public IP address, used to host services
-- A machine with a lot of CPU, disk, RAM, and/or GPU
-- Many more machines than you physically have access to (billing is often by
-the second, so if you want a lot of computing for a short amount of time, it's
-feasible to rent 1000 computers for a couple of minutes)
+MIT CSAIL의 멤버라면 [CSAIL 오픈스택 인스턴스](https://tig.csail.mit.edu/shared-computing/open-stack/)로 연구 목적을 위한 무료 가상 환경을 이용할 수 있습니다.
 
-Popular services include [Amazon AWS](https://aws.amazon.com/), [Google
-Cloud](https://cloud.google.com/), and
-[DigitalOcean](https://www.digitalocean.com/).
+## 노트북 프로그래밍
 
-If you're a member of MIT CSAIL, you can get free VMs for research purposes
-through the [CSAIL OpenStack
-instance](https://tig.csail.mit.edu/shared-computing/open-stack/).
-
-## Notebook programming
-
-[Notebook programming
-environments](https://en.wikipedia.org/wiki/Notebook_interface) can be really
-handy for doing certain types of interactive or exploratory development.
-Perhaps the most popular notebook programming environment today is
-[Jupyter](https://jupyter.org/), for Python (and several other languages).
-[Wolfram Mathematica](https://www.wolfram.com/mathematica/) is another notebook
-programming environment that's great for doing math-oriented programming.
+[노트북 프로그래밍 환경](https://en.wikipedia.org/wiki/Notebook_interface)은 대화형이나 탐색적 개발에 유용합니다. 오늘날 가장 인기 있는 노트북 프로그래밍 환경은 파이썬(및 기타 다른 언어)을 위한 [주피터](https://jupyter.org/) 입니다. 그리고 [울프램 매스매티카](https://www.wolfram.com/mathematica/)는 수학에 특화된 프로그래밍을 하는데 뛰어난 환경을 제공합니다. 
 
 ## GitHub
 
-[GitHub](https://github.com/) is one of the most popular platforms for
-open-source software development. Many of the tools we've talked about in this
-class, from [vim](https://github.com/vim/vim) to
-[Hammerspoon](https://github.com/Hammerspoon/hammerspoon), are hosted on
-GitHub. It's easy to get started contributing to open-source to help improve
-the tools that you use every day.
+[GitHub](https://github.com/) 는 오픈 소스 소프트웨어 개발을 위한 가장 인기 있는 플랫폼 중 하나입니다. [vim](https://github.com/vim/vim)에서 [해머스푼](https://github.com/Hammerspoon/hammerspoon)까지 이 수업에서 언급한 많은 도구는 깃허브에서 만들어졌습니다. 오픈 소스에 기여해 일상적으로 사용하는 툴을 개선하는 것은 간단합니다.
 
-There are two primary ways in which people contribute to projects on GitHub:
+깃허브에서 프로젝트에 기여하는 두 가지 방법을 소개합니다.
 
-- Creating an
-[issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
-This can be used to report bugs or request a new feature. Neither of these
-involves reading or writing code, so it can be pretty lightweight to do.
-High-quality bug reports can be extremely valuable to developers. Commenting on
-existing discussions can be helpful too.
-- Contribute code through a [pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-This is generally more involved than creating an issue. You can
-[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
-a repository on GitHub, clone your fork, create a new branch, make some changes
-(e.g. fix a bug or implement a feature), push the branch, and then [create a
-pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-After this, there will generally be some back-and-forth with the project
-maintainers, who will give you feedback on your patch. Finally, if all goes
-well, your patch will be merged into the upstream repository. Often times,
-larger projects will have a contributing guide, tag beginner-friendly issues,
-and some even have mentorship programs to help first-time contributors become
-familiar with the project.
+- [issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)를 생성하세요. 이슈는 버그를 신고하거나 신규 기능을 요청하는 데에 사용됩니다. 이 과정에서 코드를 읽거나 새로 작성할 필요는 없기에 누구든 부담 없이 참여할 수 있습니다. 정성스럽게 작성된 버그 리포트나 기존의 이슈 토론에 참여하는 것은 개발자에게 큰 도움이 됩니다.
+- [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)를 통해 코드에 기여하세요. 이 방법은 이슈 생성보다는 더 적극적인 참여 방법입니다. 깃허브에 있는 저장소를 [fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) 해서 복제(clone)하고, 브랜치를 생성한 뒤 코드를 변경합니다(예를 들면 버그 수정이나 기능 구현). 작업한 브랜치를 push 하고 [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)를 생성합니다. 이제 프로젝트의 관리자(메인테이너)들이 당신의 코드에 피드백을 주고 몇 번의 수정 과정을 거친 뒤 모든 것이 잘 되면 업스트림 깃허브 저장소에 반영됩니다. 가끔 큰 프로젝트들은 그들만의 기여 방침을 가지고 있고 초심자를 위한 이슈를 따로 표시해 두거나 기여 경험이 없는 사람들을 위한 멘토링 프로그램을 운영하기도 합니다.
