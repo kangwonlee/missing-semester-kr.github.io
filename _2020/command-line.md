@@ -33,7 +33,7 @@ video:
 `Ctrl-C`를 입력하면 shell이 `SIGINT` 신호를 프로세스에 전달합니다.
 
 다음은 `SIGINT`를 캡처하여 무시하고 더 이상 멈추지 않는 파이썬 프로그램의 작은 예제 입니다. 
-이 프로그램을 제거하려면 `Ctrl-\`를 입력하여 `SIGQ` 신호를 보냅니다.
+이 프로그램을 제거하려면 `Ctrl-\`를 입력하여 `SIGQUIT` 신호를 보냅니다.
 
 ```python
 #!/usr/bin/env python
@@ -62,7 +62,7 @@ I got a SIGINT, but I am not stopping
 30^\[1]    39913 quit       python sigint.py
 ```
 
-`SIGINT`와 `SIGQ`는 보통 터미널 관련 요청과 관련되어 있는 반면, 보다 멋있게 종료하는 과정을 요청하는 일반적인 신호는 `SIGTERM` 신호입니다.
+`SIGINT`와 `SIGQUIT`는 보통 터미널 관련 요청과 관련되어 있는 반면, 보다 멋있게 종료하는 과정을 요청하는 일반적인 신호는 `SIGTERM` 신호입니다.
 이 신호를 보내기 위해 [`kill`](https://www.man7.org/linux/man-pages/man1/kill.1.html) 명령을 `kill -TERM <PID>`라는 구문과 함께 사용할 수 있습니다.
 
 ## 프로세스의 일시 중지와 백그라운드
